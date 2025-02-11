@@ -13,5 +13,6 @@ export class NavbarComponent {
 
   openOptions($event: MouseEvent) {
     console.log("clicked Button");
+    //just a test
   }
 }
