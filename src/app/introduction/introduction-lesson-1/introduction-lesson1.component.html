@@ -1,1 +1,60 @@
-<p>lesson1 works!</p>
+<form id="lesson1-container" #introductionFormElement="ngForm" [formGroup]="introductionForm">
+  <section id="click-button-exercise">
+    <p class="paragraph">Versuche die Funktion des Buttons auszulösen. Was passiert wenn man ihn erfolgreich
+      anklickt?</p>
+    <div class="form-check">
+      <input class="form-check-input" [ngClass]="checkRadios(1)" type="radio" name="exerciseOne"
+             id="flexRadioDefault1"
+             formControlName="exerciseOne" [value]="1">
+      <label class="form-check-label" for="flexRadioDefault1">
+        Es wird ein Dialog mit Text angezeigt
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" [ngClass]="checkRadios(2)" type="radio" name="exerciseOne"
+             id="flexRadioDefault2"
+             formControlName="exerciseOne" [value]="2">
+      <label class="form-check-label" for="flexRadioDefault2">
+        Die Hintergrundfarbe ändert sich
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" [ngClass]="checkRadios(3)" type="radio" name="exerciseOne"
+             id="flexRadioDefault3"
+             formControlName="exerciseOne" [value]="3">
+      <label class="form-check-label" for="flexRadioDefault3">
+        Es passiert nichts
+      </label>
+    </div>
+    @if (introductionForm.get("exerciseOne")?.invalid && introductionForm.get("exerciseOne")?.dirty) {
+      <div class="alert alert-danger" role="alert">
+        Das war leider nicht richtig. <br/>
+        Versuch es mal mit einer anderen Antwortmöglichkeit!
+      </div>
+    }
+  </section>
+  @if (introductionForm.get("exerciseOne")?.valid) {
+    <section id="remember-text-exercise">
+      <p class="paragraph">Richtig! 🎉 Trag hier bitte ein, welcher Text beim Button-Klick eingeblendet wird:</p>
+      <textarea class="form-control textarea" formControlName="exerciseTwo" rows="4"></textarea>
+      <ng-icon name="matSend" class="send-icon" [tabIndex]="0" (click)="submitExerciseTwo()"></ng-icon>
+    </section>
+
+    <button type="button" class="btn btn-primary unclickable">Klick mich!</button>
+    @if (this.submittedExerciseTwo) {
+      <section id="find-text-exercise">
+        <p class="paragraph">Sehr gut gemacht! Eine letzte Aufgabe: Findest du die Information die auf dieser Seite
+          versteckt ist? Was steht dort?</p>
+        <textarea class="form-control textarea" formControlName="exerciseThree"
+                  rows="4"></textarea>
+        <ng-icon name="matSend" class="send-icon" [tabIndex]="0" (click)="submitExerciseThree()"></ng-icon>
+      </section>
+      @if (this.submittedExerciseThree) {
+        <section id="submit">
+          <p class="paragraph">Super! Ich hoffe du konntest die Probleme erkennen. Mit einem Klick (keine Sorge das geht auch mit der Maus) auf “Weiter” wollen wir das mal überprüfen ;)</p>
+          <button id="submitButton" type="button" class="btn btn-primary"><ng-icon name="matPlayArrow"></ng-icon>Weiter</button>
+        </section>
+      }
+    }
+  }
+</form>

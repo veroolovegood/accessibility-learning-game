@@ -16,7 +16,6 @@ export class HomeComponent {
   }
 
   startIntroduction() {
-    console.log("navigate");
     this.router.navigate(['introduction', 'lesson1']).then();
   }
 }

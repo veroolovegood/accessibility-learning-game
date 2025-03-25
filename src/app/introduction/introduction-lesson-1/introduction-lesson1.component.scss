@@ -1,0 +1,72 @@
+#lesson1-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-rows: 2fr 1fr 2fr;
+  grid-template-areas: 'exOne . exThree'
+                        '. button .'
+                        'exTwo . submit';
+  justify-content: space-between;
+  height: 90vh;
+  width: 100%;
+}
+
+#click-button-exercise {
+  grid-area: exOne;
+  align-self: center;
+  justify-self: center;
+}
+
+#remember-text-exercise {
+  grid-area: exTwo;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.unclickable {
+  cursor: none;
+  grid-area: button;
+  align-self: center;
+  justify-self: center;
+}
+
+#find-text-exercise {
+  grid-area: exThree;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-self: start;
+}
+
+#submit {
+  grid-area: submit;
+  height: 100%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 2em 2em 0;
+}
+
+#submitButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  align-self: end;
+}
+
+.paragraph {
+  width: 30vw;
+}
+
+.textarea {
+  width: 95%;
+}
+
+.send-icon {
+  transform: translateY(-1.5em);
+  margin-left: calc(100% - 3.5em);
+  cursor: pointer;
+}
