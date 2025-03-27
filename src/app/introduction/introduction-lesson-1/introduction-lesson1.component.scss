@@ -12,7 +12,7 @@
 
 #click-button-exercise {
   grid-area: exOne;
-  align-self: center;
+  padding-top: 5em;
   justify-self: center;
 }
 
@@ -24,16 +24,20 @@
   justify-self: center;
 }
 
-.unclickable {
-  cursor: none;
+.click-me-button{
   grid-area: button;
   align-self: center;
   justify-self: center;
 }
 
+.unclickable {
+  cursor: none !important;
+  background-color: #9F9FED !important;
+}
+
 #find-text-exercise {
   grid-area: exThree;
-  align-self: center;
+  padding-top: 5em;
   display: flex;
   flex-direction: column;
   justify-self: start;
@@ -69,4 +73,39 @@
   transform: translateY(-1.5em);
   margin-left: calc(100% - 3.5em);
   cursor: pointer;
+}
+
+.unreadable-text{
+  color: whitesmoke;
+  font-size: small;
+  user-select: none;
+}
+
+.exerciseThreeText {
+  width: 10vw;
+  position: absolute;
+  right: 2vw;
+  bottom: 10vh;
+}
+
+.question-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 5em;
+}
+
+.help-icon{
+  cursor: pointer;
+}
+
+.info-popover{
+  font-family: Monospaced, monospace;
+}
+
+.info-popover p {
+  font-size: small;
+}
+
+.popover {
+  max-width: 25vw;
 }

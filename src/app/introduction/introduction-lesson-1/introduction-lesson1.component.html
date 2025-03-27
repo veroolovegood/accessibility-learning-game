@@ -1,7 +1,22 @@
 <form id="lesson1-container" #introductionFormElement="ngForm" [formGroup]="introductionForm">
   <section id="click-button-exercise">
-    <p class="paragraph">Versuche die Funktion des Buttons auszulösen. Was passiert wenn man ihn erfolgreich
-      anklickt?</p>
+    <div class="question-container">
+      <p class="paragraph">Versuche die Funktion des Buttons auszulösen. Was passiert wenn man ihn erfolgreich
+        anklickt?</p>
+      <ng-icon
+        name="matInfoOutline"
+        class="help-icon"
+        size="1.5em"
+        [tabIndex]="0"
+        popoverClass="info-popover"
+        placement="bottom"
+        triggers="mouseenter focus:none"
+        autoClose="outside"
+        [ngbPopover]="exerciseOnePopover"
+        popoverTitle="Hilfe"
+        #exerciseOnePopoverButton="ngbPopover"
+        container="body"></ng-icon>
+    </div>
     <div class="form-check">
       <input class="form-check-input" [ngClass]="checkRadios(1)" type="radio" name="exerciseOne"
              id="flexRadioDefault1"
@@ -35,26 +50,139 @@
   </section>
   @if (introductionForm.get("exerciseOne")?.valid) {
     <section id="remember-text-exercise">
-      <p class="paragraph">Richtig! 🎉 Trag hier bitte ein, welcher Text beim Button-Klick eingeblendet wird:</p>
+      <div class="question-container">
+        <p class="paragraph">Richtig! 🎉 Trag hier bitte ein, welcher Text beim Button-Klick eingeblendet wird:</p>
+        <ng-icon name="matInfoOutline" class="help-icon" size="1.5em" [tabIndex]="0"
+                 [ngbPopover]="exerciseTwoPopover"
+                 popoverTitle="Hilfe"
+                 popoverClass="info-popover"
+                 placement="bottom"
+                 triggers="mouseenter focus:none"
+                 autoClose="outside"
+                 #exerciseTwoPopoverButton="ngbPopover"
+        ></ng-icon>
+      </div>
       <textarea class="form-control textarea" formControlName="exerciseTwo" rows="4"></textarea>
-      <ng-icon name="matSend" class="send-icon" [tabIndex]="0" (click)="submitExerciseTwo()"></ng-icon>
+      <ng-icon
+        name="matSend"
+        class="send-icon"
+        [tabIndex]="0" (click)="submitExerciseTwo()"></ng-icon>
     </section>
-
-    <button type="button" class="btn btn-primary unclickable">Klick mich!</button>
-    @if (this.submittedExerciseTwo) {
-      <section id="find-text-exercise">
+    <ng-template #exerciseTwoPopover>
+      <p>Benötigst du Hilfe? Unter den folgenden Reitern kannst du dir schrittweise Tipps anzeigen lassen, um die Aufgabe zu lösen.</p>
+      <div ngbAccordion [closeOthers]="true" tabindex="0">
+        <div ngbAccordionItem tabindex="0">
+          <h1 ngbAccordionHeader>
+            <button ngbAccordionButton>Tipp 1</button>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <p>Hast du Probleme, dir den Text schnell genug zu merken? Klick auf den unteren Button um den Dialog zeitunabhängig
+                  geöffnet zu lassen:</p>
+                <button class="btn btn-primary" (click)="exerciseTwoPopoverButton?.toggle(); deactivateAutomaticClosingOfDialog()">Lösen</button>
+              </div>
+            </div>
+          </h1>
+        </div>
+      </div>
+    </ng-template>
+  }
+  <button type="button" class="btn btn-primary click-me-button" [ngClass]="isClickable ? '' : 'unclickable'"
+          (keyup.enter)="openDialogForExercise(buttonModal)"
+          (click)="isClickable ? openDialogForExercise(buttonModal) : null">Klick mich!
+  </button>
+  @if (introductionForm.get("exerciseOne")?.valid && this.submittedExerciseTwo) {
+    <section id="find-text-exercise">
+      <div class="question-container">
         <p class="paragraph">Sehr gut gemacht! Eine letzte Aufgabe: Findest du die Information die auf dieser Seite
           versteckt ist? Was steht dort?</p>
-        <textarea class="form-control textarea" formControlName="exerciseThree"
-                  rows="4"></textarea>
-        <ng-icon name="matSend" class="send-icon" [tabIndex]="0" (click)="submitExerciseThree()"></ng-icon>
-      </section>
-      @if (this.submittedExerciseThree) {
-        <section id="submit">
-          <p class="paragraph">Super! Ich hoffe du konntest die Probleme erkennen. Mit einem Klick (keine Sorge das geht auch mit der Maus) auf “Weiter” wollen wir das mal überprüfen ;)</p>
-          <button id="submitButton" type="button" class="btn btn-primary"><ng-icon name="matPlayArrow"></ng-icon>Weiter</button>
-        </section>
-      }
-    }
+        <ng-icon name="matInfoOutline" class="help-icon" size="1.5em" [tabIndex]="0"
+                 [ngbPopover]="exerciseThreePopover"
+                 popoverTitle="Hilfe"
+                 popoverClass="info-popover"
+                 placement="bottom"
+                 triggers="mouseenter focus:none"
+                 autoClose="outside"
+                 #exerciseThreePopoverButton="ngbPopover"></ng-icon>
+      </div>
+      <textarea class="form-control textarea" formControlName="exerciseThree"
+                rows="4"></textarea>
+      <ng-icon name="matSend" class="send-icon" [tabIndex]="0" (click)="submitExerciseThree()"></ng-icon>
+    </section>
+
+    <ng-template #exerciseThreePopover>
+      <p>Benötigst du Hilfe? Unter den folgenden Reitern kannst du dir schrittweise Tipps anzeigen lassen, um die Aufgabe zu lösen.</p>
+      <div ngbAccordion [closeOthers]="true">
+        <div ngbAccordionItem>
+          <h1 ngbAccordionHeader>
+            <button ngbAccordionButton>Tipp 1</button>
+          </h1>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <p>Irgendwo auf dieser Seite hat sich ein nicht ganz so leicht lesbarer Text versteckt... Schau mal in der rechten unteren Ecke.</p>
+            </div>
+          </div>
+        </div>
+        <div ngbAccordionItem>
+          <h1 ngbAccordionHeader>
+            <button ngbAccordionButton>Tipp 2</button>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <p>Falls du weiterhin Probleme hast, den Text zu finden, kannst du ihn mit folgendem Button sichtbarer machen:</p>
+                <button class="btn btn-primary" (click)="exerciseThreePopoverButton.toggle(); changeTextAppereance()">Lösen</button>
+              </div>
+            </div>
+          </h1>
+        </div>
+      </div>
+    </ng-template>
+  }
+  @if (introductionForm.get("exerciseOne")?.valid && this.submittedExerciseTwo && this.submittedExerciseThree) {
+    <section id="submit">
+      <p class="paragraph">Super! Ich hoffe du konntest die Probleme erkennen. Mit einem Klick auf “Weiter” (keine Sorge
+        das geht
+        auch mit der Maus) wollen wir das mal überprüfen ;)</p>
+      <button id="submitButton" type="button" class="btn btn-primary">
+        <ng-icon name="matPlayArrow"></ng-icon>
+        Weiter
+      </button>
+    </section>
   }
 </form>
+<p class="exerciseThreeText" [ngClass]="textVisible ? 'visible-text' : 'unreadable-text'">{{ EXERCISE_THREE_SOLUTION }}</p>
+
+<ng-template #buttonModal let-modal>
+  <div class="modal-header">
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    {{ EXERCISE_TWO_SOLUTION }}
+  </div>
+</ng-template>
+
+<ng-template #exerciseOnePopover id="exerciseOnePopover">
+  <p>Benötigst du Hilfe? Unter den folgenden Reitern kannst du dir schrittweise Tipps anzeigen lassen, um die Aufgabe zu lösen.</p>
+  <div ngbAccordion [closeOthers]="true">
+    <div ngbAccordionItem>
+      <h1 ngbAccordionHeader>
+        <button ngbAccordionButton>Tipp 1</button>
+      </h1>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <p>Neben dem Mausklick, können auswählbare Elemente wie Buttons auch mittels Tab selektiert und mit Enter ausgewählt
+            werden. Probier das doch mal aus.</p>
+        </div>
+      </div>
+    </div>
+    <div ngbAccordionItem>
+      <h1 ngbAccordionHeader>
+        <button ngbAccordionButton>Tipp 2</button>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <p>Falls du weiterhin Probleme hast, kannst du den Mausklick über folgenden Button wieder aktivieren:</p>
+            <button class="btn btn-primary" (click)="exerciseOnePopoverButton.toggle(); activateMouseClick()">Lösen</button>
+          </div>
+        </div>
+      </h1>
+    </div>
+  </div>
+</ng-template>
