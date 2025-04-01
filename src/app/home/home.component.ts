@@ -16,6 +16,6 @@ export class HomeComponent {
   }
 
   startIntroduction() {
-    this.router.navigate(['introduction', 'lesson1']).then();
+    this.router.navigate(['introduction', 'lesson-one']).then();
   }
 }

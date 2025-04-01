@@ -7,10 +7,10 @@ import { NgClass } from '@angular/common';
 import { NgbAccordionModule, NgbModal, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-lesson1',
+  selector: 'app-lesson-one',
   imports: [NgIcon, NgClass, ReactiveFormsModule, NgbPopoverModule, NgbAccordionModule],
-  templateUrl: './introduction-lesson1.component.html',
-  styleUrl: './introduction-lesson1.component.scss',
+  templateUrl: './introduction-lesson-one.component.html',
+  styleUrl: './introduction-lesson-one.component.scss',
   viewProviders: [provideIcons({matSend, matPlayArrow, matInfoOutline})],
   encapsulation: ViewEncapsulation.None,
 })
@@ -18,7 +18,7 @@ export class IntroductionLesson1 {
 
   @ViewChild("introductionFormElement") formDirective?: FormGroupDirective;
 
-  readonly EXERCISE_TWO_SOLUTION = "Barrierefrei-Challenge: 1 Sekunde! Kopier den Text um weiter zu kommen!";
+  readonly EXERCISE_TWO_SOLUTION = "Barrierefrei-Challenge: 1 Sekunde! Kopier den Text um schnell weiter zu kommen!";
   readonly EXERCISE_THREE_SOLUTION = "Barrierefreiheit im Web betrifft alle und ermöglicht eine einfache Bedienung von Webinhalten"
 
   introductionForm: FormGroup = new FormGroup({

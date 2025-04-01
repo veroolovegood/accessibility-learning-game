@@ -1,4 +1,5 @@
 <form id="lesson1-container" #introductionFormElement="ngForm" [formGroup]="introductionForm">
+  <!-- EXERCISE ONE -->
   <section id="click-button-exercise">
     <div class="question-container">
       <p class="paragraph">Versuche die Funktion des Buttons auszulösen. Was passiert wenn man ihn erfolgreich
@@ -17,6 +18,35 @@
         #exerciseOnePopoverButton="ngbPopover"
         container="body"></ng-icon>
     </div>
+    <!-- HELP POPOVER TEMPLATE - EXERCISE ONE -->
+    <ng-template #exerciseOnePopover id="exerciseOnePopover">
+      <p>Benötigst du Hilfe? Unter den folgenden Reitern kannst du dir schrittweise Tipps anzeigen lassen, um die Aufgabe zu lösen.</p>
+      <div ngbAccordion [closeOthers]="true">
+        <div ngbAccordionItem>
+          <h1 ngbAccordionHeader>
+            <button ngbAccordionButton>Tipp 1</button>
+          </h1>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody>
+              <p>Neben dem Mausklick, können auswählbare Elemente wie Buttons auch mittels Tab selektiert und mit Enter ausgewählt
+                werden. Probier das doch mal aus.</p>
+            </div>
+          </div>
+        </div>
+        <div ngbAccordionItem>
+          <h1 ngbAccordionHeader>
+            <button ngbAccordionButton>Tipp 2</button>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <p>Falls du weiterhin Probleme hast, kannst du den Mausklick über folgenden Button wieder aktivieren:</p>
+                <button class="btn btn-primary" (click)="exerciseOnePopoverButton.toggle(); activateMouseClick()">Lösen</button>
+              </div>
+            </div>
+          </h1>
+        </div>
+      </div>
+    </ng-template>
+
     <div class="form-check">
       <input class="form-check-input" [ngClass]="checkRadios(1)" type="radio" name="exerciseOne"
              id="flexRadioDefault1"
@@ -48,6 +78,8 @@
       </div>
     }
   </section>
+
+  <!-- EXERCISE TWO -->
   @if (introductionForm.get("exerciseOne")?.valid) {
     <section id="remember-text-exercise">
       <div class="question-container">
@@ -68,6 +100,7 @@
         class="send-icon"
         [tabIndex]="0" (click)="submitExerciseTwo()"></ng-icon>
     </section>
+    <!-- HELP POPOVER TEMPLATE - EXERCISE TWO -->
     <ng-template #exerciseTwoPopover>
       <p>Benötigst du Hilfe? Unter den folgenden Reitern kannst du dir schrittweise Tipps anzeigen lassen, um die Aufgabe zu lösen.</p>
       <div ngbAccordion [closeOthers]="true" tabindex="0">
@@ -86,10 +119,23 @@
       </div>
     </ng-template>
   }
+  <!-- UNCLICKABLE BUTTON -->
   <button type="button" class="btn btn-primary click-me-button" [ngClass]="isClickable ? '' : 'unclickable'"
           (keyup.enter)="openDialogForExercise(buttonModal)"
           (click)="isClickable ? openDialogForExercise(buttonModal) : null">Klick mich!
   </button>
+  <!-- MODAL TEMPLATE -->
+  <ng-template #buttonModal let-modal>
+    <div class="modal-header">
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      {{ EXERCISE_TWO_SOLUTION }}
+    </div>
+  </ng-template>
+  <!-- INVISIBLE TEXT -->
+  <p class="exerciseThreeText" [ngClass]="textVisible ? 'visible-text' : 'unreadable-text'">{{ EXERCISE_THREE_SOLUTION }}</p>
+  <!-- EXERCISE THREE -->
   @if (introductionForm.get("exerciseOne")?.valid && this.submittedExerciseTwo) {
     <section id="find-text-exercise">
       <div class="question-container">
@@ -108,7 +154,7 @@
                 rows="4"></textarea>
       <ng-icon name="matSend" class="send-icon" [tabIndex]="0" (click)="submitExerciseThree()"></ng-icon>
     </section>
-
+    <!-- HELP POPOVER TEMPLATE - EXERCISE THREE -->
     <ng-template #exerciseThreePopover>
       <p>Benötigst du Hilfe? Unter den folgenden Reitern kannst du dir schrittweise Tipps anzeigen lassen, um die Aufgabe zu lösen.</p>
       <div ngbAccordion [closeOthers]="true">
@@ -136,6 +182,7 @@
       </div>
     </ng-template>
   }
+  <!-- END OF INTRODUCTION -->
   @if (introductionForm.get("exerciseOne")?.valid && this.submittedExerciseTwo && this.submittedExerciseThree) {
     <section id="submit">
       <p class="paragraph">Super! Ich hoffe du konntest die Probleme erkennen. Mit einem Klick auf “Weiter” (keine Sorge
@@ -148,41 +195,3 @@
     </section>
   }
 </form>
-<p class="exerciseThreeText" [ngClass]="textVisible ? 'visible-text' : 'unreadable-text'">{{ EXERCISE_THREE_SOLUTION }}</p>
-
-<ng-template #buttonModal let-modal>
-  <div class="modal-header">
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    {{ EXERCISE_TWO_SOLUTION }}
-  </div>
-</ng-template>
-
-<ng-template #exerciseOnePopover id="exerciseOnePopover">
-  <p>Benötigst du Hilfe? Unter den folgenden Reitern kannst du dir schrittweise Tipps anzeigen lassen, um die Aufgabe zu lösen.</p>
-  <div ngbAccordion [closeOthers]="true">
-    <div ngbAccordionItem>
-      <h1 ngbAccordionHeader>
-        <button ngbAccordionButton>Tipp 1</button>
-      </h1>
-      <div ngbAccordionCollapse>
-        <div ngbAccordionBody>
-          <p>Neben dem Mausklick, können auswählbare Elemente wie Buttons auch mittels Tab selektiert und mit Enter ausgewählt
-            werden. Probier das doch mal aus.</p>
-        </div>
-      </div>
-    </div>
-    <div ngbAccordionItem>
-      <h1 ngbAccordionHeader>
-        <button ngbAccordionButton>Tipp 2</button>
-        <div ngbAccordionCollapse>
-          <div ngbAccordionBody>
-            <p>Falls du weiterhin Probleme hast, kannst du den Mausklick über folgenden Button wieder aktivieren:</p>
-            <button class="btn btn-primary" (click)="exerciseOnePopoverButton.toggle(); activateMouseClick()">Lösen</button>
-          </div>
-        </div>
-      </h1>
-    </div>
-  </div>
-</ng-template>
