@@ -1,0 +1,28 @@
+.info-line{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+#content-container{
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5em;
+}
+
+.barrier-type-button{
+  padding: 1em 3em;
+  font-size: xx-large;
+}
+
+#barrier-type-selection{
+ display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 5em;
+}
+
+p{
+  font-size: x-large;
+}

@@ -1,1 +1,14 @@
-<p>simulation-menu works!</p>
+<div id="content-container">
+  <p>Was für Barrieren können überhaupt auftreten?</p>
+  <p>Grundsätzlich können Barrieren in vier verschiedene Kategorien eingeteilt werden:</p>
+  <div id="barrier-type-selection">
+    <button class="btn btn-primary barrier-type-button" (click)="navigateTo('visual')">Visuell</button>
+    <button class="btn btn-primary barrier-type-button" (click)="navigateTo('audio')">Auditiv</button>
+    <button class="btn btn-primary barrier-type-button" (click)="navigateTo('motor')">Motorisch</button>
+    <button class="btn btn-primary barrier-type-button" (click)="navigateTo('cognitive')">Kognitiv</button>
+  </div>
+  <span class="info-line">
+  <ng-icon name="matInfoOutline" size="1.5em"></ng-icon>
+  <p class="info-text">Um mehr über die verschiedenen Arten herauszufinden, wähle eine beliebige Kategorie aus</p>
+</span>
+</div>
