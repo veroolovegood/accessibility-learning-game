@@ -2,6 +2,7 @@ import { Route, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { IntroductionLesson1 } from './introduction/introduction-lesson-one/introduction-lesson-one.component';
 import { LessonOneQuizComponent } from './introduction/lesson-one-quiz/lesson-one-quiz.component';
+import { SimulationMenuComponent } from './introduction/simulation/simulation-menu/simulation-menu.component';
 
 export const routes: Routes = [
   {
@@ -25,5 +26,9 @@ export const routes: Routes = [
   {
     path: 'introduction/lesson-one/quiz',
     component: LessonOneQuizComponent
+  },
+  {
+    path: 'introduction/simulation',
+    component: SimulationMenuComponent
   }
 ];

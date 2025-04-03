@@ -133,9 +133,7 @@
       {{ EXERCISE_TWO_SOLUTION }}
     </div>
   </ng-template>
-  <!-- INVISIBLE TEXT -->
-  <p class="exerciseThreeText" [ngClass]="textVisible ? 'visible-text' : 'unreadable-text'">{{ EXERCISE_THREE_SOLUTION }}</p>
-  <!-- EXERCISE THREE -->
+   <!-- EXERCISE THREE -->
   @if (introductionForm.get("exerciseOne")?.valid && this.submittedExerciseTwo) {
     <section id="find-text-exercise">
       <div class="question-container">
@@ -188,10 +186,12 @@
       <p class="paragraph">Super! Ich hoffe du konntest die Probleme erkennen. Mit einem Klick auf “Weiter” (keine Sorge
         das geht
         auch mit der Maus) wollen wir das mal überprüfen ;)</p>
-      <button id="submitButton" type="button" class="btn btn-primary">
+      <button id="submitButton" type="button" class="btn btn-primary" (click)="navigateToNextLesson()">
         <ng-icon name="matPlayArrow"></ng-icon>
         Weiter
       </button>
     </section>
   }
 </form>
+<!-- INVISIBLE TEXT -->
+<p class="exerciseThreeText" [ngClass]="textVisible ? 'visible-text' : 'unreadable-text'">{{ EXERCISE_THREE_SOLUTION }}</p>

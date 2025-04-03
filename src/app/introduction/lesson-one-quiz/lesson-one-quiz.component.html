@@ -1,1 +1,36 @@
-<p>lesson-one-quiz works!</p>
+<div id="content">
+  <p id="explanation">Ordne nun den Beispielen die zugehörigen Probleme zu:</p>
+  <div id="ex-1" class="title-container">
+    <p>Button auswählen</p>
+  </div>
+  <div id="ex-2" class="title-container">
+    <p>Dialoginhalt wiedergeben</p>
+  </div>
+  <div id="ex-3" class="title-container">
+    <p>Versteckten Text finden</p>
+  </div>
+  @for (number of [1, 2, 3]; track number) {
+    <div [id]="'answer-field-' + number" class="drop-container" [ngClass]="validationClasses[number-1]"  dndDropzone (dndDrop)="onDrop(number, $event)">
+      @if (submittedAnswers[number - 1] !== undefined && submittedAnswers[number-1].displayName !== undefined) {
+        <div class="answer-container" [dndDraggable]="{obj: submittedAnswers[number-1], index: number}">
+          <p>{{ submittedAnswers[number - 1].displayName }}</p>
+        </div>
+      }
+    </div>
+  }
+  <div id="answers" dndDropzone (dndDrop)="onDropBack($event)">
+    @for (answer of answers; track answer) {
+      <div class="answer-container" [dndDraggable]="{obj: answer, index: -1}" dndEffectAllowed="move">
+        <p>{{ answer?.displayName }}</p>
+      </div>
+    }
+  </div>
+  <button #submitButton id="submit-button" class="btn btn-primary" (click)="completedExercise ? navigateToNextExercise() : onSubmit()">
+    @if (completedExercise) {
+      <ng-icon name="matPlayArrow"></ng-icon>
+      Weiter
+    } @else {
+      Überprüfen
+    }
+  </button>
+</div>

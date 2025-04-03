@@ -1,0 +1,99 @@
+#content{
+  display: grid;
+  grid-template-areas:  'explanation explanation explanation'
+                        'ex-1 answer-field-1 answers'
+                        'ex-2 answer-field-2 answers'
+                        'ex-3 answer-field-3 answers'
+                        '. . submit-button';
+  height: 100%;
+  gap: 3em;
+  margin: 5em 2em;
+}
+
+#explanation{
+  grid-area: explanation;
+  font-size: xx-large;
+  justify-self: center;
+}
+
+#answers {
+  grid-area: answers;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  border: solid #2E2C2F 1px;
+  border-radius: 8px;
+  padding: 1em;
+}
+
+.title-container{
+  background-color: #9F9FED;
+  border-radius: 8px;
+  padding: 2em 3em;
+  min-width: 30em;
+  align-content: center;
+}
+
+.drop-container{
+  background-color: #9F9FED22;
+  border-radius: 8px;
+  padding: 2em 3em;
+  min-width: 30em;
+  border: solid #2E2C2F 1px;
+  min-height: 6.5em;
+}
+
+.title-container p {
+  font-size: xx-large;
+  text-align: center;
+  margin: 0;
+}
+
+.answer-container {
+  border-radius: 8px;
+  background-color: #9F9FED77;
+  padding: 1em 2em;
+}
+
+.answer-container p {
+  text-align: center;
+  margin: 0;
+}
+
+#ex-1{
+  grid-area: ex-1;
+}
+#ex-2{
+  grid-area: ex-2;
+}
+#ex-3{
+  grid-area: ex-3;
+}
+
+#answer-field-1{
+  grid-area: answer-field-1;
+}
+#answer-field-2{
+  grid-area: answer-field-2;
+}
+#answer-field-3{
+  grid-area: answer-field-3;
+}
+
+#submit-button{
+  grid-area: submit-button;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  justify-self: end;
+}
+
+.error-border{
+  border: solid #FF5B5B 2px;
+  background-color: #FF5B5B22;
+}
+
+.success-border{
+  border: solid #558564 2px;
+  background-color: #55856422;
+}

@@ -5,6 +5,7 @@ import { matInfoOutline } from '@ng-icons/material-icons/outline';
 import { FormControl, FormGroup, FormGroupDirective, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { NgbAccordionModule, NgbModal, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lesson-one',
@@ -23,8 +24,8 @@ export class IntroductionLesson1 {
 
   introductionForm: FormGroup = new FormGroup({
     exerciseOne: new FormControl(0, {validators: [Validators.min(1), Validators.max(1)]}),
-    exerciseTwo: new FormControl('', {validators: [Validators.pattern(this.EXERCISE_TWO_SOLUTION), Validators.required]}),
-    exerciseThree: new FormControl('', {validators: [Validators.pattern(this.EXERCISE_THREE_SOLUTION), Validators.required]})
+    exerciseTwo: new FormControl('', {validators: [Validators.pattern(this.EXERCISE_TWO_SOLUTION || ''), Validators.required]}),
+    exerciseThree: new FormControl('', {validators: [Validators.pattern(this.EXERCISE_THREE_SOLUTION ||''), Validators.required]})
   });
 
   submittedExerciseTwo = false;
@@ -35,7 +36,8 @@ export class IntroductionLesson1 {
   textVisible = false;
 
 
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal,
+              private router: Router) {
   }
 
   checkRadios(selectedValue: number) {
@@ -77,5 +79,9 @@ export class IntroductionLesson1 {
 
   changeTextAppereance() {
     this.textVisible = true;
+  }
+
+  navigateToNextLesson() {
+    this.router.navigate(['introduction','lesson-one','quiz']);
   }
 }
