@@ -1,0 +1,22 @@
+#content-container{
+  display: grid;
+  grid-template-areas: 'title title'
+                        'website simulation-options';
+  grid-template-columns: 3fr 1fr;
+  gap: 1em;
+  margin-top: 2em;
+  margin-left: 2em;
+}
+
+h1{
+  grid-area: title;
+  justify-self: center;
+}
+
+#simulation-options-container{
+ grid-area: simulation-options
+}
+
+#website{
+  grid-area: website;
+}

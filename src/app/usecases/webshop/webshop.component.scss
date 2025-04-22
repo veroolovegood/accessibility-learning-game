@@ -1,0 +1,21 @@
+#webshop-navbar{
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2em 1em;
+  background-color: #E7E4D8;
+  border-top: 1px solid #2C2C2C;
+  border-bottom: 1px solid #2C2C2C;
+  font-weight: bold;
+}
+
+#navbar-links {
+  display: flex;
+  gap: 2em;
+}
+
+.products-container{
+  margin: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 3em;
+}

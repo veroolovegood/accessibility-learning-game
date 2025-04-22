@@ -1,0 +1,14 @@
+<div id="webshop-container">
+  <nav id="webshop-navbar">
+    <span>A11y-Shop</span>
+    <div id="navbar-links">
+      <a>Produkte</a>
+      <a>Warenkorb</a>
+    </div>
+  </nav>
+  <main id="webshop-content" class="products-container">
+    @for (product of productList; track product){
+      <app-product-fragment [product]="product"></app-product-fragment>
+    }
+    </main>
+</div>

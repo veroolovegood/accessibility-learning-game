@@ -1,0 +1,11 @@
+<div id="content-container">
+  <h1>Visuell</h1>
+  <app-browser-simulation id="website" [urlSuffix]="'webshop'">
+    <ng-container [ngTemplateOutlet]="webshop"></ng-container>
+  </app-browser-simulation>
+  <div id="simulation-options-container"></div>
+</div>
+
+<ng-template #webshop>
+  <app-webshop></app-webshop>
+</ng-template>

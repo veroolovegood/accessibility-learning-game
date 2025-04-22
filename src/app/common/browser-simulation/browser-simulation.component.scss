@@ -1,0 +1,21 @@
+#website-container{
+  border: 1px solid #2C2C2C;
+  border-radius: 1em;
+  height: 75vh;
+  width: 80%;
+  background-color: #F6F4E9;
+}
+
+#url-line{
+  width: 100%;
+  background-color: #E7E4D8;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  padding: 0.5em 2em;
+}
+
+#url-line input {
+  width: 100%;
+  background-color: #F6F4E9;
+  border-color: #CBC6B5;
+}
