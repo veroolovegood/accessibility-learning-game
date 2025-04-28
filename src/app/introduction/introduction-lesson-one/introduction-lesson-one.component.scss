@@ -80,7 +80,6 @@
 .unreadable-text{
   color: whitesmoke;
   font-size: small;
-  user-select: none;
 }
 
 .exerciseThreeText {
@@ -88,6 +87,10 @@
   position: absolute;
   right: 2vw;
   bottom: 10vh;
+}
+
+.exerciseThreeText::selection {
+  background-color: #f6efd1;
 }
 
 .question-container{

@@ -1,4 +1,4 @@
-import { Route, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { IntroductionLesson1 } from './introduction/introduction-lesson-one/introduction-lesson-one.component';
 import { LessonOneQuizComponent } from './introduction/lesson-one-quiz/lesson-one-quiz.component';

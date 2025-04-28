@@ -1,22 +1,48 @@
-#content-container{
+#content-container {
   display: grid;
   grid-template-areas: 'title title'
                         'website simulation-options';
-  grid-template-columns: 3fr 1fr;
-  gap: 1em;
-  margin-top: 2em;
-  margin-left: 2em;
+  grid-template-columns: 3fr 2fr;
+  gap: 1em 3em;
+  margin: 2em;
 }
 
-h1{
+h1 {
   grid-area: title;
   justify-self: center;
 }
 
-#simulation-options-container{
- grid-area: simulation-options
+#simulation-options-container {
+  grid-area: simulation-options;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1em;
+  align-items: center;
 }
 
-#website{
+#simulation-options-container button {
+  width: 80%;
+  height: 4em;
+  font-size: 1.5em;
+  transition: 0.4s;
+}
+
+#website {
   grid-area: website;
+}
+
+.panel{
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  width: 80%;
+}
+
+.activated{
+  background-color: #9F9FED;
+}
+
+.deactivated{
+  background-color: #9F9FEDAA;
+  border-color: #9F9FEDAA;
 }

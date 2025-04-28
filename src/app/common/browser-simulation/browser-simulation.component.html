@@ -1,8 +1,10 @@
-<div id="website-container">
+<div id="website-container" [ngClass]="simulationType">
   <div id="header-bar">
     <div id="url-line">
       <input disabled [value]="'https://learn-accessibility.web/' + urlSuffix"/>
     </div>
     <ng-content></ng-content>
   </div>
+  <div class="overlay" [ngClass]="simulationType ? simulationType : null"></div>
 </div>
+

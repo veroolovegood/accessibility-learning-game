@@ -1,8 +1,9 @@
 #website-container{
+  position: relative;
   border: 1px solid #2C2C2C;
   border-radius: 1em;
-  height: 75vh;
-  width: 80%;
+  width: 100%;
+  height: fit-content;
   background-color: #F6F4E9;
 }
 
@@ -18,4 +19,35 @@
   width: 100%;
   background-color: #F6F4E9;
   border-color: #CBC6B5;
+}
+
+.farsighted{
+  backdrop-filter: blur(4px);
+}
+
+.absolute-color-blindness{
+  backdrop-filter: grayscale(100%) ;
+}
+
+.tunnelvision{
+}
+
+.mousearea{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  pointer-events: none
 }
