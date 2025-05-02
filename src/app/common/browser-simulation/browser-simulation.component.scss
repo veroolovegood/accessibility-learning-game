@@ -25,6 +25,14 @@
   backdrop-filter: blur(4px);
 }
 
+.red-green-color-blindness{
+  backdrop-filter: url(#deuteranomaly);
+}
+
+#wds-colorBlindnessFilter {
+  display: none;
+}
+
 .absolute-color-blindness{
   backdrop-filter: grayscale(100%) ;
 }
