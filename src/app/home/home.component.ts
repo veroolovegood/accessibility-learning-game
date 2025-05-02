@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { matPlayArrow } from '@ng-icons/material-icons/baseline'
 import { Router } from '@angular/router';
+import Keycloak from 'keycloak-js';
 
 @Component({
   selector: 'app-home',
@@ -12,10 +13,14 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private keycloak: Keycloak) {
   }
 
   startIntroduction() {
-    this.router.navigate(['introduction', 'lesson-one']).then();
+    if(!this.keycloak.authenticated) {
+      this.keycloak.login();
+    } else {
+      this.router.navigate(['introduction', 'lesson-one']).then();
+    }
   }
 }

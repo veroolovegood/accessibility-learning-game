@@ -6,6 +6,7 @@ import { SimulationMenuComponent } from './introduction/simulation/simulation-me
 import {
   VisualBarrierSimulationComponent
 } from './introduction/simulation/visual-barrier-simulation/visual-barrier-simulation.component';
+import { canActivateAuthRole } from './auth/auth-guard';
 
 export const routes: Routes = [
   {
@@ -18,25 +19,24 @@ export const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'introduction',
-    pathMatch: 'full',
-    redirectTo: 'introduction/lesson1'
-  },
-  {
     path: 'introduction/lesson-one',
-    component: IntroductionLesson1
+    component: IntroductionLesson1,
+    canActivate: [canActivateAuthRole]
   },
   {
     path: 'introduction/lesson-one/quiz',
-    component: LessonOneQuizComponent
+    component: LessonOneQuizComponent,
+    canActivate: [canActivateAuthRole]
   },
   {
     path: 'introduction/simulation',
-    component: SimulationMenuComponent
+    component: SimulationMenuComponent,
+    canActivate: [canActivateAuthRole]
   }
   ,
   {
     path: 'introduction/simulation/visual-barriers',
-    component: VisualBarrierSimulationComponent
+    component: VisualBarrierSimulationComponent,
+    canActivate: [canActivateAuthRole]
   }
 ];
