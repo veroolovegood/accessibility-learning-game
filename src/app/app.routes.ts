@@ -7,6 +7,7 @@ import {
   BarrierSimulationComponent
 } from './introduction/simulation/barrier-simulation/barrier-simulation.component';
 import { canActivateAuthRole } from './auth/auth-guard';
+import { QuizComponent } from './common/quiz/quiz.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,11 @@ export const routes: Routes = [
   {
     path: 'introduction/simulation/:barrierType',
     component: BarrierSimulationComponent,
+    canActivate: [canActivateAuthRole]
+  },
+  {
+    path: 'quiz/:quizId',
+    component: QuizComponent,
     canActivate: [canActivateAuthRole]
   },
 ];

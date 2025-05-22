@@ -1,0 +1,14 @@
+<div id="quiz-container">
+  <h1>{{ title }}</h1>
+  @for (question of questions; track question.question; let qi = $index) {
+    <div class="question">
+      <p>{{ question.question }}</p>
+      @for (answerOption of question.answerOptions; track answerOption.content; let ai = $index) {
+        <div class="answer-option">
+        <input type="checkbox" [id]="'question' + qi + 'answer' + ai" [name]="'question' + qi + 'checkbox'">
+        <label [for]="'question' + qi + 'answer' + ai">{{ answerOption.content }}</label>
+        </div>
+      }
+    </div>
+  }
+</div>
