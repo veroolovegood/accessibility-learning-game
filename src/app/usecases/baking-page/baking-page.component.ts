@@ -12,4 +12,10 @@ import { matAlarm } from '@ng-icons/material-icons/baseline';
   viewProviders: [provideIcons({ matAlarm })]
 })
 export class BakingPageComponent {
+  startTimer() {
+    const audio = document.getElementById('ding-audio') as HTMLMediaElement;
+    setTimeout(() => {
+      audio.play()
+    }, 10000);
+  }
 }
