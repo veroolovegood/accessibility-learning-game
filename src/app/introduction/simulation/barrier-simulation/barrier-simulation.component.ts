@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { BrowserSimulationComponent } from '../../../common/browser-simulation/browser-simulation.component';
 import { NgClass, NgTemplateOutlet } from '@angular/common';
 import { WebshopComponent } from '../../../usecases/webshop/webshop.component';
-import { BarrierSimulationButton } from '../common/model/barrier-simulation-button.model';
+import { BarrierSimulationButton } from '../model/barrier-simulation-button.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
-import { simulationData } from '../common/model/simulation-type-data';
+import { simulationData } from '../model/simulation-type-data';
+import { BakingPageComponent } from '../../../usecases/baking-page/baking-page.component';
+import { LexipediaComponent } from '../../../usecases/lexipedia/lexipedia.component';
 
 @Component({
   selector: 'app-visual-barrier-simulation',
@@ -13,7 +15,9 @@ import { simulationData } from '../common/model/simulation-type-data';
     BrowserSimulationComponent,
     NgTemplateOutlet,
     WebshopComponent,
-    NgClass
+    NgClass,
+    BakingPageComponent,
+    LexipediaComponent
   ],
   templateUrl: './barrier-simulation.component.html',
   styleUrl: './barrier-simulation.component.scss'

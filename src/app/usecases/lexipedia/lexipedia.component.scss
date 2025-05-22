@@ -1,0 +1,16 @@
+#lexipedia-container{
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
+
+h1{
+  font-size: xx-large;
+  font-weight: bold;
+  margin-left: 1rem;
+}
+
+p{
+  margin: 1rem;
+  text-align: justify;
+}
