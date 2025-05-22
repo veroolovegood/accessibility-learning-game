@@ -8,7 +8,11 @@ import { map } from 'rxjs';
 import { simulationData } from '../model/simulation-type-data';
 import { BakingPageComponent } from '../../../usecases/baking-page/baking-page.component';
 import { LexipediaComponent } from '../../../usecases/lexipedia/lexipedia.component';
-import { muteAndHideVolumeControls, unmuteAndShowVolumeControls } from '../simulation-helpers/auditory-helpers';
+import {
+  muteAndHideVolumeControls,
+  playTinitus, stopTinitus,
+  unmuteAndShowVolumeControls
+} from '../simulation-helpers/auditory-helpers';
 
 @Component({
   selector: 'app-visual-barrier-simulation',
@@ -77,6 +81,11 @@ export class BarrierSimulationComponent implements OnInit {
       muteAndHideVolumeControls();
     } else if (oldValue && (selectedBarrier.classToApply == 'deafness' || selectedBarrier.classToApply == 'deafness-and-blindness')){
       unmuteAndShowVolumeControls();
+    }
+    if(!oldValue && selectedBarrier.classToApply == 'tinnitius'){
+      playTinitus();
+    } else if (oldValue && selectedBarrier.classToApply == 'tinnitius'){
+      stopTinitus();
     }
   }
 }

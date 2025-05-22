@@ -28,3 +28,18 @@ export function unmuteAndShowVolumeControls(){
     mediaElement.muted = false;
   });
 }
+
+export function playTinitus(){
+  const audio = document.getElementById('beep-sound') as HTMLMediaElement;
+  console.log(audio);
+// Setze die loop-Eigenschaft auf true
+  audio.loop = true;
+
+// Starte die Wiedergabe
+  audio.play();
+}
+
+export function stopTinitus(){
+  const audio = document.getElementById('beep-sound') as HTMLMediaElement;
+  audio.pause();
+}
