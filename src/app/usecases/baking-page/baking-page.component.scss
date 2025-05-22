@@ -1,0 +1,31 @@
+#baking-page-container{
+  display: grid;
+  grid-template-areas:  'title .'
+                        'video ingredients'
+                        'timer ingredients';
+  margin: 1rem 3rem;
+}
+
+h1{
+  grid-area: title;
+  margin-bottom: 2em;
+}
+
+video{
+  grid-area: video;
+}
+
+#ingredients{
+  grid-area: ingredients
+}
+
+#timer{
+  grid-area: timer;
+  margin: 2em 0;
+}
+
+#timer button{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}

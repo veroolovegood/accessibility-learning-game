@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { matAlarm } from '@ng-icons/material-icons/baseline';
 
 @Component({
   selector: 'app-baking-page',
-  imports: [],
+  imports: [
+    NgIcon
+  ],
   templateUrl: './baking-page.component.html',
-  styleUrl: './baking-page.component.scss'
+  styleUrl: './baking-page.component.scss',
+  viewProviders: [provideIcons({ matAlarm })]
 })
 export class BakingPageComponent {
-
 }

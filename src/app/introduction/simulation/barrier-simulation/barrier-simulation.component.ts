@@ -8,6 +8,7 @@ import { map } from 'rxjs';
 import { simulationData } from '../model/simulation-type-data';
 import { BakingPageComponent } from '../../../usecases/baking-page/baking-page.component';
 import { LexipediaComponent } from '../../../usecases/lexipedia/lexipedia.component';
+import { muteAndHideVolumeControls, unmuteAndShowVolumeControls } from '../simulation-helpers/auditory-helpers';
 
 @Component({
   selector: 'app-visual-barrier-simulation',
@@ -40,7 +41,7 @@ export class BarrierSimulationComponent implements OnInit {
       map(params => {
         const barrierType = params.get('barrierType');
         console.log("Barrier Type is: " + barrierType);
-        if(barrierType) {
+        if (barrierType) {
           const selectedSimulationData = simulationData[barrierType];
           if (selectedSimulationData) {
             return selectedSimulationData;
@@ -49,7 +50,7 @@ export class BarrierSimulationComponent implements OnInit {
         return null;
       }))
       .subscribe(data => {
-        if(data){
+        if (data) {
           this.barriers = data.barriers.map(element => {
             return {
               ...element,
@@ -58,7 +59,7 @@ export class BarrierSimulationComponent implements OnInit {
           });
           this.urlSuffix = data.urlSuffix;
           this.title = data.title;
-        } else{
+        } else {
           console.log("Route does not exist");
           this.router.navigate(['introduction/simulation']);
         }
@@ -72,5 +73,10 @@ export class BarrierSimulationComponent implements OnInit {
     });
     selectedBarrier.selected = !oldValue;
     this.selectedSimulation = oldValue ? undefined : selectedBarrier.classToApply;
+    if (!oldValue && (selectedBarrier.classToApply == 'deafness' || selectedBarrier.classToApply == 'deafness-and-blindness')) {
+      muteAndHideVolumeControls();
+    } else if (oldValue && (selectedBarrier.classToApply == 'deafness' || selectedBarrier.classToApply == 'deafness-and-blindness')){
+      unmuteAndShowVolumeControls();
+    }
   }
 }
