@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VisualBarrierSimulationComponent } from './visual-barrier-simulation.component';
+import { BarrierSimulationComponent } from './barrier-simulation.component';
 
 describe('VisualBarrierSimulationComponent', () => {
-  let component: VisualBarrierSimulationComponent;
-  let fixture: ComponentFixture<VisualBarrierSimulationComponent>;
+  let component: BarrierSimulationComponent;
+  let fixture: ComponentFixture<BarrierSimulationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VisualBarrierSimulationComponent]
+      imports: [BarrierSimulationComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VisualBarrierSimulationComponent);
+    fixture = TestBed.createComponent(BarrierSimulationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

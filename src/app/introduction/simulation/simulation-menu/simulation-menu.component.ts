@@ -18,6 +18,6 @@ export class SimulationMenuComponent {
   }
 
   navigateTo(section: string) {
-    this.router.navigate(['introduction','simulation', section + '-barriers']);
+    this.router.navigate(['introduction','simulation', section]);
   }
 }

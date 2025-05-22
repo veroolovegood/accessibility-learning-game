@@ -4,8 +4,8 @@ import { IntroductionLesson1 } from './introduction/introduction-lesson-one/intr
 import { LessonOneQuizComponent } from './introduction/lesson-one-quiz/lesson-one-quiz.component';
 import { SimulationMenuComponent } from './introduction/simulation/simulation-menu/simulation-menu.component';
 import {
-  VisualBarrierSimulationComponent
-} from './introduction/simulation/visual-barrier-simulation/visual-barrier-simulation.component';
+  BarrierSimulationComponent
+} from './introduction/simulation/barrier-simulation/barrier-simulation.component';
 import { canActivateAuthRole } from './auth/auth-guard';
 
 export const routes: Routes = [
@@ -32,11 +32,10 @@ export const routes: Routes = [
     path: 'introduction/simulation',
     component: SimulationMenuComponent,
     canActivate: [canActivateAuthRole]
-  }
-  ,
+  },
   {
-    path: 'introduction/simulation/visual-barriers',
-    component: VisualBarrierSimulationComponent,
+    path: 'introduction/simulation/:barrierType',
+    component: BarrierSimulationComponent,
     canActivate: [canActivateAuthRole]
-  }
+  },
 ];

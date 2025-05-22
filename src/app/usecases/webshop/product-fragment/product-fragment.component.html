@@ -1,6 +1,6 @@
 <div [id]="'webshop-'+ product.uniqueName" class="product-container">
   <div class="image-container">
-    <img [src]="'assets/' + productForm?.value?.color?.image" [alt]="product?.name" height="130">
+    <img [src]="'assets/' + productForm?.value?.color?.image" [alt]="product ? product.name : ''" height="130">
   </div>
   <form [formGroup]="productForm!" class="controls-container">
     <div class="title-and-price">
