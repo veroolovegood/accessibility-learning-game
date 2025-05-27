@@ -2,6 +2,7 @@ import { QuizData } from './quiz-data.model';
 
 export const introductionQuizData: QuizData = {
   title: "Abschlussquiz: Grundlagen der Barrierefreiheit",
+  rateNeeded: 0.8,
   questions: [
     {
       question: 'Was bedeutet digitale Barrierefreiheit?',

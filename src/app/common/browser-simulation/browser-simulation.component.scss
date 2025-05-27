@@ -40,6 +40,11 @@
 .tunnelvision{
 }
 
+.no-mouse{
+  cursor: none;
+  pointer-events: all !important;
+}
+
 .mousearea{
   position: absolute;
   width: 200px;

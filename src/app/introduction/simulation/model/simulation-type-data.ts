@@ -70,12 +70,34 @@ export const simulationData: { [key: string]: SimulationTypeData } = {
     title: 'Auditiv'
   },
   'motor': {
-    barriers: [],
+    barriers: [
+      {
+        name: 'Parkinson',
+        explanation: 'Die Motorik weist ein Zittern auf, wodurch präzise Auswahlen unmöglich erscheinen.',
+        classToApply: ''
+      },
+      {
+        name: 'Mobilitätseinschränkung der Hände',
+        explanation: 'Mit dieser Einschränkung ist es ohne Hilfsmittel unmöglich, die Maus zu verwenden. Dadurch kann es schwierig sein, eine Webseite zu navigieren.',
+        classToApply: 'no-mouse'
+      }
+    ],
     urlSuffix: 'webshop',
     title: 'Motorisch'
   },
   'cognitive': {
-    barriers: [],
+    barriers: [
+      {
+        name: 'Konzentrationsschwäche',
+        explanation: 'Die Konzentration kann nicht lange aufrecht erhalten werden & man wird durch andere Gedanken abgelenkt. Dadurch erscheint es schwierig, lange Texte oder überladene Webseiten wahrzunehmen.',
+        classToApply: ''
+      },
+      {
+        name: 'Lese-Rechtschreib-Schwäche (LRS)',
+        explanation: 'Lange Textblöcke erscheinen wie ein Wirrwar und sind dadurch schwer zu lesen.',
+        classToApply: ''
+      }
+    ],
     urlSuffix: 'lexipedia',
     title: 'Kognitiv'
   },

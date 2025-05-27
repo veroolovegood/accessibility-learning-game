@@ -5,8 +5,8 @@ import { BehaviorSubject, skip } from 'rxjs';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { matPlayArrow } from '@ng-icons/material-icons/baseline';
 
-import confetti from 'canvas-confetti';
 import { Router } from '@angular/router';
+import { showConfettiAnimation } from '../../common/confetti-animation';
 
 class Answer {
   displayName?: string;
@@ -57,13 +57,7 @@ export class LessonOneQuizComponent implements AfterViewInit {
     ).subscribe(hasError => {
       this.completedExercise = hasError.every(value => !value);
       if (this.completedExercise) {
-        confetti({
-          particleCount: 150,
-          spread: 180,
-          origin: {y: 0.6},
-          colors: ['#FF5B5B', '#9F9FED', '#558564', '#F1E7BC'],
-          disableForReducedMotion: true
-        });
+        showConfettiAnimation()
       }
       for (const [index, hasErrorAt] of hasError.entries()) {
         if (hasErrorAt) {

@@ -1,7 +1,7 @@
 export interface QuizData {
   title: string;
   questions: QuestionElement[];
-
+  rateNeeded: number;
 }
 
 export interface QuestionElement {

@@ -22,3 +22,20 @@ p{
 h1{
   margin-bottom: 2rem;
 }
+
+#completed-modal{
+  display: flex;
+  flex-direction: column;
+}
+
+#completed-modal button{
+  align-self: end;
+}
+
+.modal-header span {
+  font-size: larger;
+}
+
+.modal-body p {
+  font-size: large;
+}

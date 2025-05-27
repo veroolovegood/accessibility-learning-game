@@ -74,13 +74,12 @@ export class BarrierSimulationComponent implements OnInit {
     const oldValue = selectedBarrier.selected;
     this.barriers?.forEach(barrier => {
       barrier.selected = false
+      unmuteAndShowVolumeControls();
     });
     selectedBarrier.selected = !oldValue;
     this.selectedSimulation = oldValue ? undefined : selectedBarrier.classToApply;
     if (!oldValue && (selectedBarrier.classToApply == 'deafness' || selectedBarrier.classToApply == 'deafness-and-blindness')) {
       muteAndHideVolumeControls();
-    } else if (oldValue && (selectedBarrier.classToApply == 'deafness' || selectedBarrier.classToApply == 'deafness-and-blindness')){
-      unmuteAndShowVolumeControls();
     }
     if(!oldValue && selectedBarrier.classToApply == 'tinnitius'){
       playTinitus();
