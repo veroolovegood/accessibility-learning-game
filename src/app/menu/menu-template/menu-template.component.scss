@@ -1,0 +1,32 @@
+#menu-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em 10em;
+}
+
+.barrier-type-button{
+  padding: 0.7rem 1rem;
+  gap: 1em;
+  font-size: xx-large;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lesson-icon{
+  border-radius: 50%;
+  background-color: #C1C1F6;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lesson-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 4rem;
+}

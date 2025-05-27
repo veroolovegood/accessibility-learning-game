@@ -8,6 +8,7 @@ import {
 } from './introduction/simulation/barrier-simulation/barrier-simulation.component';
 import { canActivateAuthRole } from './auth/auth-guard';
 import { QuizComponent } from './common/quiz/quiz.component';
+import { MenuTemplateComponent } from './menu/menu-template/menu-template.component';
 
 export const routes: Routes = [
   {
@@ -44,4 +45,9 @@ export const routes: Routes = [
     component: QuizComponent,
     canActivate: [canActivateAuthRole]
   },
+  {
+    path: 'menu/:id',
+    component: MenuTemplateComponent,
+    canActivate: [canActivateAuthRole]
+  }
 ];

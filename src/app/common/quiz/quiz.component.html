@@ -14,11 +14,7 @@
           }
         </div>
       }
-      @if (this.completionRate < this.completionRateNeeded) {
-        <button type="submit" class="btn btn-primary">Absenden</button>
-      } @else {
-        <button type="button" class="btn btn-primary" (click)="navigateToMenu()">Weiter</button>
-      }
+      <button type="submit" class="btn btn-primary">Absenden</button>
     </form>
   }
 </div>
@@ -49,6 +45,6 @@
       <p>Ein perfektes Ergebnis!</p>
     }
     <p>Um deinen Lernpfad weiterzuverfolgen klicke jetzt auf weiter.</p>
-    <button type="button" class="btn btn-primary">Weiter</button>
+    <button type="button" class="btn btn-primary" (click)="navigateToMenu(modal)">Weiter</button>
   </div>
 </ng-template>

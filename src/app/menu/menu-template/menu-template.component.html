@@ -1,0 +1,21 @@
+<div id="menu-container">
+  <h1>{{ title }}</h1>
+  <div class="lesson-grid">
+    @for (lesson of lessons; track lesson) {
+      <button class="btn btn-primary barrier-type-button" [disabled]="!lesson.unlockedByDefault"
+              (click)="routeToLesson(lesson.route)">
+        @if (lesson.icon) {
+          <span class="lesson-icon"><img [alt]="lesson.icon + 'Icon'" [src]="'assets/icons/' + lesson.icon + '.svg'" width="32"/></span>
+        }
+        <span>{{ lesson.name }}</span>
+        @if (!lesson.unlockedByDefault) {
+          <ng-icon name="matLock"></ng-icon>
+        } @else if (lesson.completed) {
+          <span>completed</span>
+        } @else {
+          <span></span>
+        }
+      </button>
+    }
+  </div>
+</div>

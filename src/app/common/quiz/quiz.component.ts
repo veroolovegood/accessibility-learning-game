@@ -34,7 +34,7 @@ export class QuizComponent implements OnInit {
   createQuizForm(element: QuizData): FormGroup {
     let controls: { [key: string]: FormArray } = {};
     element.questions.forEach((question, index) => {
-      controls["question" + index] = this.fb.array(question.answerOptions.map(answer => new FormControl(false, {nonNullable: true})));
+      controls["question" + index] = this.fb.array(question.answerOptions.map(_ => new FormControl(false, {nonNullable: true})));
     });
     const group = this.fb.group(controls);
     console.log(group);
@@ -81,8 +81,9 @@ export class QuizComponent implements OnInit {
     }
   }
 
-  navigateToMenu() {
-    this.router.navigate(['menu']);
+  navigateToMenu(modal: NgbModalRef) {
+    this.router.navigate(['menu', 'main']);
+    modal.close();
   }
 
   closeModal(modal: NgbModalRef) {
