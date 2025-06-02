@@ -1,8 +1,22 @@
 <div id="fontsize-exercise-container">
-  <app-code-editor></app-code-editor>
-  <div id="simulation-container">
-  <app-browser-simulation>
-    <app-webshop></app-webshop>
-  </app-browser-simulation>
+  <div class="simulation-options">
+    <select [(ngModel)]="selectedTextSize" class="form-select">
+      <option [ngValue]="-2">Textgröße - klein</option>
+      <option [ngValue]="0">Textgröße - normal</option>
+      <option [ngValue]="+2">Textgröße - groß</option>
+    </select>
+    <select [(ngModel)]="selectedSimulation" class="form-select">
+      @for (simulation of visualBarriersSimulation; track simulation) {
+        <option [ngValue]="simulation">{{ simulation.name }}</option>
+      }
+    </select>
+  </div>
+  <div class="code-exercise-container">
+    <app-code-editor (checkAnswer)="setCorrectFontSize($event)" [explanationText]="explanation" [givenCode]="codeExample"></app-code-editor>
+    <div id="simulation-container">
+      <app-browser-simulation [simulationType]="selectedSimulation?.id" [urlSuffix]="'webshop'">
+        <app-webshop></app-webshop>
+      </app-browser-simulation>
+    </div>
   </div>
 </div>

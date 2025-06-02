@@ -1,13 +1,18 @@
 #fontsize-exercise-container{
   display: flex;
+  flex-direction: column;
+  align-items: end;
   padding: 2em;
-  gap: 3em;
   height: 75vh;
 }
 
 #simulation-container{
   width: 50%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 1em;
 }
 
 app-browser-simulation{
@@ -17,4 +22,16 @@ app-browser-simulation{
 app-code-editor{
   width: 50%;
   max-height: 100%;
+}
+
+.code-exercise-container{
+  display: flex;
+  flex-direction: row;
+  gap: 3em;
+  padding-top: 1em;
+}
+
+.simulation-options{
+  display: flex;
+  gap: 1em;
 }
