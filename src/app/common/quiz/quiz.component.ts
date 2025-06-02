@@ -71,7 +71,6 @@ export class QuizComponent implements OnInit {
         result +=1;
       }
     });
-    console.log(result);
     this.completionRate = result / this.questions.length;
     if(this.completionRate > this.completionRateNeeded){
       showConfettiAnimation();

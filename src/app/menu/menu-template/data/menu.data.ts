@@ -64,7 +64,50 @@ export const menuData: { [key: string]: Menu } = {
   },
   'visual': {
     title: 'Visuelle Barrieren',
-    lessons: []
+    lessons: [
+      {
+        id: 'introduction',
+        name: 'Einführung',
+        route: 'visual/introduction',
+        unlockedByDefault: true,
+        unlockedWhenCompletedLesson: []
+      },
+      {
+        id: 'fontsize',
+        name: 'Schriftgröße',
+        route: 'visual/fontsize',
+        unlockedByDefault: false,
+        unlockedWhenCompletedLesson: ['introduction']
+      },
+      {
+        id: 'contrast',
+        name: 'Kontrast',
+        route: 'visual/contrast',
+        unlockedByDefault: false,
+        unlockedWhenCompletedLesson: ['introduction']
+      },
+      {
+        id: 'colorInfo',
+        name: 'Farbe als Information',
+        route: 'visual/colorInfo',
+        unlockedByDefault: false,
+        unlockedWhenCompletedLesson: ['introduction']
+      },
+      {
+        id: 'skip',
+        name: 'Skip-Link',
+        route: 'visual/skip',
+        unlockedByDefault: false,
+        unlockedWhenCompletedLesson: ['introduction']
+      },
+      {
+        id: 'exam',
+        name: 'Abschlussaufgabe',
+        route: 'visual/exam',
+        unlockedByDefault: false,
+        unlockedWhenCompletedLesson: ['introduction', 'skip', 'colorInfo', 'contrast', 'fontsize']
+      }
+    ]
   },
   'introduction': {
     title: 'Einführung',

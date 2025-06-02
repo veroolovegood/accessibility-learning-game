@@ -1,0 +1,44 @@
+#introduction-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#simulation-container{
+  width: 50%;
+  padding: 2em;
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+#simulation-container select{
+  align-self: end;
+}
+
+#exercise-container{
+  width: 50%;
+  padding: 2em 5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+#exercise-container p{
+  text-align: justify;
+}
+
+#exercise-container form{
+  align-self: start;
+}
+
+.multiple-choice-button-container{
+  display: flex;
+  gap: 1em;
+}
+
+button{
+  margin-top: 2em;
+}

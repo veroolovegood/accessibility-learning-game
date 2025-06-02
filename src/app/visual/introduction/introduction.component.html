@@ -1,0 +1,131 @@
+<div id="introduction-container">
+  <div id="simulation-container">
+    <select [(ngModel)]="selectedSimulation">
+      @for (simulation of visualBarriersSimulation; track simulation) {
+        <option [ngValue]="simulation">{{ simulation.name }}</option>
+      }
+    </select>
+    <app-browser-simulation [simulationType]="selectedSimulation?.id" [urlSuffix]="'webshop'">
+      <app-webshop></app-webshop>
+    </app-browser-simulation>
+  </div>
+  <div id="exercise-container">
+    @switch (selectedSimulation?.id) {
+      @case ('none') {
+        <p>In den folgenden Lektionen zum Thema visueller Barrieren werden wir uns mit dem bekannten Webshop & dessen
+          Optimierung beschäftigen.</p>
+        <p>Über den Dropdown-Button über dem Webshop kannst du jetzt und in den weiteren Lektionen die Einschränkung
+          auswählen, welche du simuliert haben möchtest. Das Lautsprecher-Symbol aktiviert einen Screenreader.</p>
+        <p>Lass uns zunächst über die Probleme, die bei den verschiedenen Beeinträchtigungen auftreten können,
+          nachdenken. Dazu bekommst du für jede Simulation eine Aufgabe. Wähle die Einschränkung einfach über den Button
+          aus und befolge die Anweisungen. Wenn du alle Aufgaben gelöst hast, kannst du mit den weiteren Lektionen
+          fortfahren.</p>
+      }
+      @case ('farsighted') {
+        <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. Weitsichtigkeit Inhalte verschwommen
+          sieht?</p>
+        <form [formGroup]="farsightedForm" (ngSubmit)="submitAnswers('farsighted', farsightedForm)">
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerOne" name="farsighted-exercise" type="checkbox" id="farsighed-answer-1">
+            <label for="farsighed-answer-1">Der Text ist zu klein, um ihn bequem zu lesen</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerTwo" name="farsighted-exercise" type="checkbox" id="farsighed-answer-2">
+            <label for="farsighed-answer-2">Die Bilder können nicht vernünftig erkannt werden</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerThree" name="farsighted-exercise" type="checkbox" id="farsighed-answer-3">
+            <label for="farsighed-answer-3">Die Seite lädt zu langsam</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerFour" name="farsighted-exercise" type="checkbox" id="farsighed-answer-4">
+            <label for="farsighed-answer-4">Der “In den Warenkorb”-Button ist zu groß</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Überprüfen</button>
+          @if (completedExercise['farsighted']) {
+            <p>RICHTIG!!!</p>
+          }
+        </form>
+      }
+      @case ('red-green-color-blindness') {
+        <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. Rot-Grün-Blindheit die Farben nicht
+          richtig erkennen kann?</p>
+        <form [formGroup]="redGreenColorBlindnessForm" (ngSubmit)="submitAnswers('redGreenColorBlindness', redGreenColorBlindnessForm)">
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerOne" name="red-green-color-blindness-exercise" type="checkbox" id="red-green-color-blindness-answer-1">
+            <label for="red-green-color-blindness-answer-1">Die auswählbaren Farben der Kleidungsstücke sind schwer zu unterscheiden</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerTwo" name="red-green-color-blindness-exercise" type="checkbox" id="red-green-color-blindness-answer-2">
+            <label for="red-green-color-blindness-answer-2">Es gibt keine Möglichkeit, die Produkte zu filtern.</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerThree" name="red-green-color-blindness-exercise" type="checkbox" id="red-green-color-blindness-answer-3">
+            <label for="red-green-color-blindness-answer-3">Die Farben passen nicht zum Farb-Theme des Shops.</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerFour" name="red-green-color-blindness-exercise" type="checkbox" id="red-green-color-blindness-answer-4">
+            <label for="red-green-color-blindness-answer-4">Die Farben sind zu grell, sodass es unangenehm ist, die Webseite anzuschauen</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Überprüfen</button>
+          @if (completedExercise['redGreenColorBlindness']) {
+            <p>RICHTIG!!!</p>
+          }
+        </form>
+      }
+      @case ('blindness') {
+        <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. absoluter Farbblindheit die Farben nicht
+          erkennen kann?</p>
+        <form [formGroup]="blindnessForm" (ngSubmit)="submitAnswers('blindness', blindnessForm)">
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerOne" name="blindness-exercise" type="checkbox" id="blindness-answer-1">
+            <label for="blindness-answer-1">Die Produkte können nicht erkannt werden, da keine Bildbeschreibungen vorhanden sind.</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerTwo" name="blindness-exercise" type="checkbox" id="blindness-answer-2">
+            <label for="blindness-answer-2">Die Inhalte können nur durch einen Screenreader wahrgenommen werden</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerThree" name="blindness-exercise" type="checkbox" id="blindness-answer-3">
+            <label for="blindness-answer-3">Blinde Nutzer sind auf die visuellen Designelemente angewiesen, um die Seite zu navigieren.</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerFour" name="blindness-exercise" type="checkbox" id="blindness-answer-4">
+            <label for="blindness-answer-4">Die Auswahlmöglichkeiten der Farben können nicht wahrgenommen werden</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Überprüfen</button>
+          @if (completedExercise['blindness']) {
+            <p>RICHTIG!!!</p>
+          }
+        </form>
+      }
+      @case ('absolute-color-blindness') {
+        <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. totaler Blindheit die Inhalte überhaupt
+          nicht visuell wahrnehmen kann (Tipp: verwende die Screenreader Funktion um zu herauszufinden, was der Nutzende
+          überhaupt wahrnehmen kann)?</p>
+        <form [formGroup]="absoluteColorBlindnessForm" (ngSubmit)="submitAnswers('absoluteColorBlindness', absoluteColorBlindnessForm)">
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerOne" name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-1">
+            <label for="absolute-color-blindness-answer-1">Der Rabatt ist schwer erkennbar</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerTwo" name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-2">
+            <label for="absolute-color-blindness-answer-2">Der Text könnte unscharf erscheinen und das Design unübersichtlich machen.</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerThree" name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-3">
+            <label for="absolute-color-blindness-answer-3">Die auswählbaren Farben der Kleidungsstücke sind schwer zu unterscheiden</label>
+          </div>
+          <div class="multiple-choice-button-container">
+            <input formControlName="answerFour" name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-4">
+            <label for="absolute-color-blindness-answer-4">Der Text wird weniger auffällig, was die Benutzerfreundlichkeit verbessert.</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Überprüfen</button>
+          @if (completedExercise['absoluteColorBlindness']) {
+            <p>RICHTIG!!!</p>
+          }
+        </form>
+      }
+    }
+  </div>
+</div>

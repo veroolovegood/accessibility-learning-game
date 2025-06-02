@@ -77,13 +77,13 @@ export class BarrierSimulationComponent implements OnInit {
       unmuteAndShowVolumeControls();
     });
     selectedBarrier.selected = !oldValue;
-    this.selectedSimulation = oldValue ? undefined : selectedBarrier.classToApply;
-    if (!oldValue && (selectedBarrier.classToApply == 'deafness' || selectedBarrier.classToApply == 'deafness-and-blindness')) {
+    this.selectedSimulation = oldValue ? undefined : selectedBarrier.id;
+    if (!oldValue && (selectedBarrier.id == 'deafness' || selectedBarrier.id == 'deafness-and-blindness')) {
       muteAndHideVolumeControls();
     }
-    if(!oldValue && selectedBarrier.classToApply == 'tinnitius'){
+    if(!oldValue && selectedBarrier.id == 'tinnitius'){
       playTinitus();
-    } else if (oldValue && selectedBarrier.classToApply == 'tinnitius'){
+    } else if (oldValue && selectedBarrier.id == 'tinnitius'){
       stopTinitus();
     }
   }

@@ -12,6 +12,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+}
+
+.button-container{
+  flex-basis: calc(50% - 3em);
 }
 
 .lesson-icon{
@@ -25,8 +30,20 @@
 }
 
 .lesson-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   margin-top: 4rem;
+}
+
+.own-row-container{
+  display: flex;
+  justify-content: center;
+  flex-basis: 100%;
+}
+
+.own-row-button{
+  width: 30%;
 }

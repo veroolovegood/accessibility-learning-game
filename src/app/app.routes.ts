@@ -9,6 +9,8 @@ import {
 import { canActivateAuthRole } from './auth/auth-guard';
 import { QuizComponent } from './common/quiz/quiz.component';
 import { MenuTemplateComponent } from './menu/menu-template/menu-template.component';
+import { IntroductionComponent } from './visual/introduction/introduction.component';
+import { FontSizeComponent } from './visual/font-size/font-size.component';
 
 export const routes: Routes = [
   {
@@ -48,6 +50,16 @@ export const routes: Routes = [
   {
     path: 'menu/:id',
     component: MenuTemplateComponent,
+    canActivate: [canActivateAuthRole]
+  },
+  {
+    path: 'visual/introduction',
+    component: IntroductionComponent,
+    canActivate: [canActivateAuthRole]
+  },
+  {
+    path: 'visual/fontsize',
+    component: FontSizeComponent,
     canActivate: [canActivateAuthRole]
   }
 ];

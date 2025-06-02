@@ -4,11 +4,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { menuData } from './data/menu.data';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { matLock } from '@ng-icons/material-icons/baseline';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-menu-template',
   imports: [
-    NgIcon
+    NgIcon,
+    NgClass
   ],
   templateUrl: './menu-template.component.html',
   styleUrl: './menu-template.component.scss',

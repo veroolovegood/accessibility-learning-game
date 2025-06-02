@@ -1,0 +1,42 @@
+#code-editor-view-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #2C2C2C;
+  border-radius: 5px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  height: 100%;
+}
+
+#header-line {
+  color: #F6F4E9;
+  font-size: larger;
+  font-weight: bold;
+  padding-left: 1em;
+  flex-shrink: 0;
+}
+
+#explanation-container {
+  background-color: #D9D9D940;
+  color: #F6F4E9;
+  margin-top: 0.75em;
+  padding: 1em 1em 1em 2.5em;
+  text-align: justify;
+  flex-shrink: 0;
+}
+
+#code-editor-actions-container {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  justify-self: end;
+  padding: 0 0.5em;
+  flex-shrink: 0;
+}
+
+#code-editor-container {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  overflow: auto;
+}
