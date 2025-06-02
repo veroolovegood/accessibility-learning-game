@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewEncapsulation } from '@angular/core';
 import { productList } from './product-list';
 import { ProductFragmentComponent } from './product-fragment/product-fragment.component';
 import { WebshopCodeService } from './service/webshop-code.service';
@@ -9,7 +9,7 @@ import { WebshopCodeService } from './service/webshop-code.service';
     ProductFragmentComponent
   ],
   templateUrl: './webshop.component.html',
-  styleUrl: './webshop.component.scss',
+  styleUrl: './webshop.component.scss'
 })
 export class WebshopComponent implements OnInit{
 
@@ -24,7 +24,6 @@ export class WebshopComponent implements OnInit{
 
   ngOnInit(){
     this.webshopCodeService.cssText.subscribe((cssText) => {
-      console.log("CALLED SUBSCRIBE");
       this.updateDynamicStyles(cssText);
     });
   }
@@ -51,7 +50,6 @@ export class WebshopComponent implements OnInit{
         // Fallback, falls .browser-content nicht gefunden wird
         this.renderer.appendChild(this.el.nativeElement, this.styleElement);
       }
-      console.log(cssCode);
     }
   }
 

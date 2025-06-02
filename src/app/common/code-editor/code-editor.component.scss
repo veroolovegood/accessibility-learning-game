@@ -23,6 +23,7 @@
   padding: 1em 1em 1em 2.5em;
   text-align: justify;
   flex-shrink: 0;
+  white-space: pre-line
 }
 
 #code-editor-actions-container {
@@ -39,4 +40,15 @@
   flex-shrink: 1;
   display: flex;
   overflow: auto;
+}
+
+.collapse-link{
+  background: none;
+  border: none;
+  padding: 0;
+  color: #9F9FED;
+}
+
+.collapse-link:hover{
+  color: #8686dc;
 }

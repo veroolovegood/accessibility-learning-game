@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { ColorWithImage, Product } from '../product-list';
 import { matShoppingCartRound } from '@ng-icons/material-icons/round';
@@ -12,7 +12,8 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   ],
   templateUrl: './product-fragment.component.html',
   styleUrl: './product-fragment.component.scss',
-  viewProviders: [provideIcons({ matShoppingCartRound })]
+  viewProviders: [provideIcons({ matShoppingCartRound })],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductFragmentComponent implements OnInit {
 

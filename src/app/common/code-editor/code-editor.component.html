@@ -1,18 +1,12 @@
 <div id="code-editor-view-container">
   <span id="header-line">webshop.css</span>
-  <div id="explanation-container">In dieser Lektion schauen wir uns den Stellenwert der Schriftgröße an. Auf der
-    Webseite ist der aus der Einführungslektion bekannte Webshop dargestellt, wie eine Person mit starker
-    Weitsichtigkeit ihn wahrnehmen würde. Die spezielle visuelle Einschränkung kannst du über den Dropdown-Button
-    anpassen.<br/>
-    Versuch nun zunächst den hinzugefügten Text zu lesen. Ganz schön schwierig oder? Wie sieht es mit vergrößern aus
-    (Die Textgröße kannst du über den zusätzlichen Input verändern)? Die Webseite wurde so gebaut, dass automatisches
-    Vergrößern keine Auswirkungen auf die Schriftgröße hat. Das ist natürlich schlecht für Personen, die Schwierigkeiten
-    haben, kleinere Texte wahrzunehmen.
-    <br/>
-    <br/>
-    Versuch die CSS-Klasse so anzupassen, dass der Text beim Vergrößern lesbar ist und auch alle Informationen sichtbar
-    sind.
-    Hinweis: Relative Größen wie Prozentangaben, em, oder auch die named Schriftgrößen sind der richtige Weg.
+  <div id="explanation-container">
+    <p>
+      {{this.displayableText}}
+    </p>
+    <button class="collapse-link" *ngIf="showToggleButton" (click)="toggleText()">
+      {{ isExpanded ? 'Weniger anzeigen' : 'Mehr anzeigen' }}
+    </button>
   </div>
   <div id="code-editor-container"></div>
   <div id="code-editor-actions-container">

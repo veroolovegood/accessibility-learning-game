@@ -4,22 +4,43 @@ import { css } from '@codemirror/lang-css';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
 import { WebshopCodeService } from '../../usecases/webshop/service/webshop-code.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-code-editor',
-  imports: [],
+  imports: [
+    NgIf
+  ],
   templateUrl: './code-editor.component.html',
   styleUrl: './code-editor.component.scss',
 })
 export class CodeEditorComponent implements AfterViewInit {
   @ViewChild('editor') editor: any;
 
-  document: string = '.info-container {\n' +
-    '   width: 800px; /* Absolute Breite */\n' +
-    '   overflow: hidden; \n' +
-    '   margin: 20px auto; \n' +
-    '   padding: 20px;\n' +
-    '}';
+  explanationText: string = 'In dieser Lektion schauen wir uns den Stellenwert der Schriftgröße an. Auf der ' +
+    'Webseite ist der aus der Einführungslektion bekannte Webshop dargestellt, wie eine Person mit starker ' +
+    'Weitsichtigkeit ihn wahrnehmen würde. Die spezielle visuelle Einschränkung kannst du über den Dropdown-Button ' +
+    'anpassen. \n' +
+    'Versuch nun zunächst den hinzugefügten Text zu lesen. Ganz schön schwierig oder? Wie sieht es mit vergrößern aus ' +
+    '(Die Textgröße kannst du über den zusätzlichen Input verändern)? Die Webseite wurde so gebaut, dass automatisches ' +
+    'Vergrößern keine Auswirkungen auf die Schriftgröße hat. Das ist natürlich schlecht für Personen, die Schwierigkeiten haben, kleinere Texte wahrzunehmen.\n' +
+    '\n' +
+    'Versuch die CSS-Klasse so anzupassen, dass der Text beim Vergrößern lesbar ist und auch alle Informationen sichtbar sind. \n' +
+    'Hinweis: Relative Größen wie Prozentangaben, em, oder auch die named Schriftgrößen sind der richtige Weg. ';
+
+  displayableText: string = this.explanationText;
+
+  maxLength: number = 200;
+  showToggleButton = true;
+  isExpanded = true;
+
+  document: string = '.label-text{\n' +
+    'font-size: 16px;\n' +
+    '}\n' +
+    '\n' +
+    '.navbar-text{\n' +
+    'font-size: 16px; \n' +
+    '}\n';
 
   constructor(private webshopCodeService: WebshopCodeService) {
   }
@@ -48,8 +69,16 @@ export class CodeEditorComponent implements AfterViewInit {
     })
   }
 
-  applyStyle(){
-    this.webshopCodeService.updateCssText(this.editor.state.document);
-    console.log(this.editor.state.doc.text.toString());
+  applyStyle() {
+    this.webshopCodeService.updateCssText(this.editor.state.doc.text.toString().replace(/,/g, '\n'));
+  }
+
+  toggleText(): void {
+    this.isExpanded = !this.isExpanded;
+    if (this.isExpanded) {
+      this.displayableText = this.explanationText;
+    } else {
+      this.displayableText = this.explanationText.substring(0, this.maxLength) + '...';
+    }
   }
 }

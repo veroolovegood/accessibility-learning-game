@@ -4,22 +4,22 @@
   </div>
   <form [formGroup]="productForm!" class="controls-container">
     <div class="title-and-price">
-      <span>{{ product.name }} - </span>
-      <s>{{ product.regularPrice }}€</s>
-      <span class="reduced-price">{{product.reducedPrice}}€</span>
+      <span class="label-text">{{ product.name }} - </span>
+      <s class="label-text">{{ product.regularPrice }}€</s>
+      <span class="reduced-price label-text">{{product.reducedPrice}}€</span>
     </div>
     <div class="size-select-container">
-      <label id="size-select-label">Größe</label>
-      <select formControlName="size" class="form-select" aria-labelledby="size-select-label" >
-        <option>XS</option>
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
+      <label id="size-select-label" class="label-text">Größe</label>
+      <select formControlName="size" class="form-select label-text" aria-labelledby="size-select-label" >
+        <option class="label-text">XS</option>
+        <option class="label-text">S</option>
+        <option class="label-text">M</option>
+        <option class="label-text">L</option>
+        <option class="label-text">XL</option>
       </select>
     </div>
     <div class="color-select-container">
-      <label id="color-select-label">Farbe</label>
+      <label id="color-select-label label-text">Farbe</label>
       <div class="color-select-value">
         @for (color of product.colors; track color) {
           <input type="radio" formControlName="color" [value]="color" class="color-select" [style.background-color]="color.color"/>
