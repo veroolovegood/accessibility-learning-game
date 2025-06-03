@@ -1,8 +1,7 @@
 <div id="code-editor-view-container">
   <span id="header-line">webshop.css</span>
   <div id="explanation-container">
-    <p>
-      {{this.displayableText}}
+    <p [innerHTML]="this.displayableText">
     </p>
     <button class="collapse-link" (click)="toggleText()">
       {{ isExpanded ? 'Weniger anzeigen' : 'Mehr anzeigen' }}

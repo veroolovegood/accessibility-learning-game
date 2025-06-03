@@ -61,7 +61,7 @@ export class CodeEditorComponent implements AfterViewInit, OnInit {
 
   applyStyle() {
     this.webshopCodeService.updateCssText(this.editor.state.doc.text.toString().replace(/,/g, '\n'));
-    this.checkAnswer.emit(this.editor.state.doc.text);
+    this.checkAnswer.emit(this.editor.state.doc);
   }
 
   toggleText(): void {

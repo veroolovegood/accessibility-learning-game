@@ -4,6 +4,7 @@ import { BrowserSimulationComponent } from '../../common/browser-simulation/brow
 import { WebshopComponent } from '../../usecases/webshop/webshop.component';
 import { FormsModule } from '@angular/forms';
 import { BarrierData, simulationData } from '../../introduction/simulation/model/simulation-type-data';
+import { Text } from '@codemirror/state';
 
 @Component({
   selector: 'app-font-size',
@@ -16,7 +17,7 @@ import { BarrierData, simulationData } from '../../introduction/simulation/model
   templateUrl: './font-size.component.html',
   styleUrl: './font-size.component.scss'
 })
-export class FontSizeComponent implements OnInit{
+export class FontSizeComponent implements OnInit {
 
   noBarrierValue = {id: 'none', name: 'Keine Einschränkung', explanation: ''};
   selectedSimulation?: BarrierData = this.noBarrierValue;
@@ -30,8 +31,11 @@ export class FontSizeComponent implements OnInit{
     '(Die Textgröße kannst du über den zusätzlichen Input verändern)? Die Webseite wurde so gebaut, dass automatisches ' +
     'Vergrößern keine Auswirkungen auf die Schriftgröße hat. Das ist natürlich schlecht für Personen, die Schwierigkeiten haben, kleinere Texte wahrzunehmen.\n' +
     '\n' +
-    'Versuch die CSS-Klasse so anzupassen, dass der Text beim Vergrößern lesbar ist und auch alle Informationen sichtbar sind. \n' +
-    'Hinweis: Relative Größen wie Prozentangaben, em, oder auch die named Schriftgrößen sind der richtige Weg. ';
+    '<b>Versuch die CSS-Klasse so anzupassen, dass der Text beim Vergrößern lesbar ist und auch alle Informationen sichtbar sind.</b> \n' +
+    'Hinweis: Relative Größen wie ' +
+    '<a target="_blank" href="https://www.w3.org/TR/WCAG20-TECHS/C12.html">Prozentangaben</a>, ' +
+    '<a href="https://www.w3.org/TR/WCAG20-TECHS/C14.html" target="_blank">em</a>, oder auch die ' +
+    '<a target="_blank" href="https://www.w3.org/TR/WCAG20-TECHS/C13.html">named Schriftgrößen</a> sind der richtige Weg. ';
   codeExample = '.label-text{\n' +
     'font-size: 16px;\n' +
     '}\n' +
@@ -39,6 +43,8 @@ export class FontSizeComponent implements OnInit{
     '.navbar-text{\n' +
     'font-size: 16px; \n' +
     '}\n';
+
+  completedExercise = false;
 
   ngOnInit() {
     this.visualBarriersSimulation = [
@@ -48,9 +54,15 @@ export class FontSizeComponent implements OnInit{
     this.selectedSimulation = this.visualBarriersSimulation.find(el => el.id === 'farsighted');
   }
 
-  setCorrectFontSize(style: Text): boolean {
-    //TODO Check all lines for fontsize & no px;
-    console.log(style);
-    return true;
+  setCorrectFontSize(style: Text) {
+    let results = [];
+    for (let i = 0; i < style.lines; i++) {
+      const textAtLine = style.line(i + 1).text;
+      if (textAtLine.includes('font-size:')) {
+        const fontSize = textAtLine.substring(textAtLine.indexOf(':') + 1).trim().replace(';', '');
+        results.push(fontSize == 'large' || fontSize == 'normal' || fontSize == '1em' || fontSize == '100%');
+      }
+    }
+    this.completedExercise = results.reduce((a,b) => a && b);
   }
 }
