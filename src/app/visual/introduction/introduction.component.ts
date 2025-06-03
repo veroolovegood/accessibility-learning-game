@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { BrowserSimulationComponent } from '../../common/browser-simulation/browser-simulation.component';
 import { WebshopComponent } from '../../usecases/webshop/webshop.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BarrierData, simulationData } from '../../introduction/simulation/model/simulation-type-data';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-visual-introduction',
@@ -50,6 +52,13 @@ export class IntroductionComponent implements OnInit {
     'absoluteColorBlindness': false
   }
 
+  @ViewChild('completedDialog')
+  private completedDialog?: TemplateRef<any>;
+
+  constructor(private dialog: NgbModal,
+              private router: Router) {
+  }
+
   ngOnInit() {
     this.visualBarriersSimulation = [
       this.noBarrierValue,
@@ -67,8 +76,12 @@ export class IntroductionComponent implements OnInit {
       return completeResult && result;
     })
     if(completedAll){
-      //open Dialog
+      this.dialog.open(this.completedDialog);
     }
+  }
+
+  backToMenu(){
+    this.router.navigate(['menu/visual']);
   }
 
   answerMatrix: {

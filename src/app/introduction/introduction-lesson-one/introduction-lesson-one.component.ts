@@ -1,21 +1,24 @@
-import { Component, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { matSend, matPlayArrow } from '@ng-icons/material-icons/baseline';
+import { matPlayArrow, matSend } from '@ng-icons/material-icons/baseline';
 import { matInfoOutline } from '@ng-icons/material-icons/outline';
 import { FormControl, FormGroup, FormGroupDirective, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
 import { NgbAccordionModule, NgbModal, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { Store, StoreModule } from '@ngrx/store';
+import { completeLesson, startLesson } from '../../state/introduction/introduction.actions';
+import { IntroductionState } from '../../state/introduction/introduction.state';
 
 @Component({
   selector: 'app-lesson-one',
-  imports: [NgIcon, NgClass, ReactiveFormsModule, NgbPopoverModule, NgbAccordionModule],
+  imports: [NgIcon, NgClass, ReactiveFormsModule, NgbPopoverModule, NgbAccordionModule, StoreModule],
   templateUrl: './introduction-lesson-one.component.html',
   styleUrl: './introduction-lesson-one.component.scss',
   viewProviders: [provideIcons({matSend, matPlayArrow, matInfoOutline})],
   encapsulation: ViewEncapsulation.None,
 })
-export class IntroductionLesson1 {
+export class IntroductionLesson1 implements OnInit {
 
   @ViewChild("introductionFormElement") formDirective?: FormGroupDirective;
 
@@ -25,7 +28,7 @@ export class IntroductionLesson1 {
   introductionForm: FormGroup = new FormGroup({
     exerciseOne: new FormControl(0, {validators: [Validators.min(1), Validators.max(1)]}),
     exerciseTwo: new FormControl('', {validators: [Validators.pattern(this.EXERCISE_TWO_SOLUTION || ''), Validators.required]}),
-    exerciseThree: new FormControl('', {validators: [Validators.pattern(this.EXERCISE_THREE_SOLUTION ||''), Validators.required]})
+    exerciseThree: new FormControl('', {validators: [Validators.pattern(this.EXERCISE_THREE_SOLUTION || ''), Validators.required]})
   });
 
   submittedExerciseTwo = false;
@@ -37,7 +40,12 @@ export class IntroductionLesson1 {
 
 
   constructor(private modalService: NgbModal,
-              private router: Router) {
+              private router: Router,
+              private store: Store) {
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(startLesson({lessonKey: 'lessonOne'}));
   }
 
   checkRadios(selectedValue: number) {
@@ -77,11 +85,12 @@ export class IntroductionLesson1 {
     this.shouldModalCloseAfterTime = false;
   }
 
-  changeTextAppereance() {
+  changeTextAppearance() {
     this.textVisible = true;
   }
 
   navigateToNextLesson() {
-    this.router.navigate(['introduction','lesson-one','quiz']);
+    this.store.dispatch(completeLesson({lessonKey: 'lessonOne' as keyof IntroductionState}))
+    this.router.navigate(['introduction', 'lesson-one', 'quiz']);
   }
 }

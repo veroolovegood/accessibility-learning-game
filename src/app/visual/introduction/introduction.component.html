@@ -129,3 +129,12 @@
     }
   </div>
 </div>
+
+<ng-template id="completed-dialog" #completedDialog let-dialog>
+  <div class="modal-header">Geschafft!</div>
+  <div class="modal-body"><p>Sehr gut, du hast alle Aufgaben erfolgreich gelöst. Du kannst jetzt mit den nächsten Lektionen in diesem Kapitel fortfahren.</p></div>
+  <div class="modal-footer">
+    <button class="btn btn-info" (click)="dialog.dismiss()">Auf der Seite bleiben</button>
+    <button class="btn btn-primary" (click)="backToMenu(); dialog.dismiss()">Zum Menü</button>
+  </div>
+</ng-template>

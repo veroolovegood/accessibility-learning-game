@@ -4,6 +4,7 @@ import { css } from '@codemirror/lang-css';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
 import { WebshopCodeService } from '../../usecases/webshop/service/webshop-code.service';
+import { Text } from '@codemirror/state';
 
 @Component({
   selector: 'app-code-editor',

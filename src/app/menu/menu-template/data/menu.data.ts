@@ -18,13 +18,13 @@ export const menuData: { [key: string]: Menu } = {
         icon: 'aid',
         route: 'menu/introduction',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction']
+        unlockedWhenCompletedLesson: ['introduction', 'not-unlockable']
       },
       {
         id: 'visual',
         name: 'Visuelle Barrieren',
         icon: 'visual',
-        route: 'menu/introduction',
+        route: 'menu/visual',
         unlockedByDefault: false,
         unlockedWhenCompletedLesson: ['introduction']
       },
@@ -34,7 +34,7 @@ export const menuData: { [key: string]: Menu } = {
         icon: 'audio',
         route: 'menu/introduction',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction']
+        unlockedWhenCompletedLesson: ['introduction', 'not-unlockable']
       },
       {
         id: 'motorical',
@@ -42,7 +42,7 @@ export const menuData: { [key: string]: Menu } = {
         icon: 'motoric',
         route: 'menu/introduction',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction']
+        unlockedWhenCompletedLesson: ['introduction', 'not-unlockable']
       },
       {
         id: 'cognitive',
@@ -50,7 +50,7 @@ export const menuData: { [key: string]: Menu } = {
         icon: 'cognitive',
         route: 'menu/introduction',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction']
+        unlockedWhenCompletedLesson: ['introduction', 'not-unlockable']
       },
       {
         id: 'exercises',
@@ -58,7 +58,7 @@ export const menuData: { [key: string]: Menu } = {
         icon: 'cognitive',
         route: 'menu/introduction',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction']
+        unlockedWhenCompletedLesson: ['introduction', 'not-unlockable']
       },
     ]
   },

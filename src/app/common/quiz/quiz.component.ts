@@ -7,6 +7,9 @@ import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } f
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { PercentPipe } from '@angular/common';
 import { showConfettiAnimation } from '../confetti-animation';
+import { Store } from '@ngrx/store';
+import * as introduction from '../../state/introduction/introduction.actions';
+import * as visual from '../../state/visual/visual.actions';
 
 @Component({
   selector: 'app-quiz',
@@ -28,7 +31,11 @@ export class QuizComponent implements OnInit {
   quizForm?: FormGroup;
   completionRate = 0;
 
-  constructor(private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private modalService: NgbModal) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private fb: FormBuilder,
+              private modalService: NgbModal,
+              private store: Store) {
   }
 
   createQuizForm(element: QuizData): FormGroup {
@@ -44,15 +51,29 @@ export class QuizComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.pipe(map(param => {
       if (param.get('quizId')) {
-        return quizDataMap[param.get('quizId')!];
+        return {param: param.get('quizId'), data: quizDataMap[param.get('quizId')!]};
       }
       return null;
     })).subscribe((element) => {
+      console.log(element);
+      if (element?.data) {
+        this.title = element.data.title;
+        this.questions = element.data.questions;
+        this.completionRateNeeded = element.data.rateNeeded;
+        this.quizForm = this.createQuizForm(element.data);
+      }
       if (element) {
-        this.title = element.title;
-        this.questions = element.questions;
-        this.completionRateNeeded = element.rateNeeded;
-        this.quizForm = this.createQuizForm(element);
+        switch (element.param) {
+          case 'introduction-quiz':
+            this.store.dispatch(introduction.startLesson({lessonKey: 'finalQuiz'}));
+            return;
+          case 'visual':
+            this.store.dispatch(visual.startLesson({lessonKey: 'finalQuiz'}));
+            return;
+          default:
+            return;
+        }
+
       } else {
         console.log("No Quiz Data Available for that ID");
         this.router.navigate(['home']);
@@ -66,14 +87,22 @@ export class QuizComponent implements OnInit {
       const questionCorrect = q.answerOptions.map((answerOption, aIndex) => {
         const givenAnswer = (this.quizForm?.controls["question" + qIndex] as FormArray).controls[aIndex].value;
         return answerOption.isCorrect == givenAnswer;
-      }).reduce((a,b) => a && b);
-      if(questionCorrect){
-        result +=1;
+      }).reduce((a, b) => a && b);
+      if (questionCorrect) {
+        result += 1;
       }
     });
     this.completionRate = result / this.questions.length;
-    if(this.completionRate > this.completionRateNeeded){
+    if (this.completionRate > this.completionRateNeeded) {
       showConfettiAnimation();
+      this.route.paramMap.pipe(map(params => params.get('quizId'))).subscribe(param => {
+        switch (param){
+          case 'introduction-quiz': this.store.dispatch(introduction.completeLesson({lessonKey: 'finalQuiz'})); return;
+          case 'visual': this.store.dispatch(visual.completeLesson({lessonKey: 'finalQuiz'})); return;
+          default: return;
+        }
+      })
+
       this.modalService.open(this.completedQuizTemplate);
     } else {
       this.modalService.open(this.failedQuizTemplate);

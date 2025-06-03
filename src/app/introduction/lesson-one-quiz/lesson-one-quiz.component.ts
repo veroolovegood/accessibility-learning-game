@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild, OnInit } from '@angular/core';
 import { DndDropEvent, DndModule } from 'ngx-drag-drop';
 import { NgClass } from '@angular/common';
 import { BehaviorSubject, skip } from 'rxjs';
@@ -7,6 +7,8 @@ import { matPlayArrow } from '@ng-icons/material-icons/baseline';
 
 import { Router } from '@angular/router';
 import { showConfettiAnimation } from '../../common/confetti-animation';
+import { completeLesson, startLesson } from '../../state/introduction/introduction.actions';
+import { Store } from '@ngrx/store';
 
 class Answer {
   displayName?: string;
@@ -24,7 +26,7 @@ class Answer {
   templateUrl: './lesson-one-quiz.component.html',
   styleUrl: './lesson-one-quiz.component.scss'
 })
-export class LessonOneQuizComponent implements AfterViewInit {
+export class LessonOneQuizComponent implements AfterViewInit, OnInit {
 
 
   @ViewChild("submitButton")
@@ -48,7 +50,11 @@ export class LessonOneQuizComponent implements AfterViewInit {
 
   $classSubject = new BehaviorSubject<boolean[]>([false, false, false]);
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private store: Store) {
+  }
+
+  ngOnInit() {
+    this.store.dispatch(startLesson({lessonKey: 'quizLessonOne'}));
   }
 
   ngAfterViewInit() {
@@ -57,6 +63,7 @@ export class LessonOneQuizComponent implements AfterViewInit {
     ).subscribe(hasError => {
       this.completedExercise = hasError.every(value => !value);
       if (this.completedExercise) {
+        this.store.dispatch(completeLesson({lessonKey: 'quizLessonOne'}));
         showConfettiAnimation()
       }
       for (const [index, hasErrorAt] of hasError.entries()) {

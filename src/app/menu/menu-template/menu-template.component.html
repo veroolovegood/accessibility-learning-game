@@ -3,16 +3,16 @@
   <div class="lesson-grid">
     @for (lesson of lessons; track lesson) {
       <div [ngClass]="lesson.id == 'introduction' || lesson.id == 'exam' ? 'own-row-container' : ''" class="button-container">
-      <button class="btn btn-primary barrier-type-button" [disabled]="!lesson.unlockedByDefault" [ngClass]="lesson.id == 'introduction' || lesson.id == 'exam' ? 'own-row-button' : ''"
+      <button class="btn btn-primary barrier-type-button" [disabled]="!unlockedByCompleted(lesson)" [ngClass]="lesson.id == 'introduction' || lesson.id == 'exam' ? 'own-row-button' : ''"
               (click)="routeToLesson(lesson.route)">
         @if (lesson.icon) {
           <span class="lesson-icon"><img [alt]="lesson.icon + 'Icon'" [src]="'assets/icons/' + lesson.icon + '.svg'" width="32"/></span>
         }
         <span>{{ lesson.name }}</span>
-        @if (!lesson.unlockedByDefault) {
+        @if (!unlockedByCompleted(lesson)) {
           <ng-icon name="matLock"></ng-icon>
         } @else if (lesson.completed) {
-          <span>completed</span>
+          <img src="assets/icons/completed.svg" alt="Comleted Icon" width="50"/>
         } @else {
           <span></span>
         }
