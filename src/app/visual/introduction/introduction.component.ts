@@ -5,6 +5,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { BarrierData, simulationData } from '../../introduction/simulation/model/simulation-type-data';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { completeLesson, startLesson } from '../../state/visual/visual.actions';
 
 @Component({
   selector: 'app-visual-introduction',
@@ -56,7 +58,8 @@ export class IntroductionComponent implements OnInit {
   private completedDialog?: TemplateRef<any>;
 
   constructor(private dialog: NgbModal,
-              private router: Router) {
+              private router: Router,
+              private store: Store) {
   }
 
   ngOnInit() {
@@ -64,6 +67,7 @@ export class IntroductionComponent implements OnInit {
       this.noBarrierValue,
       ...simulationData['visual'].barriers
     ];
+    this.store.dispatch(startLesson({lessonKey: 'introduction'}));
   }
 
   submitAnswers(exercise: string, form: FormGroup) {
@@ -76,6 +80,7 @@ export class IntroductionComponent implements OnInit {
       return completeResult && result;
     })
     if(completedAll){
+      this.store.dispatch(completeLesson({lessonKey: 'introduction'}));
       this.dialog.open(this.completedDialog);
     }
   }

@@ -5,6 +5,8 @@ import { WebshopComponent } from '../../usecases/webshop/webshop.component';
 import { FormsModule } from '@angular/forms';
 import { BarrierData, simulationData } from '../../introduction/simulation/model/simulation-type-data';
 import { Text } from '@codemirror/state';
+import { Store } from '@ngrx/store';
+import { completeLesson, startLesson } from '../../state/visual/visual.actions';
 
 @Component({
   selector: 'app-font-size',
@@ -46,12 +48,16 @@ export class FontSizeComponent implements OnInit {
 
   completedExercise = false;
 
+  constructor(private store: Store) {
+  }
+
   ngOnInit() {
     this.visualBarriersSimulation = [
       this.noBarrierValue,
       ...simulationData['visual'].barriers
     ];
     this.selectedSimulation = this.visualBarriersSimulation.find(el => el.id === 'farsighted');
+    this.store.dispatch(startLesson({lessonKey: 'fontSize'}));
   }
 
   setCorrectFontSize(style: Text) {
@@ -64,5 +70,8 @@ export class FontSizeComponent implements OnInit {
       }
     }
     this.completedExercise = results.reduce((a,b) => a && b);
+    if(this.completedExercise){
+      this.store.dispatch(completeLesson({lessonKey: 'fontSize'}));
+    }
   }
 }

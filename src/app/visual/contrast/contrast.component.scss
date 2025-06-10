@@ -1,0 +1,29 @@
+.active{
+  background-color: #2C2C2C33 !important;
+  border: 1px solid #2C2C2C66 !important;
+}
+
+.text-color-black{
+  color: black !important;
+  border: 1px solid #2C2C2C66 !important;
+}
+
+.color-box{
+  border: 1px solid #2C2C2C33;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#result-row{
+  border: 1px solid #2E2C2F;
+  border-radius: 4px;
+  padding: 1em 2em;
+}
+
+.text-justify{
+  text-align: justify;
+  font-size: larger;
+  padding: 0 3em;
+}

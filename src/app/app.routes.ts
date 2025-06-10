@@ -11,6 +11,7 @@ import { QuizComponent } from './common/quiz/quiz.component';
 import { MenuTemplateComponent } from './menu/menu-template/menu-template.component';
 import { IntroductionComponent } from './visual/introduction/introduction.component';
 import { FontSizeComponent } from './visual/font-size/font-size.component';
+import { ContrastComponent } from './visual/contrast/contrast.component';
 
 export const routes: Routes = [
   {
@@ -60,6 +61,11 @@ export const routes: Routes = [
   {
     path: 'visual/fontsize',
     component: FontSizeComponent,
+    canActivate: [canActivateAuthRole]
+  },
+  {
+    path: 'visual/contrast',
+    component: ContrastComponent,
     canActivate: [canActivateAuthRole]
   }
 ];

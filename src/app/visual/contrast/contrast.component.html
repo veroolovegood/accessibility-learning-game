@@ -1,0 +1,41 @@
+<ul class="nav-tabs" ngbNav #nav="ngbNav" [(activeId)]="activeTab">
+  <li class="w-50" [ngbNavItem]="1">
+    <a ngbNavLink class="text-center fs-4 text-color-black">Kontrast-Berechner</a>
+    <ng-template ngbNavContent>
+      <div class="d-flex align-items-center w-100">
+        <div class="w-50 p-5 d-flex flex-column gap-4">
+          <p class="text-justify">
+            Im Bereich der Farbsehschwäche muss vor Allem auf den Kontrast zwischen Vorder- und Hintergrund geachtet werden, da durch das Fehlen der Farbsehfähigkeit der Unterschied zwischen Farben nicht mehr so präsent ist.
+          </p>
+          <p class="text-justify">Je nach Schriftgröße (es wird zwischen < 18 und > 18 unterschieden), sollten daher bestimmte Kontrastverhältnisse eingehalten werden. Mit einem Kontrast von 4.5:1 bist du immer auf der sicheren Seite. Falls es nicht anders geht, solltest du dennoch einen Kontrast von 3:1 einhalten.
+          </p>
+          <p class="text-justify">Hier kannst du ein bisschen ausprobieren, wie sich das Kontrastverhältnis bei verschiedenen Farben auswirkt. <br>
+            Wenn du genug davon hast, kannst du zur Aufgabe weiter gehen.</p>
+          </div>
+        <div id="contrast-component" class="d-flex flex-column gap-4 w-50 p-5 align-items-center">
+          <div id="color-picker-row" class="d-flex align-items-center justify-content-between w-75">
+            <div class="d-flex flex-column align-items-center gap-2">
+              <span class="fs-4">Vordergrund</span>
+              <div [(colorPicker)]="foregroundColor" cpPosition="left" class="color-box" [style.background-color]="foregroundColor"></div>
+            </div>
+            <span id="contrast-value" class="fs-4 fw-bold">{{contrastRatio}}:1</span>
+            <div class="d-flex flex-column align-items-center gap-2">
+              <span class="fs-4">Hintergrund</span>
+              <div [(colorPicker)]="backgroundColor" cpPosition="bottom" class="color-box" [style.background-color]="backgroundColor"></div>
+            </div>
+          </div>
+          <div id="result-row" class="w-75 fs-4 text-center" [style.color]="foregroundColor" [style.background-color]="backgroundColor">
+              Ich bin {{contrastRatio < 4.5 ? 'NICHT' : ''}} barrierefrei!
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </li>
+  <li class="w-50" [ngbNavItem]="2">
+    <a ngbNavLink class="text-center fs-4 text-color-black">Aufgabe</a>
+    <ng-template ngbNavContent>
+      Aufgabe
+    </ng-template>
+  </li>
+</ul>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
