@@ -1,22 +1,5 @@
-<div id="lexipedia-container">
+<div id="lexipedia-container" #lexipediaContainer>
   <h1>Lexipedia</h1>
-  <p>Barrierefreiheit im Web bedeutet, dass digitale Inhalte und Anwendungen so gestaltet sind, dass sie für alle
-    Menschen, einschließlich Menschen mit Behinderungen, zugänglich sind. Dies umfasst visuelle, auditive, motorische
-    und kognitive Einschränkungen. Eine barrierefreie Website ermöglicht beispielsweise die Nutzung von Screenreadern
-    für blinde oder sehbehinderte Menschen, bietet Untertitel für gehörlose Nutzer oder sorgt für eine einfache
-    Navigation ohne Maus für motorisch eingeschränkte Personen.
-  </p>
-  <p>Um Barrierefreiheit zu gewährleisten, gibt es internationale Standards wie die Web Content Accessibility Guidelines
-    (WCAG). Diese geben Empfehlungen für die Gestaltung von Webseiten, etwa durch ausreichende Farbkontraste,
-    verständliche Texte und eine logische Struktur. Auch semantisches HTML und alternative Texte für Bilder tragen dazu
-    bei, dass Inhalte besser erfasst werden können. Entwickler und Designer sollten von Anfang an darauf achten, diese
-    Standards umzusetzen, um eine inklusive Nutzung zu ermöglichen.
-  </p>
-  <p>Neben der sozialen Verantwortung gibt es auch rechtliche Anforderungen. In vielen Ländern, darunter Deutschland mit
-    dem Barrierefreiheitsstärkungsgesetz, sind öffentliche und zunehmend auch private digitale Angebote verpflichtet,
-    barrierefrei zu sein. Unternehmen profitieren zudem wirtschaftlich davon, wenn sie ihre Reichweite durch zugängliche
-    Angebote erweitern. Eine barrierefreie Website verbessert nicht nur die Nutzerfreundlichkeit für Menschen mit
-    Behinderungen, sondern auch für ältere Menschen und Nutzer mit temporären Einschränkungen wie einer verletzten Hand
-    oder schlechten Lichtverhältnissen.
+  <p>{{isLRSSimulationActive() ? randomizedSpacesText : text}}
   </p>
 </div>

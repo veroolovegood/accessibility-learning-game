@@ -17,6 +17,7 @@
   } @else if (urlSuffix === 'cookies'){
     <app-baking-page></app-baking-page>
   } @else if (urlSuffix === 'lexipedia'){
-    <app-lexipedia></app-lexipedia>
+    <app-lexipedia [isLRSSimulationActive]="selectedSimulation=='lrs'"
+                   [isConcentrationSimulationActive]="selectedSimulation=='distraction'"></app-lexipedia>
   }
 </ng-template>

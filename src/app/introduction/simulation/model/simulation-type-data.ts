@@ -96,12 +96,12 @@ export const simulationData: { [key: string]: SimulationTypeData } = {
       {
         name: 'Konzentrationsschwäche',
         explanation: 'Die Konzentration kann nicht lange aufrecht erhalten werden & man wird durch andere Gedanken abgelenkt. Dadurch erscheint es schwierig, lange Texte oder überladene Webseiten wahrzunehmen.',
-        id: ''
+        id: 'distraction'
       },
       {
         name: 'Lese-Rechtschreib-Schwäche (LRS)',
         explanation: 'Lange Textblöcke erscheinen wie ein Wirrwar und sind dadurch schwer zu lesen.',
-        id: ''
+        id: 'lrs'
       }
     ],
     urlSuffix: 'lexipedia',
