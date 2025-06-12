@@ -73,7 +73,7 @@ export const menuData: { [key: string]: Menu } = {
         unlockedWhenCompletedLesson: []
       },
       {
-        id: 'fontsize',
+        id: 'fontSize',
         name: 'Schriftgröße',
         route: 'visual/fontsize',
         unlockedByDefault: false,
@@ -91,17 +91,17 @@ export const menuData: { [key: string]: Menu } = {
         name: 'Farbe als Information',
         route: 'visual/colorInfo',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction']
+        unlockedWhenCompletedLesson: ['introduction', 'not-unlockable']
       },
       {
         id: 'skip',
         name: 'Skip-Link',
         route: 'visual/skip',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction']
+        unlockedWhenCompletedLesson: ['introduction', 'not-unlockable']
       },
       {
-        id: 'exam',
+        id: 'finalQuiz',
         name: 'Abschlussaufgabe',
         route: 'visual/exam',
         unlockedByDefault: false,
@@ -113,7 +113,7 @@ export const menuData: { [key: string]: Menu } = {
     title: 'Einführung',
     lessons: [
       {
-        id: 'introduction',
+        id: 'lessonOne',
         name: 'Einführung',
         route: 'introduction/lesson-one',
         unlockedByDefault: true,
@@ -124,14 +124,14 @@ export const menuData: { [key: string]: Menu } = {
         name: 'Simulation',
         route: 'introduction/simulation',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction']
+        unlockedWhenCompletedLesson: ['lessonOne']
       },
       {
-        id: 'quiz',
+        id: 'finalQuiz',
         name: 'Abschlussquiz',
         route: 'quiz/introduction',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction', 'simulation']
+        unlockedWhenCompletedLesson: ['lessonOne', 'simulation']
       }
     ],
   }

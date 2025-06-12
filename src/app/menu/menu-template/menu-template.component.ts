@@ -7,10 +7,14 @@ import { matLock } from '@ng-icons/material-icons/baseline';
 import { NgClass } from '@angular/common';
 import { Store } from '@ngrx/store';
 import {
+  selectIntroduction,
   selectIntroductionChapterCompleted,
   selectLessonOneCompleted
 } from '../../state/introduction/introduction.selectors';
 import { withLatestFrom } from 'rxjs';
+import { selectVisual } from '../../state/visual/visual.selectors';
+import { IntroductionState } from '../../state/introduction/introduction.state';
+import { VisualState } from '../../state/visual/visual.state';
 
 @Component({
   selector: 'app-menu-template',
@@ -32,23 +36,46 @@ export class MenuTemplateComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.pipe(
       withLatestFrom(
-        this.store.select(selectLessonOneCompleted),
-        this.store.select(selectIntroductionChapterCompleted)),
-    ).subscribe(([params, lessonOneCompleted, introductionCompleted]) => {
+        this.store.select(selectIntroduction),
+        this.store.select(selectVisual)
+        ),
+    ).subscribe(([params, introduction, visual]) => {
       const id = params.get('id');
       if (id) {
         if (id == 'introduction') {
           this.lessons = menuData[id].lessons.map(lesson => {
+            const completed = lesson.id == 'lessonOne' ? introduction.lessonOne == 2 && introduction.quizLessonOne == 2 : introduction[lesson.id as keyof IntroductionState] == 2;
             return {
               ...lesson,
-              completed: lesson.id == 'introduction' ? lessonOneCompleted : lesson.unlockedByDefault
+              completed: completed
             }
           });
         } else if (id == 'main') {
+          const introductionCompleted = introduction.lessonOne == 2 &&
+            introduction.quizLessonOne == 2 &&
+            introduction.simulation == 2 &&
+            introduction.finalQuiz == 2;
+          const visualCompleted = visual.introduction == 2 &&
+            visual.fontSize == 2 &&
+            visual.contrast == 2;
           this.lessons = menuData[id].lessons.map(lesson => {
+            let completed;
+            switch (lesson.id) {
+              case 'introduction': completed = introductionCompleted; break;
+              case 'visual': completed = visualCompleted; break;
+              default: completed = false;
+            }
             return {
               ...lesson,
-              completed: lesson.id == 'introduction' ? introductionCompleted : lesson.unlockedByDefault
+              completed: completed
+            }
+          });
+        } else if (id == 'visual'){
+          this.lessons = menuData[id].lessons.map(lesson => {
+            const completed = visual[lesson.id as keyof VisualState] == 2;
+            return {
+              ...lesson,
+              completed: completed
             }
           });
         } else {
@@ -66,11 +93,8 @@ export class MenuTemplateComponent implements OnInit {
   }
 
   unlockedByCompleted(lesson: LessonStatusOfUser): boolean {
-    console.log(`called with lesson: ${lesson.id}`)
     return lesson.unlockedByDefault || lesson.unlockedWhenCompletedLesson.every(lessonId => {
-      const completedLesson = this.lessons.find(l => l.id == lessonId)?.completed
-      console.log(`Found completed lesson ${lessonId}: ${completedLesson}`);
-      return completedLesson;
+      return  this.lessons.find(l => l.id == lessonId)?.completed
     });
   }
 
