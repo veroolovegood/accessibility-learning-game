@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { completeLesson, startLesson } from '../../state/visual/visual.actions';
+import { rewardPoints } from '../../state/profile/profile.actions';
 
 @Component({
   selector: 'app-visual-introduction',
@@ -71,10 +72,14 @@ export class IntroductionComponent implements OnInit {
   }
 
   submitAnswers(exercise: string, form: FormGroup) {
+    const oldVal = this.completedExercise[exercise];
     this.completedExercise[exercise] = form.controls['answerOne'].value == this.answerMatrix[exercise].answerOne &&
       form.controls['answerTwo'].value == this.answerMatrix[exercise].answerTwo &&
       form.controls['answerThree'].value == this.answerMatrix[exercise].answerThree &&
-      form.controls['answerFour'].value == this.answerMatrix[exercise].answerFour
+      form.controls['answerFour'].value == this.answerMatrix[exercise].answerFour;
+    if(this.completedExercise[exercise] && !oldVal){
+      this.store.dispatch(rewardPoints({points: 5}));
+    }
 
     const completedAll = Object.entries(this.completedExercise).map(([_, completed]) => completed).reduce((completeResult, result) => {
       return completeResult && result;

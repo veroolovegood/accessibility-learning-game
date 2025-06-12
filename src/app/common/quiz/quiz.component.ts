@@ -10,6 +10,7 @@ import { showConfettiAnimation } from '../confetti-animation';
 import { Store } from '@ngrx/store';
 import * as introduction from '../../state/introduction/introduction.actions';
 import * as visual from '../../state/visual/visual.actions';
+import { rewardPoints } from '../../state/profile/profile.actions';
 
 @Component({
   selector: 'app-quiz',
@@ -44,7 +45,6 @@ export class QuizComponent implements OnInit {
       controls["question" + index] = this.fb.array(question.answerOptions.map(_ => new FormControl(false, {nonNullable: true})));
     });
     const group = this.fb.group(controls);
-    console.log(group);
     return group;
   }
 
@@ -64,7 +64,7 @@ export class QuizComponent implements OnInit {
       }
       if (element) {
         switch (element.param) {
-          case 'introduction-quiz':
+          case 'introduction':
             this.store.dispatch(introduction.startLesson({lessonKey: 'finalQuiz'}));
             return;
           case 'visual':
@@ -93,11 +93,12 @@ export class QuizComponent implements OnInit {
       }
     });
     this.completionRate = result / this.questions.length;
+    this.store.dispatch(rewardPoints({points: result * 5}));
     if (this.completionRate > this.completionRateNeeded) {
       showConfettiAnimation();
       this.route.paramMap.pipe(map(params => params.get('quizId'))).subscribe(param => {
         switch (param){
-          case 'introduction-quiz': this.store.dispatch(introduction.completeLesson({lessonKey: 'finalQuiz'})); return;
+          case 'introduction': this.store.dispatch(introduction.completeLesson({lessonKey: 'finalQuiz'})); return;
           case 'visual': this.store.dispatch(visual.completeLesson({lessonKey: 'finalQuiz'})); return;
           default: return;
         }

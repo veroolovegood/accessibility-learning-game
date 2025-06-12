@@ -13,6 +13,7 @@ import { Store } from '@ngrx/store';
 import { ContrastTryoutComponent } from './contrast-tryout/contrast-tryout.component';
 import hexRgb from 'hex-rgb';
 import { Router } from '@angular/router';
+import { rewardPoints } from '../../state/profile/profile.actions';
 
 @Component({
   selector: 'app-contrast',
@@ -91,7 +92,11 @@ Zur Hilfe hast du auch auf dieser Seite einen Kontrast-Berechner, der sich autom
       }
     }
     if (this.completedExercise) {
+      this.store.dispatch(rewardPoints({points: 10}));
       this.store.dispatch(completeLesson({lessonKey: 'contrast'}));
+      if(this.redIsDominant){
+        this.store.dispatch(rewardPoints({points: 10}));
+      }
     }
   }
 

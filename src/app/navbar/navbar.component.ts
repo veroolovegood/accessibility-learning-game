@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { selectLevel } from '../state/profile/profile.selectors';
 import { Observable, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 export interface Level{
   levelNumber: number;
@@ -24,7 +25,7 @@ export class NavbarComponent implements OnInit {
   level: Observable<string> = of('');
 
 
-  constructor(private keycloak: Keycloak,
+  constructor(protected router: Router,
               private store: Store) {
   }
 

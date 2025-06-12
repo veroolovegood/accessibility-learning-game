@@ -1,5 +1,5 @@
 <div id="nav">
-  <p id="title">Web Accessibility</p>
+  <p id="title" (click)="router.navigate(['menu/main'])">Web Accessibility</p>
   <div class="end-elements">
     <span id="level">{{ level | async }}</span>
     <button id="profile" type="button" class="btn btn-info" aria-label="Profile" (click)="openOptions($event)">

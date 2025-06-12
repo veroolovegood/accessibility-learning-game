@@ -8,6 +8,7 @@ import { Text } from '@codemirror/state';
 import { Store } from '@ngrx/store';
 import { completeLesson, startLesson } from '../../state/visual/visual.actions';
 import { Router } from '@angular/router';
+import { rewardPoints } from '../../state/profile/profile.actions';
 
 @Component({
   selector: 'app-font-size',
@@ -73,6 +74,7 @@ export class FontSizeComponent implements OnInit {
     }
     this.completedExercise = results.reduce((a,b) => a && b);
     if(this.completedExercise){
+      this.store.dispatch(rewardPoints({points: 20}));
       this.store.dispatch(completeLesson({lessonKey: 'fontSize'}));
     }
   }

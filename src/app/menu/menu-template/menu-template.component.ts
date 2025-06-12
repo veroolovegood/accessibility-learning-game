@@ -88,7 +88,6 @@ export class MenuTemplateComponent implements OnInit {
         }
         this.title = menuData[id].title;
       }
-      console.log(this.lessons);
     });
   }
 
