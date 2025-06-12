@@ -8,6 +8,7 @@ import { provideState, provideStore } from '@ngrx/store';
 import { visualReducer } from './state/visual/visual.reducer';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { introductionReducer } from './state/introduction/introduction.reducer';
+import { profileReducer } from './state/profile/profile.reducer';
 
 export const provideKeycloakAngular = () =>
   provideKeycloak({
@@ -42,6 +43,7 @@ export const appConfig: ApplicationConfig = {
       connectInZone: true // If set to true, the connection is established within the Angular zone
     }),
     provideState({name: 'introduction', reducer: introductionReducer}),
-    provideState({name: 'visual', reducer: visualReducer})
+    provideState({name: 'visual', reducer: visualReducer}),
+    provideState({name: 'profile', reducer: profileReducer})
   ]
 };
