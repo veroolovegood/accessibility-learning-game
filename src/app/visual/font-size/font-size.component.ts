@@ -7,6 +7,7 @@ import { BarrierData, simulationData } from '../../introduction/simulation/model
 import { Text } from '@codemirror/state';
 import { Store } from '@ngrx/store';
 import { completeLesson, startLesson } from '../../state/visual/visual.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-font-size',
@@ -48,7 +49,8 @@ export class FontSizeComponent implements OnInit {
 
   completedExercise = false;
 
-  constructor(private store: Store) {
+  constructor(private store: Store,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -73,5 +75,9 @@ export class FontSizeComponent implements OnInit {
     if(this.completedExercise){
       this.store.dispatch(completeLesson({lessonKey: 'fontSize'}));
     }
+  }
+
+  navigateToMenu(){
+    this.router.navigate(['menu/visual']);
   }
 }

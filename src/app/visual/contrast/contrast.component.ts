@@ -11,6 +11,8 @@ import { Text } from '@codemirror/state';
 import { completeLesson, startLesson } from '../../state/visual/visual.actions';
 import { Store } from '@ngrx/store';
 import { ContrastTryoutComponent } from './contrast-tryout/contrast-tryout.component';
+import hexRgb from 'hex-rgb';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contrast',
@@ -24,8 +26,7 @@ import { ContrastTryoutComponent } from './contrast-tryout/contrast-tryout.compo
     CodeEditorComponent,
     FormsModule,
     WebshopComponent,
-    ContrastTryoutComponent,
-    ColorPickerComponent
+    ContrastTryoutComponent
   ],
   templateUrl: './contrast.component.html',
   styleUrl: './contrast.component.scss'
@@ -41,6 +42,7 @@ export class ContrastComponent implements OnInit {
   selectedSimulation?: BarrierData = this.noBarrierValue;
   visualBarriersSimulation: BarrierData[] = [];
   completedExercise: boolean = false;
+  redIsDominant: boolean = false;
 
   explanation = `In dem Webshop Beispiel, welches nun mit absoluter Farbenblindheit dargestellt ist, kann man erkennen, dass der Kontrast bei dem rabattierten Preis nicht sehr hoch ist und daher schwer lesbar.
 
@@ -48,15 +50,16 @@ export class ContrastComponent implements OnInit {
 
 Zur Hilfe hast du auch auf dieser Seite einen Kontrast-Berechner, der sich automatisch an die Farben, die du im Editor angibst, anpasst.
 `
-  codeExample = `.info-container {
-   background-color: #F0EBD8
+  codeExample = `#webshop-navbar {
+   background-color: #E7E4D8;
 }
 
-.discount-text-color {
-   background-color: #F5C2C1
+.reduced-price {
+   color: #F5C2C1;
 }`;
 
-  constructor(private store: Store) {
+  constructor(private store: Store,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -73,26 +76,27 @@ Zur Hilfe hast du auch auf dieser Seite einen Kontrast-Berechner, der sich autom
   }
 
   get contrastRatioExercise() {
-    return contrastRatio(this.foregroundColorTryout, this.backgroundColorTryout);
+    return contrastRatio(this.foregroundColorExercise, this.backgroundColorExercise);
   }
 
   setCorrectFontSize(style: Text) {
-    let results: boolean[] = [];
     for (let i = 0; i < style.lines; i++) {
       const textAtLine = style.line(i + 1).text;
+      if(textAtLine.includes('color:') && style.line(i).text.includes('.reduced-price')){
+        const color = textAtLine.substring(textAtLine.indexOf(':') + 1).trim().replace(';', '');
+        const rgb = hexRgb(color);
+        this.completedExercise = contrastRatio(color, this.backgroundColorExercise) > 4.5;
+        this.redIsDominant = rgb.red > rgb.blue && rgb.red > rgb.green;
 
-      //TODO check correct changes
-      //
-      // if (textAtLine.includes('font-size:')) {
-      //   const fontSize = textAtLine.substring(textAtLine.indexOf(':') + 1).trim().replace(';', '');
-      //   results.push(fontSize == 'large' || fontSize == 'normal' || fontSize == '1em' || fontSize == '100%');
-      // }
+      }
     }
-    this.completedExercise = results.reduce((a, b) => a && b);
     if (this.completedExercise) {
       this.store.dispatch(completeLesson({lessonKey: 'contrast'}));
     }
   }
 
 
+  navigateToMenu() {
+    this.router.navigate(['menu/visual']);
+  }
 }
