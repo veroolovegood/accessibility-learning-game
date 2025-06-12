@@ -74,3 +74,32 @@
 .blindness{
   background-color: #2C2C2C;
 }
+
+.custom-cursor {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-image: url('./../../../../public/assets/cursor.svg');
+  pointer-events: none; /* Verhindert, dass der Cursor andere Elemente blockiert */
+  z-index: 1000;
+  animation: shake 0.5s infinite;
+  overflow: hidden;
+}
+
+.parkinson, .parkinson *{
+  cursor: none !important;
+}
+
+@keyframes shake {
+  0% { transform: translate(6px, 6px); }
+  10% { transform: translate(-6px, -8px); }
+  20% { transform: translate(-12px, 0px); }
+  30% { transform: translate(12px, 8px); }
+  40% { transform: translate(6px, -6px); }
+  50% { transform: translate(-6px, 8px); }
+  60% { transform: translate(-12px, 6px); }
+  70% { transform: translate(12px, 6px); }
+  80% { transform: translate(-6px, -6px); }
+  90% { transform: translate(6px, 8px); }
+  100% { transform: translate(6px, -8px); }
+}

@@ -1,4 +1,4 @@
-<div id="website-container" [ngClass]="simulationType">
+<div id="website-container" (mousemove)="onMouseMove($event)" [ngClass]="simulationType">
   <div id="header-bar">
     <div id="url-line">
       <input disabled [value]="'https://learn-accessibility.web/' + urlSuffix"/>
@@ -25,3 +25,12 @@
 </svg>
 
 <audio id="beep-sound" src="assets/beep.mp3" preload="auto" class="hidden-audio"></audio>
+
+@if (simulationType == 'parkinson'){
+<style>
+  select,
+  select * {
+    cursor: none !important; /* Versteckt den Standard-Cursor */
+  }
+</style>
+}

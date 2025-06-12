@@ -80,7 +80,7 @@ export const simulationData: { [key: string]: SimulationTypeData } = {
       {
         name: 'Parkinson',
         explanation: 'Die Motorik weist ein Zittern auf, wodurch präzise Auswahlen unmöglich erscheinen.',
-        id: ''
+        id: 'parkinson'
       },
       {
         name: 'Mobilitätseinschränkung der Hände',

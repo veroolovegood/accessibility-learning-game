@@ -9,7 +9,8 @@ import { WebshopCodeService } from './service/webshop-code.service';
     ProductFragmentComponent
   ],
   templateUrl: './webshop.component.html',
-  styleUrl: './webshop.component.scss'
+  styleUrl: './webshop.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class WebshopComponent implements OnInit{
 

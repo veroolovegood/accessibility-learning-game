@@ -44,7 +44,6 @@ export class BarrierSimulationComponent implements OnInit {
     this.route.paramMap.pipe(
       map(params => {
         const barrierType = params.get('barrierType');
-        console.log("Barrier Type is: " + barrierType);
         if (barrierType) {
           const selectedSimulationData = simulationData[barrierType];
           if (selectedSimulationData) {
@@ -64,7 +63,6 @@ export class BarrierSimulationComponent implements OnInit {
           this.urlSuffix = data.urlSuffix;
           this.title = data.title;
         } else {
-          console.log("Route does not exist");
           this.router.navigate(['introduction/simulation']);
         }
       });
