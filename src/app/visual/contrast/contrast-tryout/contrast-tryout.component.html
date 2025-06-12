@@ -1,0 +1,19 @@
+<div id="color-picker-row" class="d-flex align-items-center justify-content-between w-75">
+  <div class="d-flex flex-column align-items-center gap-2">
+    <span [style.font-size]="fontSize()">Vordergrund</span>
+    <div [(colorPicker)]="foregroundColorVal"
+         class="color-box"
+         [style.background-color]="foregroundColor()"
+         [style.width]="boxSize()"
+         [style.height]="boxSize()"></div>
+  </div>
+  <span id="contrast-value" [style.font-size]="fontSize()" class="fw-bold">{{ contrastRatio() }}:1</span>
+  <div class="d-flex flex-column align-items-center gap-2">
+    <span [style.font-size]="fontSize()">Hintergrund</span>
+    <div [(colorPicker)]="backgroundColorVal"
+         class="color-box"
+         [style.background-color]="backgroundColor()"
+         [style.width]="boxSize()"
+         [style.height]="boxSize()"></div>
+  </div>
+</div>

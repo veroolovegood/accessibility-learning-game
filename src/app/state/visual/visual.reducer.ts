@@ -5,6 +5,7 @@ import { completeLesson, startLesson } from './visual.actions';
 export const initialState = {
   introduction: CompletedStateEnum.UNFINISHED,
   lessonOne: CompletedStateEnum.UNFINISHED,
+  contrast: CompletedStateEnum.UNFINISHED,
   finalQuiz: CompletedStateEnum.UNFINISHED
 }
 
