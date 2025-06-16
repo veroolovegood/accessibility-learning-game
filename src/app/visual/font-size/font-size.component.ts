@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { completeLesson, startLesson } from '../../state/visual/visual.actions';
 import { Router } from '@angular/router';
 import { rewardPoints } from '../../state/profile/profile.actions';
+import { WebshopCodeService } from '../../usecases/webshop/service/webshop-code.service';
 
 @Component({
   selector: 'app-font-size',
@@ -51,7 +52,8 @@ export class FontSizeComponent implements OnInit {
   completedExercise = false;
 
   constructor(private store: Store,
-              private router: Router) {
+              private router: Router,
+              private webshopService: WebshopCodeService) {
   }
 
   ngOnInit() {
@@ -81,5 +83,10 @@ export class FontSizeComponent implements OnInit {
 
   navigateToMenu(){
     this.router.navigate(['menu/visual']);
+  }
+
+  updateCSS(value: number) {
+    this.webshopService.setFontSizeIndicator(value);
+    this.webshopService.updateCssText();
   }
 }

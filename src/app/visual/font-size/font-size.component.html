@@ -1,9 +1,9 @@
 <div id="fontsize-exercise-container">
   <div class="simulation-options">
-    <select [(ngModel)]="selectedTextSize" class="form-select">
-      <option [ngValue]="-2">Textgröße - klein</option>
+    <select [(ngModel)]="selectedTextSize" (ngModelChange)="updateCSS($event)" class="form-select">
+      <option [ngValue]="-4">Textgröße - klein</option>
       <option [ngValue]="0">Textgröße - normal</option>
-      <option [ngValue]="+2">Textgröße - groß</option>
+      <option [ngValue]="+4">Textgröße - groß</option>
     </select>
     <select [(ngModel)]="selectedSimulation" class="form-select">
       @for (simulation of visualBarriersSimulation; track simulation) {

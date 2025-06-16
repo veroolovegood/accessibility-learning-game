@@ -11,7 +11,7 @@ import { NgClass } from '@angular/common';
 @Component({
   selector: 'app-browser-simulation',
   imports: [
-    NgClass
+    NgClass,
   ],
   templateUrl: './browser-simulation.component.html',
   styleUrl: './browser-simulation.component.scss',
