@@ -7,9 +7,9 @@
           <p>{{ question.question }}</p>
           @for (answerOption of question.answerOptions; track answerOption.content; let ai = $index) {
             <div class="answer-option">
-              <input [formControlName]="ai" type="checkbox" [id]="'question' + qi + 'answer' + ai"
+              <input class="form-check-input" [formControlName]="ai" type="checkbox" [id]="'question' + qi + 'answer' + ai"
                      [name]="'question' + qi + 'checkbox'">
-              <label [for]="'question' + qi + 'answer' + ai">{{ answerOption.content }}</label>
+              <label class="form-check-label" [for]="'question' + qi + 'answer' + ai">{{ answerOption.content }}</label>
             </div>
           }
         </div>
