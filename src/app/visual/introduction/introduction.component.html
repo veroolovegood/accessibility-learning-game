@@ -1,6 +1,6 @@
 <div id="introduction-container">
   <div id="simulation-container">
-    <select [(ngModel)]="selectedSimulation">
+    <select [(ngModel)]="selectedSimulation" class="form-select w-auto">
       @for (simulation of visualBarriersSimulation; track simulation) {
         <option [ngValue]="simulation">{{ simulation.name }}</option>
       }
