@@ -1,2 +1,12 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
+@for (toast of toastService.toasts; track toast){
+  <ngb-toast
+    [class]="toast.classname + ' toast-container position-fixed top-0 end-0 px-3 py-1'"
+    [autohide]="true"
+    [delay]="toast.delay || 5000"
+    (hidden)="toastService.remove(toast)"
+  >
+    <ng-container *ngComponentOutlet="toast.template"></ng-container>
+  </ngb-toast>
+}

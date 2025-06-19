@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { completeLesson, startLesson } from '../../state/visual/visual.actions';
 import { rewardPoints } from '../../state/profile/profile.actions';
+import { ToastService } from '../../services/toast.service';
+import { ToastSuccessComponent } from '../../common/toast/toast-success/toast-success.component';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-visual-introduction',
@@ -15,7 +18,8 @@ import { rewardPoints } from '../../state/profile/profile.actions';
     BrowserSimulationComponent,
     WebshopComponent,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgClass
   ],
   templateUrl: './introduction.component.html',
   styleUrl: './introduction.component.scss'
@@ -60,7 +64,8 @@ export class IntroductionComponent implements OnInit {
 
   constructor(private dialog: NgbModal,
               private router: Router,
-              private store: Store) {
+              private store: Store,
+              private toastService: ToastService) {
   }
 
   ngOnInit() {
@@ -79,6 +84,7 @@ export class IntroductionComponent implements OnInit {
       form.controls['answerFour'].value == this.answerMatrix[exercise].answerFour;
     if(this.completedExercise[exercise] && !oldVal){
       this.store.dispatch(rewardPoints({points: 5}));
+      this.toastService.show({template: ToastSuccessComponent, classname: 'success'})
     }
 
     const completedAll = Object.entries(this.completedExercise).map(([_, completed]) => completed).reduce((completeResult, result) => {
