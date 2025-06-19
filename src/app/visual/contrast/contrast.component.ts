@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbNav, NgbNavContent, NgbNavItem, NgbNavLink, NgbNavOutlet } from '@ng-bootstrap/ng-bootstrap';
-import { ColorPickerComponent, ColorPickerDirective } from 'ngx-color-picker';
 import { contrastRatio } from "wcag-contrast-utils";
 import { BrowserSimulationComponent } from '../../common/browser-simulation/browser-simulation.component';
 import { CodeEditorComponent } from '../../common/code-editor/code-editor.component';
@@ -19,6 +18,7 @@ import { Location } from '@angular/common';
 import { matArrowBack } from '@ng-icons/material-icons/baseline';
 import { ToastService } from '../../services/toast.service';
 import { ToastFifteenPointsComponent } from '../../common/toast/toast-fifteen-points/toast-fifteen-points.component';
+import { InfoPopoverContrastComponent } from './info-popover-contrast/info-popover-contrast.component';
 
 @Component({
   selector: 'app-contrast',
@@ -115,4 +115,6 @@ Zur Hilfe hast du auch auf dieser Seite einen Kontrast-Berechner, der sich autom
   navigateToMenu() {
     this.router.navigate(['menu/visual']);
   }
+
+  protected readonly InfoPopoverContrastComponent = InfoPopoverContrastComponent;
 }

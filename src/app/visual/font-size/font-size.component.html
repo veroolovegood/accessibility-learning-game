@@ -15,7 +15,8 @@
     </div>
   </div>
   <div class="code-exercise-container">
-    <app-code-editor (checkAnswer)="setCorrectFontSize($event)" [explanationText]="explanation" [givenCode]="codeExample"></app-code-editor>
+    <app-code-editor (checkAnswer)="setCorrectFontSize($event)" [explanationText]="explanation" [givenCode]="codeExample"
+    [infoPopover]="InfoPopoverFontSizeComponent"></app-code-editor>
     <div id="simulation-container">
       <app-browser-simulation [simulationType]="selectedSimulation?.id" [urlSuffix]="'webshop'">
         <app-webshop></app-webshop>

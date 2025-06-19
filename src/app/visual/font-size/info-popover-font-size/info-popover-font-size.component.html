@@ -1,0 +1,25 @@
+<div id="info-popover">
+  <p>Falls du nicht weiter weißt, kannst du einen der unten stehenden Tipps zur Rate ziehen:</p>
+  <div ngbAccordion [closeOthers]="true">
+    <div ngbAccordionItem>
+      <h1 ngbAccordionHeader>
+        <button ngbAccordionButton>Tipp 1</button>
+      </h1>
+      <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+          <p>Du musst beide Schriftgrößenangaben anpassen, um die Aufgabe zu lösen. Überleg genau, welche Werte passen könnten.</p>
+        </div>
+      </div>
+    </div>
+    <div ngbAccordionItem>
+      <h1 ngbAccordionHeader>
+        <button ngbAccordionButton>Tipp 2</button>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <p>Passende Werte für eine Standardschriftgröße sind 100%, 1rem, 1em, large und normal. Ersetze die Pixelangaben für jede eingeblendete Schriftgröße auf einen dieser Werte.</p>
+          </div>
+        </div>
+      </h1>
+    </div>
+  </div>
+</div>
