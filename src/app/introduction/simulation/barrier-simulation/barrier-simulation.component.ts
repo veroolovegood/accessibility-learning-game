@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BrowserSimulationComponent } from '../../../common/browser-simulation/browser-simulation.component';
-import { NgClass, NgTemplateOutlet } from '@angular/common';
+import { Location, NgClass, NgTemplateOutlet } from '@angular/common';
 import { WebshopComponent } from '../../../usecases/webshop/webshop.component';
 import { BarrierSimulationButton } from '../model/barrier-simulation-button.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +13,8 @@ import {
   playTinitus, stopTinitus,
   unmuteAndShowVolumeControls
 } from '../simulation-helpers/auditory-helpers';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { matArrowBack } from '@ng-icons/material-icons/baseline';
 
 @Component({
   selector: 'app-visual-barrier-simulation',
@@ -22,8 +24,10 @@ import {
     WebshopComponent,
     NgClass,
     BakingPageComponent,
-    LexipediaComponent
+    LexipediaComponent,
+    NgIcon
   ],
+  viewProviders: [provideIcons({matArrowBack})],
   templateUrl: './barrier-simulation.component.html',
   styleUrl: './barrier-simulation.component.scss'
 })
@@ -37,7 +41,8 @@ export class BarrierSimulationComponent implements OnInit {
   title: string = '';
 
   constructor(private route: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              protected location: Location) {
   }
 
   ngOnInit() {

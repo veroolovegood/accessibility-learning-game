@@ -46,3 +46,19 @@ h1 {
   background-color: #9F9FEDAA;
   border-color: #9F9FEDAA;
 }
+
+.icon-button{
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.placeholder-div{
+  width: 5vw;
+}
+
+.top-line{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

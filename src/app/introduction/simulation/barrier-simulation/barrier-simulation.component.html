@@ -1,5 +1,9 @@
 <div id="content-container">
+  <div class="top-line">
+    <button class="btn btn-outline-info icon-button" (click)="location.back()"> <ng-icon name="matArrowBack"></ng-icon> Zurück</button>
   <h1>{{title}}</h1>
+    <div class="placeholder-div"></div>
+  </div>
   <app-browser-simulation id="website" [urlSuffix]="urlSuffix" [simulationType]="selectedSimulation">
     <ng-container [ngTemplateOutlet]="usecase"></ng-container>
   </app-browser-simulation>
