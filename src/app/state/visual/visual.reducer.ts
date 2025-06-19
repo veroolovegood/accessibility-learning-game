@@ -3,9 +3,9 @@ import { createReducer, on } from '@ngrx/store';
 import { completeLesson, startLesson } from './visual.actions';
 
 export const initialState = {
-  introduction: CompletedStateEnum.UNFINISHED,
-  lessonOne: CompletedStateEnum.UNFINISHED,
-  contrast: CompletedStateEnum.UNFINISHED,
+  introduction: CompletedStateEnum.COMPLETED,
+  fontSize: CompletedStateEnum.COMPLETED,
+  contrast: CompletedStateEnum.COMPLETED,
   finalQuiz: CompletedStateEnum.UNFINISHED
 }
 

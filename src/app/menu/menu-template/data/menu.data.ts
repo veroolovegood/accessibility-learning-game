@@ -103,9 +103,9 @@ export const menuData: { [key: string]: Menu } = {
       {
         id: 'finalQuiz',
         name: 'Abschlussaufgabe',
-        route: 'visual/exam',
+        route: 'quiz/visual',
         unlockedByDefault: false,
-        unlockedWhenCompletedLesson: ['introduction', 'skip', 'colorInfo', 'contrast', 'fontsize']
+        unlockedWhenCompletedLesson: ['introduction', 'contrast', 'fontSize']
       }
     ]
   },

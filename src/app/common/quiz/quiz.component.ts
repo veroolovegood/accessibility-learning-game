@@ -96,7 +96,7 @@ export class QuizComponent implements OnInit {
     this.completionRate = result / this.questions.length;
     const pointsToAward = (this.completionRate - prevCompletionRate) * this.questions.length * 5;
     this.store.dispatch(rewardPoints({points: pointsToAward}));
-    if (this.completionRate > this.completionRateNeeded) {
+    if (this.completionRate >= this.completionRateNeeded) {
       showConfettiAnimation();
       this.route.paramMap.pipe(map(params => params.get('quizId'))).subscribe(param => {
         switch (param){
