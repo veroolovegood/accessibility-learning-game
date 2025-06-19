@@ -44,6 +44,7 @@
     } @else {
       <p>Ein perfektes Ergebnis!</p>
     }
+    <p>Mit dem Ergebnis hast du <b>{{this.completionRate * this.questions.length * 5}} Punkte</b> erreicht!</p>
     <p>Um deinen Lernpfad weiterzuverfolgen klicke jetzt auf weiter.</p>
     <button type="button" class="btn btn-primary" (click)="navigateToMenu(modal)">Weiter</button>
   </div>
