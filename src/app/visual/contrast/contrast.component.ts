@@ -17,6 +17,8 @@ import { rewardPoints } from '../../state/profile/profile.actions';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { Location } from '@angular/common';
 import { matArrowBack } from '@ng-icons/material-icons/baseline';
+import { ToastService } from '../../services/toast.service';
+import { ToastFifteenPointsComponent } from '../../common/toast/toast-fifteen-points/toast-fifteen-points.component';
 
 @Component({
   selector: 'app-contrast',
@@ -66,6 +68,7 @@ Zur Hilfe hast du auch auf dieser Seite einen Kontrast-Berechner, der sich autom
 
   constructor(private store: Store,
               private router: Router,
+              private toastService: ToastService,
               protected location: Location) {
   }
 
@@ -98,11 +101,13 @@ Zur Hilfe hast du auch auf dieser Seite einen Kontrast-Berechner, der sich autom
       }
     }
     if (this.completedExercise) {
-      this.store.dispatch(rewardPoints({points: 10}));
-      this.store.dispatch(completeLesson({lessonKey: 'contrast'}));
+      let pointsToAward = 10;
       if(this.redIsDominant){
-        this.store.dispatch(rewardPoints({points: 10}));
+        pointsToAward += 5;
       }
+      this.store.dispatch(rewardPoints({points: pointsToAward}));
+      this.toastService.show({template: ToastFifteenPointsComponent, classname: 'success', points: pointsToAward, showNext: true});
+      this.store.dispatch(completeLesson({lessonKey: 'contrast'}));
     }
   }
 

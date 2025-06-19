@@ -9,10 +9,10 @@ import { Store } from '@ngrx/store';
 import { completeLesson, startLesson } from '../../state/visual/visual.actions';
 import { rewardPoints } from '../../state/profile/profile.actions';
 import { ToastService } from '../../services/toast.service';
-import { ToastSuccessComponent } from '../../common/toast/toast-success/toast-success.component';
 import { Location, NgClass } from '@angular/common';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { matArrowBack } from '@ng-icons/material-icons/baseline';
+import { ToastFifteenPointsComponent } from '../../common/toast/toast-fifteen-points/toast-fifteen-points.component';
 
 @Component({
   selector: 'app-visual-introduction',
@@ -89,7 +89,7 @@ export class IntroductionComponent implements OnInit {
       form.controls['answerFour'].value == this.answerMatrix[exercise].answerFour;
     if (this.completedExercise[exercise] && !oldVal) {
       this.store.dispatch(rewardPoints({points: 5}));
-      this.toastService.show({template: ToastSuccessComponent, classname: 'success'})
+      this.toastService.show({template: ToastFifteenPointsComponent, classname: 'success', points: 5})
     }
 
     const completedAll = Object.entries(this.completedExercise).map(([_, completed]) => completed).reduce((completeResult, result) => {

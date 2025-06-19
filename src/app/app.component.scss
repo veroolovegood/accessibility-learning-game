@@ -1,12 +1,13 @@
 .toast-container{
   margin-top: 11vh;
   margin-right: 1em;
-  width: 10vw;
+  width: auto;
+  max-width: 20vw;
   font-weight: bold;
   font-size: larger;
   text-align: center;
 }
 
 .success{
-  background-color: rgba(106, 160, 124, 0.51);
+  background-color: rgba(106, 160, 124, 0.75);
 }

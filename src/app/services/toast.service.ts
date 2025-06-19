@@ -4,6 +4,8 @@ export interface Toast {
   template: Type<any>;
   classname?: string;
   delay?: number;
+  points: number;
+  showNext?: boolean;
 }
 
 @Injectable({ providedIn: 'root' })

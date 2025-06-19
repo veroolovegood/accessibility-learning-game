@@ -13,6 +13,8 @@ import { WebshopCodeService } from '../../usecases/webshop/service/webshop-code.
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { Location } from '@angular/common';
 import { matArrowBack } from '@ng-icons/material-icons/baseline';
+import { ToastFifteenPointsComponent } from '../../common/toast/toast-fifteen-points/toast-fifteen-points.component';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-font-size',
@@ -59,6 +61,7 @@ export class FontSizeComponent implements OnInit {
   constructor(private store: Store,
               private router: Router,
               protected location: Location,
+              private toastService: ToastService,
               private webshopService: WebshopCodeService) {
   }
 
@@ -82,7 +85,8 @@ export class FontSizeComponent implements OnInit {
     }
     this.completedExercise = results.reduce((a,b) => a && b);
     if(this.completedExercise){
-      this.store.dispatch(rewardPoints({points: 20}));
+      this.store.dispatch(rewardPoints({points: 15}));
+      this.toastService.show({template: ToastFifteenPointsComponent, classname: 'success', points: 15, showNext: true});
       this.store.dispatch(completeLesson({lessonKey: 'fontSize'}));
     }
   }
