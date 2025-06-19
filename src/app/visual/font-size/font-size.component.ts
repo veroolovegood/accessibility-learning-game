@@ -81,7 +81,7 @@ export class FontSizeComponent implements OnInit {
       const textAtLine = style.line(i + 1).text;
       if (textAtLine.includes('font-size:')) {
         const fontSize = textAtLine.substring(textAtLine.indexOf(':') + 1).trim().replace(';', '');
-        results.push(fontSize == 'large' || fontSize == 'normal' || fontSize == '1em' || fontSize == '1em' || fontSize == '100%');
+        results.push(fontSize == 'large' || fontSize == 'medium' || fontSize == '1em' || fontSize == '1em' || fontSize == '100%');
       }
     }
     this.completedExercise = results.reduce((a,b) => a && b);

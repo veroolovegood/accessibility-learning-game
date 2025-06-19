@@ -36,7 +36,7 @@ export class WebshopCodeService {
     }
     const textToCompute = text ?? this.currentStyle;
     if (textToCompute.includes('font-size:')) {
-      const regex = /font-size:\s*([\d\.]+(?:px|em|rem|vw|vh|vmin|vmax|%|pt|pc|ch|ex)?|xx-small|x-small|small|medium|large|x-large|xx-large|smaller|larger);/g;
+      const regex = /font-size:\s*([\d\.]+(?:em|rem|vw|vh|vmin|vmax|%|pt|pc|ch|ex)?|xx-small|x-small|small|medium|large|x-large|xx-large|smaller|larger);/g;
       computedText = textToCompute.replace(regex, (match, originalValue) => {
       if (this.keywordToPxMap.hasOwnProperty(originalValue)) {
         const pxValue = this.keywordToPxMap[originalValue];
