@@ -47,3 +47,14 @@ button{
   background-color: #6AA07C;
   border-color: #6AA07C;
 }
+
+#controls-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-button{
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}

@@ -14,6 +14,9 @@ import { ContrastTryoutComponent } from './contrast-tryout/contrast-tryout.compo
 import hexRgb from 'hex-rgb';
 import { Router } from '@angular/router';
 import { rewardPoints } from '../../state/profile/profile.actions';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { Location } from '@angular/common';
+import { matArrowBack } from '@ng-icons/material-icons/baseline';
 
 @Component({
   selector: 'app-contrast',
@@ -27,8 +30,10 @@ import { rewardPoints } from '../../state/profile/profile.actions';
     CodeEditorComponent,
     FormsModule,
     WebshopComponent,
-    ContrastTryoutComponent
+    ContrastTryoutComponent,
+    NgIcon
   ],
+  viewProviders: [provideIcons({matArrowBack})],
   templateUrl: './contrast.component.html',
   styleUrl: './contrast.component.scss'
 })
@@ -60,7 +65,8 @@ Zur Hilfe hast du auch auf dieser Seite einen Kontrast-Berechner, der sich autom
 }`;
 
   constructor(private store: Store,
-              private router: Router) {
+              private router: Router,
+              protected location: Location) {
   }
 
   ngOnInit(): void {

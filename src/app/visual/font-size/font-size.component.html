@@ -1,5 +1,7 @@
 <div id="fontsize-exercise-container">
-  <div class="simulation-options">
+  <div class="top-line">
+    <button class="btn btn-outline-info icon-button" (click)="location.back()"> <ng-icon name="matArrowBack"></ng-icon> Zurück</button>
+    <div class="simulation-options">
     <select [(ngModel)]="selectedTextSize" (ngModelChange)="updateCSS($event)" class="form-select">
       <option [ngValue]="-4">Textgröße - klein</option>
       <option [ngValue]="0">Textgröße - normal</option>
@@ -10,6 +12,7 @@
         <option [ngValue]="simulation">{{ simulation.name }}</option>
       }
     </select>
+    </div>
   </div>
   <div class="code-exercise-container">
     <app-code-editor (checkAnswer)="setCorrectFontSize($event)" [explanationText]="explanation" [givenCode]="codeExample"></app-code-editor>

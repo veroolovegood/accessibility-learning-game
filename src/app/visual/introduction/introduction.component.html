@@ -1,10 +1,13 @@
 <div id="introduction-container">
   <div id="simulation-container">
-    <select [(ngModel)]="selectedSimulation" class="form-select w-auto">
-      @for (simulation of visualBarriersSimulation; track simulation) {
-        <option [ngValue]="simulation">{{ simulation.name }}</option>
-      }
-    </select>
+    <div id="controls-container">
+      <button class="btn btn-outline-info icon-button" (click)="location.back()"> <ng-icon name="matArrowBack"></ng-icon> Zurück</button>
+      <select [(ngModel)]="selectedSimulation" class="form-select w-auto">
+        @for (simulation of visualBarriersSimulation; track simulation) {
+          <option [ngValue]="simulation">{{ simulation.name }}</option>
+        }
+      </select>
+    </div>
     <app-browser-simulation [simulationType]="selectedSimulation?.id" [urlSuffix]="'webshop'">
       <app-webshop></app-webshop>
     </app-browser-simulation>
@@ -26,19 +29,25 @@
           sieht?</p>
         <form [formGroup]="farsightedForm" (ngSubmit)="submitAnswers('farsighted', farsightedForm)">
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" [ngClass]="this.completedExercise['farsighted'] ? 'success-input' : ''" formControlName="answerOne" name="farsighted-exercise" type="checkbox" id="farsighed-answer-1">
-            <label class="form-check-label" for="farsighed-answer-1">Der Text ist zu klein, um ihn bequem zu lesen</label>
+            <input class="form-check-input" [ngClass]="this.completedExercise['farsighted'] ? 'success-input' : ''"
+                   formControlName="answerOne" name="farsighted-exercise" type="checkbox" id="farsighed-answer-1">
+            <label class="form-check-label" for="farsighed-answer-1">Der Text ist zu klein, um ihn bequem zu
+              lesen</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" [ngClass]="this.completedExercise['farsighted'] ? 'success-input' : ''" formControlName="answerTwo" name="farsighted-exercise" type="checkbox" id="farsighed-answer-2">
-            <label class="form-check-label" for="farsighed-answer-2">Die Bilder können nicht vernünftig erkannt werden</label>
+            <input class="form-check-input" [ngClass]="this.completedExercise['farsighted'] ? 'success-input' : ''"
+                   formControlName="answerTwo" name="farsighted-exercise" type="checkbox" id="farsighed-answer-2">
+            <label class="form-check-label" for="farsighed-answer-2">Die Bilder können nicht vernünftig erkannt
+              werden</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerThree" name="farsighted-exercise" type="checkbox" id="farsighed-answer-3">
+            <input class="form-check-input" formControlName="answerThree" name="farsighted-exercise" type="checkbox"
+                   id="farsighed-answer-3">
             <label class="form-check-label" for="farsighed-answer-3">Die Seite lädt zu langsam</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerFour" name="farsighted-exercise" type="checkbox" id="farsighed-answer-4">
+            <input class="form-check-input" formControlName="answerFour" name="farsighted-exercise" type="checkbox"
+                   id="farsighed-answer-4">
             <label class="form-check-label" for="farsighed-answer-4">Der “In den Warenkorb”-Button ist zu groß</label>
           </div>
           <button type="submit" class="btn btn-primary">Überprüfen</button>
@@ -47,22 +56,33 @@
       @case ('red-green-color-blindness') {
         <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. Rot-Grün-Blindheit die Farben nicht
           richtig erkennen kann?</p>
-        <form [formGroup]="redGreenColorBlindnessForm" (ngSubmit)="submitAnswers('redGreenColorBlindness', redGreenColorBlindnessForm)">
+        <form [formGroup]="redGreenColorBlindnessForm"
+              (ngSubmit)="submitAnswers('redGreenColorBlindness', redGreenColorBlindnessForm)">
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" [ngClass]="this.completedExercise['redGreenColorBlindness'] ? 'success-input' : ''" formControlName="answerOne" name="red-green-color-blindness-exercise" type="checkbox" id="red-green-color-blindness-answer-1">
-            <label class="form-check-label" for="red-green-color-blindness-answer-1">Die auswählbaren Farben der Kleidungsstücke sind schwer zu unterscheiden</label>
+            <input class="form-check-input"
+                   [ngClass]="this.completedExercise['redGreenColorBlindness'] ? 'success-input' : ''"
+                   formControlName="answerOne" name="red-green-color-blindness-exercise" type="checkbox"
+                   id="red-green-color-blindness-answer-1">
+            <label class="form-check-label" for="red-green-color-blindness-answer-1">Die auswählbaren Farben der
+              Kleidungsstücke sind schwer zu unterscheiden</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerTwo" name="red-green-color-blindness-exercise" type="checkbox" id="red-green-color-blindness-answer-2">
-            <label class="form-check-label" for="red-green-color-blindness-answer-2">Es gibt keine Möglichkeit, die Produkte zu filtern.</label>
+            <input class="form-check-input" formControlName="answerTwo" name="red-green-color-blindness-exercise"
+                   type="checkbox" id="red-green-color-blindness-answer-2">
+            <label class="form-check-label" for="red-green-color-blindness-answer-2">Es gibt keine Möglichkeit, die
+              Produkte zu filtern.</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerThree" name="red-green-color-blindness-exercise" type="checkbox" id="red-green-color-blindness-answer-3">
-            <label class="form-check-label" for="red-green-color-blindness-answer-3">Die Farben passen nicht zum Farb-Theme des Shops.</label>
+            <input class="form-check-input" formControlName="answerThree" name="red-green-color-blindness-exercise"
+                   type="checkbox" id="red-green-color-blindness-answer-3">
+            <label class="form-check-label" for="red-green-color-blindness-answer-3">Die Farben passen nicht zum
+              Farb-Theme des Shops.</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerFour" name="red-green-color-blindness-exercise" type="checkbox" id="red-green-color-blindness-answer-4">
-            <label class="form-check-label" for="red-green-color-blindness-answer-4">Die Farben sind zu grell, sodass es unangenehm ist, die Webseite anzuschauen</label>
+            <input class="form-check-input" formControlName="answerFour" name="red-green-color-blindness-exercise"
+                   type="checkbox" id="red-green-color-blindness-answer-4">
+            <label class="form-check-label" for="red-green-color-blindness-answer-4">Die Farben sind zu grell, sodass es
+              unangenehm ist, die Webseite anzuschauen</label>
           </div>
           <button type="submit" class="btn btn-primary">Überprüfen</button>
         </form>
@@ -72,20 +92,28 @@
           erkennen kann?</p>
         <form [formGroup]="blindnessForm" (ngSubmit)="submitAnswers('blindness', blindnessForm)">
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" [ngClass]="this.completedExercise['blindness'] ? 'success-input' : ''" formControlName="answerOne" name="blindness-exercise" type="checkbox" id="blindness-answer-1">
-            <label class="form-check-label" for="blindness-answer-1">Die Produkte können nicht erkannt werden, da keine Bildbeschreibungen vorhanden sind.</label>
+            <input class="form-check-input" [ngClass]="this.completedExercise['blindness'] ? 'success-input' : ''"
+                   formControlName="answerOne" name="blindness-exercise" type="checkbox" id="blindness-answer-1">
+            <label class="form-check-label" for="blindness-answer-1">Die Produkte können nicht erkannt werden, da keine
+              Bildbeschreibungen vorhanden sind.</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" [ngClass]="this.completedExercise['blindness'] ? 'success-input' : ''" formControlName="answerTwo" name="blindness-exercise" type="checkbox" id="blindness-answer-2">
-            <label class="form-check-label" for="blindness-answer-2">Die Inhalte können nur durch einen Screenreader wahrgenommen werden</label>
+            <input class="form-check-input" [ngClass]="this.completedExercise['blindness'] ? 'success-input' : ''"
+                   formControlName="answerTwo" name="blindness-exercise" type="checkbox" id="blindness-answer-2">
+            <label class="form-check-label" for="blindness-answer-2">Die Inhalte können nur durch einen Screenreader
+              wahrgenommen werden</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerThree" name="blindness-exercise" type="checkbox" id="blindness-answer-3">
-            <label class="form-check-label" for="blindness-answer-3">Blinde Nutzer sind auf die visuellen Designelemente angewiesen, um die Seite zu navigieren.</label>
+            <input class="form-check-input" formControlName="answerThree" name="blindness-exercise" type="checkbox"
+                   id="blindness-answer-3">
+            <label class="form-check-label" for="blindness-answer-3">Blinde Nutzer sind auf die visuellen Designelemente
+              angewiesen, um die Seite zu navigieren.</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerFour" name="blindness-exercise" type="checkbox" id="blindness-answer-4">
-            <label class="form-check-label" for="blindness-answer-4">Die Auswahlmöglichkeiten der Farben können nicht wahrgenommen werden</label>
+            <input class="form-check-input" formControlName="answerFour" name="blindness-exercise" type="checkbox"
+                   id="blindness-answer-4">
+            <label class="form-check-label" for="blindness-answer-4">Die Auswahlmöglichkeiten der Farben können nicht
+              wahrgenommen werden</label>
           </div>
           <button type="submit" class="btn btn-primary">Überprüfen</button>
         </form>
@@ -94,22 +122,33 @@
         <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. totaler Blindheit die Inhalte überhaupt
           nicht visuell wahrnehmen kann (Tipp: verwende die Screenreader Funktion um zu herauszufinden, was der Nutzende
           überhaupt wahrnehmen kann)?</p>
-        <form [formGroup]="absoluteColorBlindnessForm" (ngSubmit)="submitAnswers('absoluteColorBlindness', absoluteColorBlindnessForm)">
+        <form [formGroup]="absoluteColorBlindnessForm"
+              (ngSubmit)="submitAnswers('absoluteColorBlindness', absoluteColorBlindnessForm)">
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerOne" [ngClass]="this.completedExercise['absoluteColorBlindness'] ? 'success-input' : ''" name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-1">
-            <label class="form-check-label" for="absolute-color-blindness-answer-1">Der Rabatt ist schwer erkennbar</label>
+            <input class="form-check-input" formControlName="answerOne"
+                   [ngClass]="this.completedExercise['absoluteColorBlindness'] ? 'success-input' : ''"
+                   name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-1">
+            <label class="form-check-label" for="absolute-color-blindness-answer-1">Der Rabatt ist schwer
+              erkennbar</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerTwo" name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-2">
-            <label class="form-check-label" for="absolute-color-blindness-answer-2">Der Text könnte unscharf erscheinen und das Design unübersichtlich machen.</label>
+            <input class="form-check-input" formControlName="answerTwo" name="absolute-color-blindness-exercise"
+                   type="checkbox" id="absolute-color-blindness-answer-2">
+            <label class="form-check-label" for="absolute-color-blindness-answer-2">Der Text könnte unscharf erscheinen
+              und das Design unübersichtlich machen.</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerThree" [ngClass]="this.completedExercise['absoluteColorBlindness'] ? 'success-input' : ''" name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-3">
-            <label class="form-check-label" for="absolute-color-blindness-answer-3">Die auswählbaren Farben der Kleidungsstücke sind schwer zu unterscheiden</label>
+            <input class="form-check-input" formControlName="answerThree"
+                   [ngClass]="this.completedExercise['absoluteColorBlindness'] ? 'success-input' : ''"
+                   name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-3">
+            <label class="form-check-label" for="absolute-color-blindness-answer-3">Die auswählbaren Farben der
+              Kleidungsstücke sind schwer zu unterscheiden</label>
           </div>
           <div class="multiple-choice-button-container">
-            <input class="form-check-input" formControlName="answerFour" name="absolute-color-blindness-exercise" type="checkbox" id="absolute-color-blindness-answer-4">
-            <label class="form-check-label" for="absolute-color-blindness-answer-4">Der Text wird weniger auffällig, was die Benutzerfreundlichkeit verbessert.</label>
+            <input class="form-check-input" formControlName="answerFour" name="absolute-color-blindness-exercise"
+                   type="checkbox" id="absolute-color-blindness-answer-4">
+            <label class="form-check-label" for="absolute-color-blindness-answer-4">Der Text wird weniger auffällig, was
+              die Benutzerfreundlichkeit verbessert.</label>
           </div>
           <button type="submit" class="btn btn-primary">Überprüfen</button>
         </form>
@@ -120,7 +159,8 @@
 
 <ng-template id="completed-dialog" #completedDialog let-dialog>
   <div class="modal-header">Geschafft!</div>
-  <div class="modal-body"><p>Sehr gut, du hast alle Aufgaben erfolgreich gelöst. Du kannst jetzt mit den nächsten Lektionen in diesem Kapitel fortfahren.</p></div>
+  <div class="modal-body"><p>Sehr gut, du hast alle Aufgaben erfolgreich gelöst. Du kannst jetzt mit den nächsten
+    Lektionen in diesem Kapitel fortfahren.</p></div>
   <div class="modal-footer">
     <button class="btn btn-outline-info" (click)="dialog.dismiss()">Auf der Seite bleiben</button>
     <button class="btn btn-primary" (click)="backToMenu(); dialog.dismiss()">Zum Menü</button>

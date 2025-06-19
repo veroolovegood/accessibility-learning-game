@@ -56,8 +56,8 @@ app-code-editor{
 .simulation-options{
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
+  justify-content: space-between;
+  width: 50%;
 }
 
 select{
@@ -66,4 +66,17 @@ select{
 
 button{
   margin-top: 1em;
+}
+
+.top-line{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-button{
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }

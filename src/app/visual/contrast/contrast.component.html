@@ -34,19 +34,20 @@
     <a ngbNavLink class="text-center fs-4 text-color-black">Aufgabe</a>
     <ng-template ngbNavContent>
       <div id="contrast-exercise-container">
-        <div class="simulation-options">
-          <div class="d-flex align-items-center justify-content-between w-75">
+        <div class="top-line">
+          <button class="btn btn-outline-info icon-button" (click)="location.back()"> <ng-icon name="matArrowBack"></ng-icon> Zurück</button>
+          <div class="simulation-options">
             <app-contrast-tryout
               [contrastRatio]="contrastRatioExercise"
               [(foregroundColor)]="foregroundColorExercise"
               [(backgroundColor)]="backgroundColorExercise"
               [boxSize]="'3em'"></app-contrast-tryout>
-          </div>
           <select [(ngModel)]="selectedSimulation" class="form-select">
             @for (simulation of visualBarriersSimulation; track simulation) {
               <option [ngValue]="simulation">{{ simulation.name }}</option>
             }
           </select>
+          </div>
         </div>
         <div class="code-exercise-container">
           <app-code-editor (checkAnswer)="setCorrectFontSize($event)" [explanationText]="explanation"

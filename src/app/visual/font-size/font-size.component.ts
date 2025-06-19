@@ -10,6 +10,9 @@ import { completeLesson, startLesson } from '../../state/visual/visual.actions';
 import { Router } from '@angular/router';
 import { rewardPoints } from '../../state/profile/profile.actions';
 import { WebshopCodeService } from '../../usecases/webshop/service/webshop-code.service';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { Location } from '@angular/common';
+import { matArrowBack } from '@ng-icons/material-icons/baseline';
 
 @Component({
   selector: 'app-font-size',
@@ -17,8 +20,10 @@ import { WebshopCodeService } from '../../usecases/webshop/service/webshop-code.
     CodeEditorComponent,
     BrowserSimulationComponent,
     WebshopComponent,
-    FormsModule
+    FormsModule,
+    NgIcon
   ],
+  viewProviders: [provideIcons({matArrowBack})],
   templateUrl: './font-size.component.html',
   styleUrl: './font-size.component.scss'
 })
@@ -53,6 +58,7 @@ export class FontSizeComponent implements OnInit {
 
   constructor(private store: Store,
               private router: Router,
+              protected location: Location,
               private webshopService: WebshopCodeService) {
   }
 
