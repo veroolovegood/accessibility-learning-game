@@ -31,6 +31,6 @@ export class SimulationMenuComponent implements OnInit{
 
   navigateToQuiz() {
     this.store.dispatch(completeLesson({lessonKey: 'simulation'}));
-    this.router.navigate(['quiz', 'introduction-quiz']);
+    this.router.navigate(['quiz', 'introduction']);
   }
 }

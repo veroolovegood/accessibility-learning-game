@@ -3,10 +3,10 @@ import { createReducer, on } from '@ngrx/store';
 import { completeLesson, startLesson } from './introduction.actions';
 
 export const initialState = {
-  lessonOne: CompletedStateEnum.COMPLETED,
-  quizLessonOne: CompletedStateEnum.COMPLETED,
-  simulation: CompletedStateEnum.COMPLETED,
-  finalQuiz: CompletedStateEnum.COMPLETED,
+  lessonOne: CompletedStateEnum.UNFINISHED,
+  quizLessonOne: CompletedStateEnum.UNFINISHED,
+  simulation: CompletedStateEnum.UNFINISHED,
+  finalQuiz: CompletedStateEnum.UNFINISHED,
 }
 
 export const introductionReducer = createReducer(initialState,
