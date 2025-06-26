@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, output, Type, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, output, ViewChild } from '@angular/core';
 import { basicSetup, EditorView } from 'codemirror';
 import { css } from '@codemirror/lang-css';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';

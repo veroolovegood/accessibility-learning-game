@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { matPlayArrow } from '@ng-icons/material-icons/baseline'
 import { Router } from '@angular/router';
-import Keycloak from 'keycloak-js';
+// import Keycloak from 'keycloak-js';
 
 @Component({
   selector: 'app-home',

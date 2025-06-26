@@ -19,7 +19,6 @@ import { matArrowBack } from '@ng-icons/material-icons/baseline';
 import { ToastService } from '../../services/toast.service';
 import { ToastFifteenPointsComponent } from '../../common/toast/toast-fifteen-points/toast-fifteen-points.component';
 import { InfoPopoverContrastComponent } from './info-popover-contrast/info-popover-contrast.component';
-import { InfoPopoverFontSizeComponent } from '../font-size/info-popover-font-size/info-popover-font-size.component';
 import { matInfoOutline } from '@ng-icons/material-icons/outline';
 
 @Component({

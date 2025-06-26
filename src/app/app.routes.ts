@@ -6,7 +6,7 @@ import { SimulationMenuComponent } from './introduction/simulation/simulation-me
 import {
   BarrierSimulationComponent
 } from './introduction/simulation/barrier-simulation/barrier-simulation.component';
-import { canActivateAuthRole } from './auth/auth-guard';
+// import { canActivateAuthRole } from './auth/auth-guard';
 import { QuizComponent } from './common/quiz/quiz.component';
 import { MenuTemplateComponent } from './menu/menu-template/menu-template.component';
 import { IntroductionComponent } from './visual/introduction/introduction.component';
