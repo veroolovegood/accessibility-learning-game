@@ -34,16 +34,26 @@ app-code-editor{
 .simulation-options{
   display: flex;
   gap: 1em;
+  align-items: center;
 }
 
 .icon-button{
   display: flex;
   align-items: center;
-  gap: 3px;
 }
 
 .top-line{
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+
+.help-icon{
+  cursor: pointer;
+  padding-right: 2em;
+}
+
+.info-popover{
+  width: 100vw;
+
 }

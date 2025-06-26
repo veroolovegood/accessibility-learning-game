@@ -26,7 +26,7 @@ export const visualQuizData: QuizData = {
         },
       ]
     },
-    {question: 'Welche der folgenden Probleme können für Nutzer mit Farbsehschwäche auftreten?  ',
+    {question: 'Welche der folgenden Probleme können für Nutzer mit Farbsehschwäche auftreten?',
       answerOptions: [
         {
           content: 'Unzureichender Kontrast zwischen Text und Hintergrund',
@@ -41,47 +41,47 @@ export const visualQuizData: QuizData = {
           isCorrect: false
         },
         {
-          content: 'Texte und Bilder sind für sie schwer verständlich',
+          content: 'Texte und Bilder sind nicht wahrnehmbar ',
           isCorrect: false
         },
       ],
       pointsToBeAwarded: 1},
-    {question: 'Welche Maßnahmen könnten helfen, das Problem für Nutzer mit Weitsichtigkeit zu lösen?',
+    {question: 'Welche Werte sollten für die Angabe von Schriftgrößen in CSS verwendet werden, um visuell eingeschränkten Personen die Wahrnehmung von Text zu erleichtern?',
       answerOptions: [
         {
-          content: 'Nutzung von named Schriftgrößen',
+          content: 'font-size: medium;',
           isCorrect: true
         },
         {
-          content: 'Verwendung von Farbe als Information',
+          content: 'font-size: 30px;',
           isCorrect: false
         },
         {
-          content: 'Nutzung von relativen Schriftgrößen wie % oder rem Werte',
+          content: ' font-size: 100%;',
           isCorrect: true
         },
         {
-          content: 'Ausschalten von Animationen ermöglichen',
-          isCorrect: false
+          content: 'font-size: 1em;',
+          isCorrect: true
         },
       ],
       pointsToBeAwarded: 1},
-    {question: 'Welche Lösungen könnten helfen, die Barrieren für Nutzer mit Farbsehschwäche zu überwinden?',
+    {question: 'Welche Lösungen sollten umgesetzt werden, um die Barrieren für Nutzer mit Farbsehschwäche zu überwinden? ',
       answerOptions: [
         {
-          content: 'Kontrast erhöhen',
-          isCorrect: true
+          content: 'Verwendung von Graustufen zur Vermeidung von Farbkonflikten',
+          isCorrect: false
+        },
+        {
+          content: ' Kontrast zwischen Hintergrund und Vordergund von 7.5:1  ',
+          isCorrect: false
         },
         {
           content: 'Farbe nicht als einzigen Informationsträger  verwenden',
           isCorrect: true
         },
         {
-          content: ' Eine klare Navigationsstruktur',
-          isCorrect: false
-        },
-        {
-          content: 'Verwendung von Symbolen und Text zur Ergänzung von Farben',
+          content: 'Kontrast zwischen Hintergrund und Vordergund von 4.5:1  ',
           isCorrect: true
         },
       ],

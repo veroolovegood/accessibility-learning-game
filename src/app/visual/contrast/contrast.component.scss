@@ -80,3 +80,18 @@ button{
   align-items: center;
   gap: 3px;
 }
+
+.help-icon{
+  cursor: pointer;
+  padding-right: 2em;
+}
+
+.info-popover{
+  width: 100vw;
+
+}
+
+.info-and-select{
+  display: flex;
+  align-items: center;
+}

@@ -20,8 +20,9 @@
         <p>Über den Dropdown-Button über dem Webshop kannst du jetzt und in den weiteren Lektionen die Einschränkung
           auswählen, welche du simuliert haben möchtest. Das Lautsprecher-Symbol aktiviert einen Screenreader.</p>
         <p>Lass uns zunächst über die Probleme, die bei den verschiedenen Beeinträchtigungen auftreten können,
-          nachdenken. Dazu bekommst du für jede Simulation eine Aufgabe. Wähle die Einschränkung einfach über den Button
-          aus und befolge die Anweisungen. Wenn du alle Aufgaben gelöst hast, kannst du mit den weiteren Lektionen
+          nachdenken. Dazu bekommst du für jede Simulation eine Aufgabe. Wähle die Einschränkung einfach über den
+          Dropdown-Button über der Webseite aus und befolge die Anweisungen. Wenn du alle Aufgaben gelöst hast,
+          kannst du mit den weiteren Lektionen
           fortfahren.</p>
       }
       @case ('farsighted') {
@@ -50,7 +51,7 @@
                    id="farsighed-answer-4">
             <label class="form-check-label" for="farsighed-answer-4">Der “In den Warenkorb”-Button ist zu groß</label>
           </div>
-          <button type="submit" class="btn btn-primary">Überprüfen</button>
+          <button type="submit" class="btn btn-primary" [disabled]="this.completedExercise['farsighted']">Überprüfen</button>
         </form>
       }
       @case ('red-green-color-blindness') {
@@ -84,18 +85,18 @@
             <label class="form-check-label" for="red-green-color-blindness-answer-4">Die Farben sind zu grell, sodass es
               unangenehm ist, die Webseite anzuschauen</label>
           </div>
-          <button type="submit" class="btn btn-primary">Überprüfen</button>
+          <button type="submit" class="btn btn-primary" [disabled]="this.completedExercise['redGreenColorBlindness']">Überprüfen</button>
         </form>
       }
       @case ('blindness') {
-        <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. absoluter Farbblindheit die Farben nicht
-          erkennen kann?</p>
+        <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. totaler Blindheit die Inhalte überhaupt
+          nicht visuell wahrnehmen kann (Hinweis: Mit einem Screenreader lässt sich herauszufinden, was der/die Nutzende
+          überhaupt wahrnehmen kann)?</p>
         <form [formGroup]="blindnessForm" (ngSubmit)="submitAnswers('blindness', blindnessForm)">
           <div class="multiple-choice-button-container">
             <input class="form-check-input" [ngClass]="this.completedExercise['blindness'] ? 'success-input' : ''"
                    formControlName="answerOne" name="blindness-exercise" type="checkbox" id="blindness-answer-1">
-            <label class="form-check-label" for="blindness-answer-1">Die Produkte können nicht erkannt werden, da keine
-              Bildbeschreibungen vorhanden sind.</label>
+            <label class="form-check-label" for="blindness-answer-1">Die Produkte können ohne Hilfsmittel nicht erkannt werden.</label>
           </div>
           <div class="multiple-choice-button-container">
             <input class="form-check-input" [ngClass]="this.completedExercise['blindness'] ? 'success-input' : ''"
@@ -112,16 +113,14 @@
           <div class="multiple-choice-button-container">
             <input class="form-check-input" formControlName="answerFour" name="blindness-exercise" type="checkbox"
                    id="blindness-answer-4">
-            <label class="form-check-label" for="blindness-answer-4">Die Auswahlmöglichkeiten der Farben können nicht
-              wahrgenommen werden</label>
+            <label class="form-check-label" for="blindness-answer-4">Blinde Personen haben keine Möglichkeit, die Inhalte der Seite wahrzunehmen</label>
           </div>
-          <button type="submit" class="btn btn-primary">Überprüfen</button>
+          <button type="submit" class="btn btn-primary" [disabled]="this.completedExercise['blindness']">Überprüfen</button>
         </form>
       }
       @case ('absolute-color-blindness') {
-        <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. totaler Blindheit die Inhalte überhaupt
-          nicht visuell wahrnehmen kann (Tipp: verwende die Screenreader Funktion um zu herauszufinden, was der Nutzende
-          überhaupt wahrnehmen kann)?</p>
+        <p>Welche Probleme treten hier auf, weil die Person aufgrund von z.B. absoluter Farbblindheit die Farben nicht
+          erkennen kann?</p>
         <form [formGroup]="absoluteColorBlindnessForm"
               (ngSubmit)="submitAnswers('absoluteColorBlindness', absoluteColorBlindnessForm)">
           <div class="multiple-choice-button-container">
@@ -150,7 +149,7 @@
             <label class="form-check-label" for="absolute-color-blindness-answer-4">Der Text wird weniger auffällig, was
               die Benutzerfreundlichkeit verbessert.</label>
           </div>
-          <button type="submit" class="btn btn-primary">Überprüfen</button>
+          <button type="submit" class="btn btn-primary" [disabled]="this.completedExercise['absoluteColorBlindness']">Überprüfen</button>
         </form>
       }
     }

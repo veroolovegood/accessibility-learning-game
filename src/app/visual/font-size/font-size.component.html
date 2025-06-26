@@ -2,6 +2,19 @@
   <div class="top-line">
     <button class="btn btn-outline-info icon-button" (click)="location.back()"> <ng-icon name="matArrowBack"></ng-icon> Zurück</button>
     <div class="simulation-options">
+      <ng-icon
+        name="matInfoOutline"
+        class="help-icon"
+        size="1.5em"
+        [tabIndex]="0"
+        popoverClass="info-popover"
+        placement="bottom"
+        triggers="mouseenter focus:none"
+        autoClose="outside"
+        [ngbPopover]="infoPopoverContainer"
+        popoverTitle="Hilfe"
+        #infoPopoverContainerButton="ngbPopover"
+        container="body"></ng-icon>
     <select [(ngModel)]="selectedTextSize" (ngModelChange)="updateCSS($event)" class="form-select">
       <option [ngValue]="-4">Textgröße - klein</option>
       <option [ngValue]="0">Textgröße - normal</option>
@@ -15,8 +28,7 @@
     </div>
   </div>
   <div class="code-exercise-container">
-    <app-code-editor (checkAnswer)="setCorrectFontSize($event)" [explanationText]="explanation" [givenCode]="codeExample"
-    [infoPopover]="InfoPopoverFontSizeComponent"></app-code-editor>
+    <app-code-editor (checkAnswer)="setCorrectFontSize($event)" [explanationText]="explanation" [givenCode]="codeExample"></app-code-editor>
     <div id="simulation-container">
       <app-browser-simulation [simulationType]="selectedSimulation?.id" [urlSuffix]="'webshop'">
         <app-webshop></app-webshop>
@@ -29,3 +41,9 @@
   </div>
   }
 </div>
+
+
+
+<ng-template #infoPopoverContainer>
+  <ng-container *ngComponentOutlet="infoPopover"></ng-container>
+</ng-template>

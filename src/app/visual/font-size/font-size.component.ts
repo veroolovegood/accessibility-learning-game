@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { CodeEditorComponent } from '../../common/code-editor/code-editor.component';
 import { BrowserSimulationComponent } from '../../common/browser-simulation/browser-simulation.component';
 import { WebshopComponent } from '../../usecases/webshop/webshop.component';
@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 import { rewardPoints } from '../../state/profile/profile.actions';
 import { WebshopCodeService } from '../../usecases/webshop/service/webshop-code.service';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { Location } from '@angular/common';
+import { Location, NgComponentOutlet } from '@angular/common';
 import { matArrowBack } from '@ng-icons/material-icons/baseline';
 import { ToastFifteenPointsComponent } from '../../common/toast/toast-fifteen-points/toast-fifteen-points.component';
 import { ToastService } from '../../services/toast.service';
 import { InfoPopoverFontSizeComponent } from './info-popover-font-size/info-popover-font-size.component';
+import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { matInfoOutline } from '@ng-icons/material-icons/outline';
 
 @Component({
   selector: 'app-font-size',
@@ -24,9 +26,11 @@ import { InfoPopoverFontSizeComponent } from './info-popover-font-size/info-popo
     BrowserSimulationComponent,
     WebshopComponent,
     FormsModule,
-    NgIcon
+    NgIcon,
+    NgComponentOutlet,
+    NgbPopover
   ],
-  viewProviders: [provideIcons({matArrowBack})],
+  viewProviders: [provideIcons({matArrowBack, matInfoOutline})],
   templateUrl: './font-size.component.html',
   styleUrl: './font-size.component.scss'
 })
@@ -58,6 +62,8 @@ export class FontSizeComponent implements OnInit {
     '}\n';
 
   completedExercise = false;
+
+  infoPopover: Type<any> = InfoPopoverFontSizeComponent;
 
   constructor(private store: Store,
               private router: Router,

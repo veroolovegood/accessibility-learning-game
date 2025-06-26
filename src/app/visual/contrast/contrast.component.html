@@ -5,7 +5,7 @@
       <div class="d-flex align-items-center w-100">
         <div class="w-50 p-5 d-flex flex-column gap-4">
           <p class="text-justify">
-            Im Bereich der Farbsehschwäche muss vor Allem auf den Kontrast zwischen Vorder- und Hintergrund geachtet
+            Im Bereich der Farbsehschwäche muss vor allem auf den Kontrast zwischen Vorder- und Hintergrund geachtet
             werden, da durch das Fehlen der Farbsehfähigkeit der Unterschied zwischen Farben nicht mehr so präsent ist.
           </p>
           <p class="text-justify">Je nach Schriftgröße (es wird zwischen < 18 und > 18 unterschieden), sollten daher
@@ -14,7 +14,7 @@
           </p>
           <p class="text-justify">Hier kannst du ein bisschen ausprobieren, wie sich das Kontrastverhältnis bei
             verschiedenen Farben auswirkt. <br>
-            Wenn du genug davon hast, kannst du zur Aufgabe weiter gehen.</p>
+            Wenn du genug davon hast, kannst du oben über den Tab zur Aufgabe weiter gehen.</p>
         </div>
         <div id="contrast-component" class="d-flex flex-column gap-4 w-50 p-5 align-items-center">
           <app-contrast-tryout
@@ -35,23 +35,40 @@
     <ng-template ngbNavContent>
       <div id="contrast-exercise-container">
         <div class="top-line">
-          <button class="btn btn-outline-info icon-button" (click)="location.back()"> <ng-icon name="matArrowBack"></ng-icon> Zurück</button>
+          <button class="btn btn-outline-info icon-button" (click)="location.back()">
+            <ng-icon name="matArrowBack"></ng-icon>
+            Zurück
+          </button>
           <div class="simulation-options">
             <app-contrast-tryout
               [contrastRatio]="contrastRatioExercise"
               [(foregroundColor)]="foregroundColorExercise"
               [(backgroundColor)]="backgroundColorExercise"
               [boxSize]="'3em'"></app-contrast-tryout>
-          <select [(ngModel)]="selectedSimulation" class="form-select">
-            @for (simulation of visualBarriersSimulation; track simulation) {
-              <option [ngValue]="simulation">{{ simulation.name }}</option>
-            }
-          </select>
+            <div class="info-and-select">
+              <ng-icon
+                name="matInfoOutline"
+                class="help-icon"
+                size="1.5em"
+                [tabIndex]="0"
+                popoverClass="info-popover"
+                placement="bottom"
+                triggers="mouseenter focus:none"
+                autoClose="outside"
+                [ngbPopover]="infoPopoverContainer"
+                popoverTitle="Hilfe"
+                #infoPopoverContainerButton="ngbPopover"
+                container="body"></ng-icon>
+              <select [(ngModel)]="selectedSimulation" class="form-select">
+                @for (simulation of visualBarriersSimulation; track simulation) {
+                  <option [ngValue]="simulation">{{ simulation.name }}</option>
+                }
+              </select>
+            </div>
           </div>
         </div>
         <div class="code-exercise-container">
           <app-code-editor (checkAnswer)="setCorrectFontSize($event)" [explanationText]="explanation"
-                           [infoPopover]="InfoPopoverContrastComponent"
                            [givenCode]="codeExample"></app-code-editor>
           <div id="simulation-container">
             <app-browser-simulation [simulationType]="selectedSimulation?.id" [urlSuffix]="'webshop'">
@@ -69,3 +86,7 @@
   </li>
 </ul>
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+<ng-template #infoPopoverContainer>
+  <ng-container *ngComponentOutlet="infoPopover"></ng-container>
+</ng-template>

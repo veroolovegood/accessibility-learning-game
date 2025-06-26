@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbNav, NgbNavContent, NgbNavItem, NgbNavLink, NgbNavOutlet } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNav, NgbNavContent, NgbNavItem, NgbNavLink, NgbNavOutlet, NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { contrastRatio } from "wcag-contrast-utils";
 import { BrowserSimulationComponent } from '../../common/browser-simulation/browser-simulation.component';
 import { CodeEditorComponent } from '../../common/code-editor/code-editor.component';
@@ -14,11 +14,13 @@ import hexRgb from 'hex-rgb';
 import { Router } from '@angular/router';
 import { rewardPoints } from '../../state/profile/profile.actions';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { Location } from '@angular/common';
+import { Location, NgComponentOutlet } from '@angular/common';
 import { matArrowBack } from '@ng-icons/material-icons/baseline';
 import { ToastService } from '../../services/toast.service';
 import { ToastFifteenPointsComponent } from '../../common/toast/toast-fifteen-points/toast-fifteen-points.component';
 import { InfoPopoverContrastComponent } from './info-popover-contrast/info-popover-contrast.component';
+import { InfoPopoverFontSizeComponent } from '../font-size/info-popover-font-size/info-popover-font-size.component';
+import { matInfoOutline } from '@ng-icons/material-icons/outline';
 
 @Component({
   selector: 'app-contrast',
@@ -33,9 +35,11 @@ import { InfoPopoverContrastComponent } from './info-popover-contrast/info-popov
     FormsModule,
     WebshopComponent,
     ContrastTryoutComponent,
-    NgIcon
+    NgIcon,
+    NgComponentOutlet,
+    NgbPopover
   ],
-  viewProviders: [provideIcons({matArrowBack})],
+  viewProviders: [provideIcons({matArrowBack, matInfoOutline})],
   templateUrl: './contrast.component.html',
   styleUrl: './contrast.component.scss'
 })
@@ -116,5 +120,5 @@ Zur Hilfe hast du auch auf dieser Seite einen Kontrast-Berechner, der sich autom
     this.router.navigate(['menu/visual']);
   }
 
-  protected readonly InfoPopoverContrastComponent = InfoPopoverContrastComponent;
+  protected readonly infoPopover = InfoPopoverContrastComponent;
 }

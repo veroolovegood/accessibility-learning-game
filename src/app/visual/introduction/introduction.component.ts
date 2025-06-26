@@ -89,6 +89,7 @@ export class IntroductionComponent implements OnInit {
       form.controls['answerFour'].value == this.answerMatrix[exercise].answerFour;
     if (this.completedExercise[exercise] && !oldVal) {
       this.store.dispatch(rewardPoints({points: 5}));
+      form.disable();
       this.toastService.show({template: ToastFifteenPointsComponent, classname: 'success', points: 5})
     }
 

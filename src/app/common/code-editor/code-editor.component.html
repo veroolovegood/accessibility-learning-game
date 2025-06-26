@@ -9,24 +9,7 @@
   </div>
   <div id="code-editor-container"></div>
   <div id="code-editor-actions-container">
-    <ng-icon
-      name="matInfoOutline"
-      color="white"
-      class="help-icon"
-      size="1.5em"
-      [tabIndex]="0"
-      popoverClass="info-popover"
-      placement="top"
-      triggers="mouseenter focus:none"
-      autoClose="outside"
-      [ngbPopover]="infoPopoverContainer"
-      popoverTitle="Hilfe"
-      #infoPopoverContainerButton="ngbPopover"
-      container="body"></ng-icon>
     <button class="btn btn-primary" (click)="applyStyle()">Absenden</button>
   </div>
 </div>
 
-<ng-template #infoPopoverContainer>
-  <ng-container *ngComponentOutlet="infoPopover"></ng-container>
-</ng-template>

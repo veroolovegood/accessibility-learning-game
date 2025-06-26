@@ -5,23 +5,11 @@ import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 import { tags } from '@lezer/highlight';
 import { WebshopCodeService } from '../../usecases/webshop/service/webshop-code.service';
 import { Text } from '@codemirror/state';
-import { NgIcon, provideIcons } from '@ng-icons/core';
-import { matInfoOutline } from '@ng-icons/material-icons/outline';
-import {
-  NgbPopover
-} from '@ng-bootstrap/ng-bootstrap';
-import { NgComponentOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-code-editor',
   templateUrl: './code-editor.component.html',
   styleUrl: './code-editor.component.scss',
-  viewProviders: [provideIcons({matInfoOutline})],
-  imports: [
-    NgIcon,
-    NgbPopover,
-    NgComponentOutlet
-  ]
 })
 export class CodeEditorComponent implements AfterViewInit, OnInit {
 
@@ -31,9 +19,6 @@ export class CodeEditorComponent implements AfterViewInit, OnInit {
 
   @Input()
   explanationText: string = '';
-
-  @Input({required: true})
-  infoPopover!: Type<any>;
 
   displayableText: string = '';
 
@@ -76,8 +61,12 @@ export class CodeEditorComponent implements AfterViewInit, OnInit {
   }
 
   applyStyle() {
-    this.webshopCodeService.updateCssText(this.editor.state.doc.text.toString().replace(/,/g, '\n'));
-    this.checkAnswer.emit(this.editor.state.doc);
+    console.log(this.editor);
+    if(this.editor?.state) {
+      this.webshopCodeService.updateCssText(this.editor.state.doc.text.toString().replace(/,/g, '\n'));
+      this.checkAnswer.emit(Text.of(this.editor.state.doc.toJSON()));
+    }
+
   }
 
   toggleText(): void {

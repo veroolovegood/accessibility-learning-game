@@ -17,19 +17,19 @@ export const simulationData: { [key: string]: SimulationTypeData } = {
     barriers: [{
       name: 'Weitsichtigkeit',
       selected: false,
-      explanation: 'Kleine Schrift und feine Details sind schwer lesbar, was das Erfassen von Inhalten auf der Webseite beeinträchtigt.',
+      explanation: 'Kleine Schrift und feine Details sind schwer lesbar, was das Erfassen von Inhalten auf der Webseite beeinträchtigt. Sie sind auf größere Schriftgrößen oder sogar Screenreader angewiesen.',
       id: 'farsighted',
     } as unknown as BarrierSimulationButton,
       {
         name: 'Rot-Grün Farbenblindheit',
         selected: false,
-        explanation: 'Rote und grüne Farbtöne lassen sich nur schwer unterscheiden, was das Erkennen von farblich codierten Informationen problematisch macht.',
+        explanation: 'Rote und grüne Farbtöne lassen sich nur schwer unterscheiden, was das Erkennen von farblich codierten Informationen problematisch macht. Betroffene sind auf textuelle Informationen oder Farbfilter angewiesen.',
         id: 'red-green-color-blindness'
       } as unknown as BarrierSimulationButton,
       {
         name: 'Totale Farbenblindheit',
         selected: false,
-        explanation: 'Da alles in Graustufen wahrgenommen wird, sind Webseiten, die nur auf Farben zur Informationsvermittlung setzen, schwer verständlich.',
+        explanation: 'Da alles in Graustufen wahrgenommen wird, sind Webseiten, die nur auf Farben zur Informationsvermittlung setzen, schwer verständlich. Alternative Darstellungsmethoden, wie z.B. Text können ihnen helfen.',
         id: 'absolute-color-blindness'
       } as unknown as BarrierSimulationButton,
       // {
@@ -47,7 +47,7 @@ export const simulationData: { [key: string]: SimulationTypeData } = {
       {
         name: 'Totale Blindheit',
         selected: false,
-        explanation: '',
+        explanation: 'Für blinde Personen sind visuelle Informationen nicht wahrnehmbar. Dadurch sind sie auf alternative, hör- oder tastbare Darstellungen angewiesen.',
         id: 'blindness'
       }
     ],
@@ -63,7 +63,7 @@ export const simulationData: { [key: string]: SimulationTypeData } = {
       },
       {
         name: 'Taubblindheit',
-        explanation: 'Taubblinde Personen sind sowohl auditiv als auch visuell eingeschränkt und benötigen spezielle Hilfsmittel, um ihre Umgebung wahrzunehmen.',
+        explanation: 'Taubblinde Personen sind sowohl auditiv als auch visuell eingeschränkt und benötigen spezielle Hilfsmittel, wie z.B. eine Braillezeile, um ihre Umgebung wahrzunehmen.',
         id: 'deafness-and-blindness'
       },
       {
@@ -79,7 +79,7 @@ export const simulationData: { [key: string]: SimulationTypeData } = {
     barriers: [
       {
         name: 'Parkinson',
-        explanation: 'Die Motorik weist ein Zittern auf, wodurch präzise Auswahlen unmöglich erscheinen.',
+        explanation: 'Die Motorik weist ein Zittern auf, wodurch präzise Auswahlen unmöglich erscheinen. Betroffene sind auf größere Auswahlflächen oder eine Tastaturnavigation angewiesen.',
         id: 'parkinson'
       },
       {
