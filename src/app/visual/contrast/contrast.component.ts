@@ -94,24 +94,40 @@ Zur Hilfe hast du auch auf dieser Seite einen Kontrast-Berechner, der sich autom
   }
 
   setCorrectFontSize(style: Text) {
-    for (let i = 0; i < style.lines; i++) {
-      const textAtLine = style.line(i + 1).text;
-      if(textAtLine.includes('color:') && style.line(i).text.includes('.reduced-price')){
-        const color = textAtLine.substring(textAtLine.indexOf(':') + 1).trim().replace(';', '');
-        const rgb = hexRgb(color);
-        this.completedExercise = contrastRatio(color, this.backgroundColorExercise) > 4.5;
-        this.redIsDominant = rgb.red > rgb.blue && rgb.red > rgb.green;
+    const oldValCompleted = this.completedExercise;
+    const oldValRedDominant = this.redIsDominant;
+    if(!this.completedExercise || !this.redIsDominant) {
+      for (let i = 0; i < style.lines; i++) {
+        const textAtLine = style.line(i + 1).text;
+        if (textAtLine.includes('color:') && style.line(i).text.includes('.reduced-price')) {
+          const color = textAtLine.substring(textAtLine.indexOf(':') + 1).trim().replace(';', '');
+          const rgb = hexRgb(color);
+          this.completedExercise = contrastRatio(color, this.backgroundColorExercise) > 4.5;
+          this.redIsDominant = rgb.red > rgb.blue && rgb.red > rgb.green;
 
+        }
       }
-    }
-    if (this.completedExercise) {
-      let pointsToAward = 10;
-      if(this.redIsDominant){
-        pointsToAward += 5;
+      let redDominantWarning = "Rot ist aber noch nicht die dominante Farbe. Für weitere 5 Punkte, versuch es mal mit einer etwas anderen Farbe!";
+      if (this.completedExercise) {
+        let pointsToAward = 0;
+        if(!oldValCompleted){
+          pointsToAward += 10;
+        }
+        if (this.redIsDominant && !oldValRedDominant) {
+          redDominantWarning = "";
+          pointsToAward += 5;
+        }
+        console.log(redDominantWarning);
+        this.store.dispatch(rewardPoints({points: pointsToAward}));
+        this.toastService.show({
+          template: ToastFifteenPointsComponent,
+          classname: 'success',
+          points: pointsToAward,
+          showNext: true,
+          additionalText: redDominantWarning
+        });
+        this.store.dispatch(completeLesson({lessonKey: 'contrast'}));
       }
-      this.store.dispatch(rewardPoints({points: pointsToAward}));
-      this.toastService.show({template: ToastFifteenPointsComponent, classname: 'success', points: pointsToAward, showNext: true});
-      this.store.dispatch(completeLesson({lessonKey: 'contrast'}));
     }
   }
 

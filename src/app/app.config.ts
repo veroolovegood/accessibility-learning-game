@@ -33,7 +33,7 @@ export const provideKeycloakAngular = () =>
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideKeycloakAngular(),
+    // provideKeycloakAngular(),
     provideZoneChangeDetection({eventCoalescing: true}), provideRouter(routes), provideClientHydration(withEventReplay()),
     provideStore(), provideStoreDevtools({
       maxAge: 25, // Retains last 25 states

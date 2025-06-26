@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-toast-success',
@@ -6,9 +6,14 @@ import { Component, input } from '@angular/core';
   templateUrl: './toast-fifteen-points.component.html',
   styleUrl: './toast-fifteen-points.component.scss'
 })
-export class ToastFifteenPointsComponent {
+export class ToastFifteenPointsComponent implements  OnInit {
 
   points = input<number>();
   showNext = input<boolean>(false);
+  additionalText = input<string>("");
+
+  ngOnInit() {
+    console.log(this.additionalText());
+  }
 
 }

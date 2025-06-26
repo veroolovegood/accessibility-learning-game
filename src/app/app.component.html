@@ -7,6 +7,6 @@
     [delay]="toast.delay || 5000"
     (hidden)="toastService.remove(toast)"
   >
-    <ng-container *ngComponentOutlet="toast.template; inputs: {points: toast.points, showNext: toast.showNext ?? false}"></ng-container>
+    <ng-container *ngComponentOutlet="toast.template; inputs: {points: toast.points, showNext: toast.showNext ?? false, additionalText: toast.additionalText}"></ng-container>
   </ngb-toast>
 }

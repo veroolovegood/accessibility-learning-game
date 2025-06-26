@@ -6,6 +6,7 @@ export interface Toast {
   delay?: number;
   points: number;
   showNext?: boolean;
+  additionalText?: string;
 }
 
 @Injectable({ providedIn: 'root' })

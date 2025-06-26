@@ -82,19 +82,26 @@ export class FontSizeComponent implements OnInit {
   }
 
   setCorrectFontSize(style: Text) {
-    let results = [];
-    for (let i = 0; i < style.lines; i++) {
-      const textAtLine = style.line(i + 1).text;
-      if (textAtLine.includes('font-size:')) {
-        const fontSize = textAtLine.substring(textAtLine.indexOf(':') + 1).trim().replace(';', '');
-        results.push(fontSize == 'large' || fontSize == 'medium' || fontSize == '1em' || fontSize == '1em' || fontSize == '100%');
+    if(!this.completedExercise) {
+      let results = [];
+      for (let i = 0; i < style.lines; i++) {
+        const textAtLine = style.line(i + 1).text;
+        if (textAtLine.includes('font-size:')) {
+          const fontSize = textAtLine.substring(textAtLine.indexOf(':') + 1).trim().replace(';', '');
+          results.push(fontSize == 'large' || fontSize == 'medium' || fontSize == '1em' || fontSize == '1em' || fontSize == '100%');
+        }
       }
-    }
-    this.completedExercise = results.reduce((a,b) => a && b);
-    if(this.completedExercise){
-      this.store.dispatch(rewardPoints({points: 15}));
-      this.toastService.show({template: ToastFifteenPointsComponent, classname: 'success', points: 15, showNext: true});
-      this.store.dispatch(completeLesson({lessonKey: 'fontSize'}));
+      this.completedExercise = results.reduce((a, b) => a && b);
+      if (this.completedExercise) {
+        this.store.dispatch(rewardPoints({points: 15}));
+        this.toastService.show({
+          template: ToastFifteenPointsComponent,
+          classname: 'success',
+          points: 15,
+          showNext: true
+        });
+        this.store.dispatch(completeLesson({lessonKey: 'fontSize'}));
+      }
     }
   }
 

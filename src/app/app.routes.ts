@@ -26,46 +26,46 @@ export const routes: Routes = [
   {
     path: 'introduction/lesson-one',
     component: IntroductionLesson1,
-    canActivate: [canActivateAuthRole]
+    // canActivate: [canActivateAuthRole]
   },
   {
     path: 'introduction/lesson-one/quiz',
     component: LessonOneQuizComponent,
-    canActivate: [canActivateAuthRole]
+    // canActivate: [canActivateAuthRole]
   },
   {
     path: 'introduction/simulation',
     component: SimulationMenuComponent,
-    canActivate: [canActivateAuthRole]
+    // canActivate: [canActivateAuthRole]
   },
   {
     path: 'introduction/simulation/:barrierType',
     component: BarrierSimulationComponent,
-    canActivate: [canActivateAuthRole]
+    // canActivate: [canActivateAuthRole]
   },
   {
     path: 'quiz/:quizId',
     component: QuizComponent,
-    canActivate: [canActivateAuthRole]
+    // canActivate: [canActivateAuthRole]
   },
   {
     path: 'menu/:id',
     component: MenuTemplateComponent,
-    canActivate: [canActivateAuthRole]
+    // canActivate: [canActivateAuthRole]
   },
   {
     path: 'visual/introduction',
     component: IntroductionComponent,
-    canActivate: [canActivateAuthRole]
+    // canActivate: [canActivateAuthRole]
   },
   {
     path: 'visual/fontsize',
     component: FontSizeComponent,
-    canActivate: [canActivateAuthRole]
+    // canActivate: [canActivateAuthRole]
   },
   {
     path: 'visual/contrast',
     component: ContrastComponent,
-    canActivate: [canActivateAuthRole]
+    // canActivate: [canActivateAuthRole]
   }
 ];

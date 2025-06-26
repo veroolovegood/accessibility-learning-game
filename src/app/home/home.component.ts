@@ -13,14 +13,14 @@ import Keycloak from 'keycloak-js';
 })
 export class HomeComponent {
 
-  constructor(private router: Router, private keycloak: Keycloak) {
+  constructor(private router: Router/*, private keycloak: Keycloak*/) {
   }
 
   startIntroduction() {
-    if(!this.keycloak.authenticated) {
-      this.keycloak.login();
-    } else {
+    // if(!this.keycloak.authenticated) {
+    //   this.keycloak.login();
+    // } else {
       this.router.navigate(['introduction', 'lesson-one']).then();
-    }
+    // }
   }
 }
